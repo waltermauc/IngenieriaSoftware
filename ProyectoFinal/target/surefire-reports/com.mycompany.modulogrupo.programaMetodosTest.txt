@@ -1,0 +1,130 @@
+-------------------------------------------------------------------------------
+Test set: com.mycompany.modulogrupo.programaMetodosTest
+-------------------------------------------------------------------------------
+Tests run: 22, Failures: 14, Errors: 0, Skipped: 0, Time elapsed: 0.07 sec <<< FAILURE!
+com.mycompany.modulogrupo.programaMetodosTest.testCrearGrupo()  Time elapsed: 0.043 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <Nombre ingresado correctamente> but was: <el codigo debe tener solo numeros>
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:54)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:195)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:184)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:179)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:508)
+	at com.mycompany.modulogrupo.programaMetodosTest.testCrearGrupo(programaMetodosTest.java:54)
+
+com.mycompany.modulogrupo.programaMetodosTest.testCrearDocente()  Time elapsed: 0 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <sexo ingresado correctamente> but was: <Cedula Correcta>
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:54)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:195)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:184)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:179)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:508)
+	at com.mycompany.modulogrupo.programaMetodosTest.testCrearDocente(programaMetodosTest.java:79)
+
+com.mycompany.modulogrupo.programaMetodosTest.testModificarDocente()  Time elapsed: 0.001 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <correcto> but was: <Cedula Correcta>
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:54)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:195)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:184)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:179)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:508)
+	at com.mycompany.modulogrupo.programaMetodosTest.testModificarDocente(programaMetodosTest.java:102)
+
+com.mycompany.modulogrupo.programaMetodosTest.testCrearAsignatura()  Time elapsed: 0.001 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <correctamente> but was: <Ingrese solo letras>
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:54)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:195)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:184)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:179)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:508)
+	at com.mycompany.modulogrupo.programaMetodosTest.testCrearAsignatura(programaMetodosTest.java:174)
+
+com.mycompany.modulogrupo.programaMetodosTest.testEditarAsignatura()  Time elapsed: 0.001 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <correcto> but was: <Ingrese solo letras>
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:54)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:195)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:184)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:179)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:508)
+	at com.mycompany.modulogrupo.programaMetodosTest.testEditarAsignatura(programaMetodosTest.java:193)
+
+com.mycompany.modulogrupo.programaMetodosTest.testCrearNivelAsignatura()  Time elapsed: 0.003 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <Descripcion del nivel de asignatura creada correctamente> but was: <Solo numeros>
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:54)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:195)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:184)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:179)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:508)
+	at com.mycompany.modulogrupo.programaMetodosTest.testCrearNivelAsignatura(programaMetodosTest.java:249)
+
+com.mycompany.modulogrupo.programaMetodosTest.testEditarNivelAsignatura()  Time elapsed: 0.003 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <Ingrese una nueva descripcion de la asignatura> but was: <Descripcion del nivel de asignatura creada correctamente>
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:54)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:195)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:184)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:179)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:508)
+	at com.mycompany.modulogrupo.programaMetodosTest.testEditarNivelAsignatura(programaMetodosTest.java:267)
+
+com.mycompany.modulogrupo.programaMetodosTest.testEliminarNivelAsignatura()  Time elapsed: 0.002 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <codigo del nivel creado correctamnete> but was: <Solo numeros>
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:54)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:195)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:184)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:179)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:508)
+	at com.mycompany.modulogrupo.programaMetodosTest.testEliminarNivelAsignatura(programaMetodosTest.java:285)
+
+com.mycompany.modulogrupo.programaMetodosTest.testListarNivelAsignatura()  Time elapsed: 0.002 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <mostrar datos del nivel de las asignatura> but was: <Solo numeros>
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:54)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:195)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:184)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:179)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:508)
+	at com.mycompany.modulogrupo.programaMetodosTest.testListarNivelAsignatura(programaMetodosTest.java:303)
+
+com.mycompany.modulogrupo.programaMetodosTest.testCrearModalidadCarrera()  Time elapsed: 0.001 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <modalidad creada> but was: <Solo numeros>
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:54)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:195)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:184)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:179)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:508)
+	at com.mycompany.modulogrupo.programaMetodosTest.testCrearModalidadCarrera(programaMetodosTest.java:322)
+
+com.mycompany.modulogrupo.programaMetodosTest.testCrearEspacioFisico()  Time elapsed: 0.001 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <edificio registrado correctment> but was: <ingrese solo numeros>
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:54)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:195)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:184)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:179)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:508)
+	at com.mycompany.modulogrupo.programaMetodosTest.testCrearEspacioFisico(programaMetodosTest.java:396)
+
+com.mycompany.modulogrupo.programaMetodosTest.testEditarEspacioFisico()  Time elapsed: 0.001 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <Edificio cambiado correctamente> but was: <>
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:54)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:195)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:184)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:179)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:508)
+	at com.mycompany.modulogrupo.programaMetodosTest.testEditarEspacioFisico(programaMetodosTest.java:415)
+
+com.mycompany.modulogrupo.programaMetodosTest.testEliminarEspacioFisico()  Time elapsed: 0.001 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <no existe espacio con ese codigo> but was: <espacio eliminado>
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:54)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:195)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:184)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:179)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:508)
+	at com.mycompany.modulogrupo.programaMetodosTest.testEliminarEspacioFisico(programaMetodosTest.java:433)
+
+com.mycompany.modulogrupo.programaMetodosTest.testListarEspacioFisico()  Time elapsed: 0.001 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <Mostrar datos espacio fisico> but was: <Error, no existen datos con ese codig>
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:54)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:195)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:184)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:179)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:508)
+	at com.mycompany.modulogrupo.programaMetodosTest.testListarEspacioFisico(programaMetodosTest.java:451)
+

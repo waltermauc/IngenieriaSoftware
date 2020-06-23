@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="22" failures="14" name="com.mycompany.modulogrupo.programaMetodosTest" time="0.062" errors="0" skipped="0">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="java.vm.version" value="11.0.7+8-LTS"/>
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-11.0.7.jdk/Contents/Home/lib"/>
+    <property name="gopherProxySet" value="false"/>
+    <property name="maven.multiModuleProjectDirectory" value="/Users/rayner/NetBeansProjects/moduloGrupo"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="https://openjdk.java.net/"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="path.separator" value=":"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="user.country" value="EC"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="test" value="com.mycompany.modulogrupo.programaMetodosTest"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="/Users/rayner/NetBeansProjects/moduloGrupo"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="java.runtime.version" value="11.0.7+8-LTS"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
+    <property name="os.arch" value="x86_64"/>
+    <property name="java.io.tmpdir" value="/var/folders/lb/c2plc4xn4bqgjvjy8qflgxl00000gn/T/"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="maven.ext.class.path" value="/Applications/NetBeans/Apache NetBeans 11.2.app/Contents/Resources/NetBeans/netbeans/java/maven-nblib/netbeans-eventspy.jar"/>
+    <property name="classworlds.conf" value="/Applications/NetBeans/Apache NetBeans 11.2.app/Contents/Resources/NetBeans/netbeans/java/maven/bin/m2.conf"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/rayner/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="jdk.debug" value="release"/>
+    <property name="java.class.version" value="55.0"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.15.4"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="user.home" value="/Users/rayner"/>
+    <property name="user.timezone" value="America/Guayaquil"/>
+    <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.specification.version" value="11"/>
+    <property name="user.name" value="rayner"/>
+    <property name="java.class.path" value="/Applications/NetBeans/Apache NetBeans 11.2.app/Contents/Resources/NetBeans/netbeans/java/maven/boot/plexus-classworlds-2.5.2.jar"/>
+    <property name="java.vm.specification.version" value="11"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=com.mycompany.modulogrupo.programaMetodosTest -Dmaven.ext.class.path=/Applications/NetBeans/Apache NetBeans 11.2.app/Contents/Resources/NetBeans/netbeans/java/maven-nblib/netbeans-eventspy.jar surefire:test"/>
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk-11.0.7.jdk/Contents/Home"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="11.0.7"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="/Applications/NetBeans/Apache NetBeans 11.2.app/Contents/Resources/NetBeans/netbeans/java/maven"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.version.date" value="2020-04-14"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="java.vendor.version" value="18.9"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="sun.cpu.isalist" value=""/>
+  </properties>
+  <testcase classname="com.mycompany.modulogrupo.programaMetodosTest" name="com.mycompany.modulogrupo.programaMetodosTest.testCrearGrupo" time="0.043">
+    <failure message="expected: &lt;Nombre ingresado correctamente&gt; but was: &lt;el codigo debe tener solo numeros&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;Nombre ingresado correctamente&gt; but was: &lt;el codigo debe tener solo numeros&gt;
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:54)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:195)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:184)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:179)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:508)
+	at com.mycompany.modulogrupo.programaMetodosTest.testCrearGrupo(programaMetodosTest.java:54)
+</failure>
+    <system-out>crearGrupo
+</system-out>
+  </testcase>
+  <testcase classname="com.mycompany.modulogrupo.programaMetodosTest" name="com.mycompany.modulogrupo.programaMetodosTest.testCrearDocente" time="0">
+    <failure message="expected: &lt;sexo ingresado correctamente&gt; but was: &lt;Cedula Correcta&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;sexo ingresado correctamente&gt; but was: &lt;Cedula Correcta&gt;
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:54)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:195)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:184)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:179)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:508)
+	at com.mycompany.modulogrupo.programaMetodosTest.testCrearDocente(programaMetodosTest.java:79)
+</failure>
+    <system-out>crearDocente
+</system-out>
+  </testcase>
+  <testcase classname="com.mycompany.modulogrupo.programaMetodosTest" name="com.mycompany.modulogrupo.programaMetodosTest.testModificarDocente" time="0.001">
+    <failure message="expected: &lt;correcto&gt; but was: &lt;Cedula Correcta&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;correcto&gt; but was: &lt;Cedula Correcta&gt;
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:54)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:195)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:184)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:179)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:508)
+	at com.mycompany.modulogrupo.programaMetodosTest.testModificarDocente(programaMetodosTest.java:102)
+</failure>
+    <system-out>modificarDocente
+</system-out>
+  </testcase>
+  <testcase classname="com.mycompany.modulogrupo.programaMetodosTest" name="com.mycompany.modulogrupo.programaMetodosTest.testBuscarDocente" time="0"/>
+  <testcase classname="com.mycompany.modulogrupo.programaMetodosTest" name="com.mycompany.modulogrupo.programaMetodosTest.testEliminarDocente" time="0"/>
+  <testcase classname="com.mycompany.modulogrupo.programaMetodosTest" name="com.mycompany.modulogrupo.programaMetodosTest.testValidarCedula" time="0.001"/>
+  <testcase classname="com.mycompany.modulogrupo.programaMetodosTest" name="com.mycompany.modulogrupo.programaMetodosTest.testCrearAsignatura" time="0.001">
+    <failure message="expected: &lt;correctamente&gt; but was: &lt;Ingrese solo letras&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;correctamente&gt; but was: &lt;Ingrese solo letras&gt;
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:54)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:195)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:184)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:179)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:508)
+	at com.mycompany.modulogrupo.programaMetodosTest.testCrearAsignatura(programaMetodosTest.java:174)
+</failure>
+    <system-out>crearAsignatura
+</system-out>
+  </testcase>
+  <testcase classname="com.mycompany.modulogrupo.programaMetodosTest" name="com.mycompany.modulogrupo.programaMetodosTest.testEditarAsignatura" time="0.001">
+    <failure message="expected: &lt;correcto&gt; but was: &lt;Ingrese solo letras&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;correcto&gt; but was: &lt;Ingrese solo letras&gt;
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:54)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:195)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:184)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:179)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:508)
+	at com.mycompany.modulogrupo.programaMetodosTest.testEditarAsignatura(programaMetodosTest.java:193)
+</failure>
+    <system-out>editarAsignatura
+</system-out>
+  </testcase>
+  <testcase classname="com.mycompany.modulogrupo.programaMetodosTest" name="com.mycompany.modulogrupo.programaMetodosTest.testEliminarAsignatura" time="0"/>
+  <testcase classname="com.mycompany.modulogrupo.programaMetodosTest" name="com.mycompany.modulogrupo.programaMetodosTest.testListarAsignatura" time="0"/>
+  <testcase classname="com.mycompany.modulogrupo.programaMetodosTest" name="com.mycompany.modulogrupo.programaMetodosTest.testCrearNivelAsignatura" time="0.003">
+    <failure message="expected: &lt;Descripcion del nivel de asignatura creada correctamente&gt; but was: &lt;Solo numeros&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;Descripcion del nivel de asignatura creada correctamente&gt; but was: &lt;Solo numeros&gt;
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:54)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:195)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:184)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:179)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:508)
+	at com.mycompany.modulogrupo.programaMetodosTest.testCrearNivelAsignatura(programaMetodosTest.java:249)
+</failure>
+    <system-out>crearNivelAsignatura
+</system-out>
+  </testcase>
+  <testcase classname="com.mycompany.modulogrupo.programaMetodosTest" name="com.mycompany.modulogrupo.programaMetodosTest.testEditarNivelAsignatura" time="0.003">
+    <failure message="expected: &lt;Ingrese una nueva descripcion de la asignatura&gt; but was: &lt;Descripcion del nivel de asignatura creada correctamente&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;Ingrese una nueva descripcion de la asignatura&gt; but was: &lt;Descripcion del nivel de asignatura creada correctamente&gt;
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:54)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:195)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:184)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:179)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:508)
+	at com.mycompany.modulogrupo.programaMetodosTest.testEditarNivelAsignatura(programaMetodosTest.java:267)
+</failure>
+    <system-out>editarNivelAsignatura
+</system-out>
+  </testcase>
+  <testcase classname="com.mycompany.modulogrupo.programaMetodosTest" name="com.mycompany.modulogrupo.programaMetodosTest.testEliminarNivelAsignatura" time="0.002">
+    <failure message="expected: &lt;codigo del nivel creado correctamnete&gt; but was: &lt;Solo numeros&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;codigo del nivel creado correctamnete&gt; but was: &lt;Solo numeros&gt;
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:54)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:195)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:184)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:179)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:508)
+	at com.mycompany.modulogrupo.programaMetodosTest.testEliminarNivelAsignatura(programaMetodosTest.java:285)
+</failure>
+    <system-out>EliminarNivelAsignatura
+</system-out>
+  </testcase>
+  <testcase classname="com.mycompany.modulogrupo.programaMetodosTest" name="com.mycompany.modulogrupo.programaMetodosTest.testListarNivelAsignatura" time="0.002">
+    <failure message="expected: &lt;mostrar datos del nivel de las asignatura&gt; but was: &lt;Solo numeros&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;mostrar datos del nivel de las asignatura&gt; but was: &lt;Solo numeros&gt;
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:54)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:195)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:184)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:179)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:508)
+	at com.mycompany.modulogrupo.programaMetodosTest.testListarNivelAsignatura(programaMetodosTest.java:303)
+</failure>
+    <system-out>listarNivelAsignatura
+</system-out>
+  </testcase>
+  <testcase classname="com.mycompany.modulogrupo.programaMetodosTest" name="com.mycompany.modulogrupo.programaMetodosTest.testCrearModalidadCarrera" time="0.001">
+    <failure message="expected: &lt;modalidad creada&gt; but was: &lt;Solo numeros&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;modalidad creada&gt; but was: &lt;Solo numeros&gt;
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:54)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:195)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:184)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:179)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:508)
+	at com.mycompany.modulogrupo.programaMetodosTest.testCrearModalidadCarrera(programaMetodosTest.java:322)
+</failure>
+    <system-out>crearModalidadCarrera
+</system-out>
+  </testcase>
+  <testcase classname="com.mycompany.modulogrupo.programaMetodosTest" name="com.mycompany.modulogrupo.programaMetodosTest.testEditarModalidadCarrera" time="0"/>
+  <testcase classname="com.mycompany.modulogrupo.programaMetodosTest" name="com.mycompany.modulogrupo.programaMetodosTest.testEliminarModalidadCarrera" time="0"/>
+  <testcase classname="com.mycompany.modulogrupo.programaMetodosTest" name="com.mycompany.modulogrupo.programaMetodosTest.testListarModalidadCarrera" time="0"/>
+  <testcase classname="com.mycompany.modulogrupo.programaMetodosTest" name="com.mycompany.modulogrupo.programaMetodosTest.testCrearEspacioFisico" time="0.001">
+    <failure message="expected: &lt;edificio registrado correctment&gt; but was: &lt;ingrese solo numeros&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;edificio registrado correctment&gt; but was: &lt;ingrese solo numeros&gt;
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:54)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:195)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:184)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:179)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:508)
+	at com.mycompany.modulogrupo.programaMetodosTest.testCrearEspacioFisico(programaMetodosTest.java:396)
+</failure>
+    <system-out>crearEspacioFisico
+</system-out>
+  </testcase>
+  <testcase classname="com.mycompany.modulogrupo.programaMetodosTest" name="com.mycompany.modulogrupo.programaMetodosTest.testEditarEspacioFisico" time="0.001">
+    <failure message="expected: &lt;Edificio cambiado correctamente&gt; but was: &lt;&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;Edificio cambiado correctamente&gt; but was: &lt;&gt;
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:54)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:195)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:184)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:179)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:508)
+	at com.mycompany.modulogrupo.programaMetodosTest.testEditarEspacioFisico(programaMetodosTest.java:415)
+</failure>
+    <system-out>editarEspacioFisico
+</system-out>
+  </testcase>
+  <testcase classname="com.mycompany.modulogrupo.programaMetodosTest" name="com.mycompany.modulogrupo.programaMetodosTest.testEliminarEspacioFisico" time="0.001">
+    <failure message="expected: &lt;no existe espacio con ese codigo&gt; but was: &lt;espacio eliminado&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;no existe espacio con ese codigo&gt; but was: &lt;espacio eliminado&gt;
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:54)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:195)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:184)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:179)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:508)
+	at com.mycompany.modulogrupo.programaMetodosTest.testEliminarEspacioFisico(programaMetodosTest.java:433)
+</failure>
+    <system-out>eliminarEspacioFisico
+</system-out>
+  </testcase>
+  <testcase classname="com.mycompany.modulogrupo.programaMetodosTest" name="com.mycompany.modulogrupo.programaMetodosTest.testListarEspacioFisico" time="0.001">
+    <failure message="expected: &lt;Mostrar datos espacio fisico&gt; but was: &lt;Error, no existen datos con ese codig&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;Mostrar datos espacio fisico&gt; but was: &lt;Error, no existen datos con ese codig&gt;
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:54)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:195)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:184)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:179)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:508)
+	at com.mycompany.modulogrupo.programaMetodosTest.testListarEspacioFisico(programaMetodosTest.java:451)
+</failure>
+    <system-out>listarEspacioFisico
+</system-out>
+  </testcase>
+</testsuite>

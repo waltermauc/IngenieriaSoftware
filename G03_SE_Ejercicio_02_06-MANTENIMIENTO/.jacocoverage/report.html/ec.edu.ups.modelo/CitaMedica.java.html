@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>CitaMedica.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;CitasMedicas&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">ec.edu.ups.modelo</a> &gt; <span class="el_source">CitaMedica.java</span></div><h1>CitaMedica.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package ec.edu.ups.modelo;
+
+import java.sql.Time;
+import java.util.Date;
+
+/**
+ *
+ * @author hp
+ */
+public class CitaMedica {
+
+    private int codigoCita;
+    private Date fechaCita;
+    private Time horaCita;
+    private Paciente paciente;
+    private Medico medico;
+    private String motivoCita;
+
+<span class="fc" id="L24">    public CitaMedica() {</span>
+<span class="fc" id="L25">    }</span>
+
+<span class="nc" id="L27">    public CitaMedica(int codigoCita, Date fechaCita, Time horaCita, Paciente paciente, Medico medico, String motivoCita) {</span>
+<span class="nc" id="L28">        this.codigoCita = codigoCita;</span>
+<span class="nc" id="L29">        this.fechaCita = fechaCita;</span>
+<span class="nc" id="L30">        this.horaCita = horaCita;</span>
+<span class="nc" id="L31">        this.paciente = paciente;</span>
+<span class="nc" id="L32">        this.medico = medico;</span>
+<span class="nc" id="L33">        this.motivoCita = motivoCita;</span>
+<span class="nc" id="L34">    }</span>
+
+    public int getCodigoCita() {
+<span class="fc" id="L37">        return codigoCita;</span>
+    }
+
+    public void setCodigoCita(int codigoCita) {
+<span class="fc" id="L41">        this.codigoCita = codigoCita;</span>
+<span class="fc" id="L42">    }</span>
+
+    public Date getFechaCita() {
+<span class="fc" id="L45">        return fechaCita;</span>
+    }
+
+    public void setFechaCita(Date fechaCita) {
+<span class="fc" id="L49">        this.fechaCita = fechaCita;</span>
+<span class="fc" id="L50">    }</span>
+
+    public Time getHoraCita() {
+<span class="fc" id="L53">        return horaCita;</span>
+    }
+
+    public void setHoraCita(Time horaCita) {
+<span class="fc" id="L57">        this.horaCita = horaCita;</span>
+<span class="fc" id="L58">    }</span>
+
+    public Paciente getPaciente() {
+<span class="fc" id="L61">        return paciente;</span>
+    }
+
+    public void setPaciente(Paciente paciente) {
+<span class="fc" id="L65">        this.paciente = paciente;</span>
+<span class="fc" id="L66">    }</span>
+
+    public Medico getMedico() {
+<span class="fc" id="L69">        return medico;</span>
+    }
+
+    public void setMedico(Medico medico) {
+<span class="fc" id="L73">        this.medico = medico;</span>
+<span class="fc" id="L74">    }</span>
+
+    public String getMotivoCita() {
+<span class="fc" id="L77">        return motivoCita;</span>
+    }
+
+    public void setMotivoCita(String motivoCita) {
+<span class="fc" id="L81">        this.motivoCita = motivoCita;</span>
+<span class="fc" id="L82">    }</span>
+
+    public void agregarCita() {
+
+<span class="fc" id="L86">    }</span>
+
+    public void eliminarCita() {
+
+<span class="fc" id="L90">    }</span>
+
+    public void buscarCita() {
+
+<span class="fc" id="L94">    }</span>
+
+    public void actualizar() {
+
+<span class="fc" id="L98">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

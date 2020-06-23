@@ -1,0 +1,26 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package ec.edu.ups.controlador;
+
+/**
+ *
+ * @author rober
+ */
+public class Controlador_Contabilidad {
+
+    public Controlador_Contabilidad() {
+    }
+    
+    public void calcularTotalIngresos(){
+        
+    }
+    public void calcularTotalEgresos(){
+        
+    }
+    public void generarReporte(){
+        
+    }
+}

@@ -14,7 +14,7 @@ import java.sql.SQLException;
  * @author 59396
  */
 public class Conexion {
-    private final String url = "jdbc:mysql://localhost/final_pruebas";
+    private final String url = "jdbc:mysql://localhost/proyecto_final";
     
     Connection con = null;
    

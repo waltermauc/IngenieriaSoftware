@@ -6,7 +6,7 @@
 package ec.ups.edu.modulogrupo;
 
 import ec.ups.edu.Controlador.ControladorDocente;
-import ec.ups.edu.Modelo.Persona;
+import ec.ups.edu.Modelo.Docente;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
@@ -89,17 +89,17 @@ public class ControladorDocenteTest {
     @Test
     public void testCrarPersona() {
         System.out.println("crarPersona");
-        Persona p = null;
+        Docente docente = null;
         ControladorDocente instance = new ControladorDocente();
         String expResult = "Docente creado";
-        String result = instance.crarPersona(p);
+        String result = instance.crearDocente(docente);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
 
     /**
-     * Test of eliminarPersona method, of class ControladorDocente.
+     * Test of eliminarDocente method, of class ControladorDocente.
      */
     @Test
     public void testEliminarPersona() {
@@ -107,14 +107,14 @@ public class ControladorDocenteTest {
         int codigo = 0;
         ControladorDocente instance = new ControladorDocente();
         String expResult = "Docente eliminado";
-        String result = instance.eliminarPersona(codigo);
+        String result = instance.eliminarDocente(codigo);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
 
     /**
-     * Test of buscarPersona method, of class ControladorDocente.
+     * Test of buscarDocente method, of class ControladorDocente.
      */
     @Test
     public void testBuscarPersona() {
@@ -122,28 +122,28 @@ public class ControladorDocenteTest {
         int codigo = 0;
         ControladorDocente instance = new ControladorDocente();
         String expResult = "Docente encontrado";
-        String result = instance.buscarPersona(codigo);
+        String result = instance.buscarDocente(codigo);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
 
     /**
-     * Test of listarPersona method, of class ControladorDocente.
+     * Test of listarDocente method, of class ControladorDocente.
      */
     @Test
     public void testListarPersona() {
         System.out.println("listarPersona");
         ControladorDocente instance = new ControladorDocente();
         List expResult = new ArrayList();
-        List<Persona> result = instance.listarPersona();
+        List<Docente> result = instance.listarDocente();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
 
     /**
-     * Test of modificarPersona method, of class ControladorDocente.
+     * Test of modificarDocente method, of class ControladorDocente.
      */
     @Test
     public void testModificarPersona() {
@@ -151,7 +151,7 @@ public class ControladorDocenteTest {
         int codigo = 0;
         ControladorDocente instance = new ControladorDocente();
         String expResult = "Docente modificado";
-        String result = instance.modificarPersona(codigo);
+        String result = instance.modificarDocente(codigo);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");

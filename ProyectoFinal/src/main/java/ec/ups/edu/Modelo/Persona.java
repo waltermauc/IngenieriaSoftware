@@ -76,14 +76,7 @@ public abstract class Persona {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-    public abstract String verificarUsuario();
-    public abstract String validarCedula();
-    public abstract String crarPersona(Persona p);
-    public abstract String eliminarPersona(int codigo);
-    public abstract String buscarPersona(int codigo);
-    public abstract String modificarPersona(int codigo);
-    public abstract List<Persona> listarPersona();
-    
+   
     
     
     

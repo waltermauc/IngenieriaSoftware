@@ -5,9 +5,10 @@
  */
 package ec.ups.edu.Controlador;
 
-
 import ec.ups.edu.Modelo.Calificacion;
+import ec.ups.edu.Modelo.Estudiante;
 import ec.ups.edu.Modelo.Persona;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,58 +16,71 @@ import java.util.List;
  *
  * @author 59396
  */
-public class ControladorEstudiante extends Persona{
+public class ControladorEstudiante {
 
-    @Override
+    private Conexion c;
+
+    public ControladorEstudiante() {
+        c = new Conexion();
+
+    }
+
+    public String crearEstudiante(Estudiante es) {
+        String sql = "INSERT INTO PERSONA(ID_PERSONA, NOMBRE_PERSONA, APELLIDO_PERSONA) VALUES (?,?,?)";
+        try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            consulta.setString(1, es.getCedula());
+            consulta.setString(2, es.getNombre());
+            consulta.setString(3, es.getApellido());
+
+            if (consulta.executeUpdate() == 1) {
+                String sqlEst = "INSERT INTO ESTUDIANTE(ID_ESTUDIANTE, INSCRIPCION_ESTUDIANTE, ID_PERSONA) VALUES (?,?,?)";
+                PreparedStatement consultaEst = c.conectado().prepareStatement(sqlEst);
+                consultaEst.setInt(1, es.getCodigo());
+                consultaEst.setDate(2, (java.sql.Date) es.getInscripcion());
+                consultaEst.setString(3, es.getCedula());
+                consultaEst.executeUpdate();
+            }
+        } catch (Exception e) {
+            c.desconectar();
+        }
+        return "Estudiante creado";
+    }
     public String verificarUsuario() {
-      return("Usuario valido");
+        return "Usuario Valido";
     }
 
-    @Override
     public String validarCedula() {
-          return("Cedula Estudiante valida");
+        return "Cedula Docente valida";
     }
 
-    @Override
-    public String crarPersona(Persona p) {
-        return("Estudiante creado");
+    
+
+    public String eliminarEstudiante(int codigo) {
+        return "Estudiante eliminado";
     }
 
-    @Override
-    public String eliminarPersona(int codigo) {
-        return("Estudiante eliminado");
+    public String buscarEstudiante(int codigo) {
+        return "Docente encontrado";
     }
 
-    @Override
-    public String buscarPersona(int codigo) {
-        return("Estudiante encontrado");
+    public List<Estudiante> listarDocente() {
+        return new ArrayList<>();
     }
 
-    @Override
-    public String modificarPersona(int codigo) {
-        return("Estudiante modificado");
+    public String modificarEstudiante(int codigo) {
+        return "Docente modificado";
     }
-
-    @Override
-    public List<Persona> listarPersona() {
-        List estudiante = new ArrayList();
-        return estudiante;
-    }
+    
     public String realizarMatricula(){
-        return ("Matricula Realizada");
+        return  "Matricula Realizada";
     }
-    
-    public List<Calificacion> listarCalificaciones(){
-        List calificaciones = new ArrayList();
-        return calificaciones;
+     public List<Calificacion> listarCalificaciones() {
+        return new ArrayList<>();
     }
 
-   
     
-  
 
-   
-
-    
-    
 }
+
+

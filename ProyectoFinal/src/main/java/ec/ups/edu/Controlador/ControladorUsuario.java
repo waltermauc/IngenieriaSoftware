@@ -6,6 +6,8 @@
 package ec.ups.edu.Controlador;
 
 import ec.ups.edu.Modelo.Usuario;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 
 
@@ -14,13 +16,28 @@ import ec.ups.edu.Modelo.Usuario;
  * @author 59396
  */
 public class ControladorUsuario {
-    /**Necestia un usuario para generar**/
-    public String generarUsuario(Usuario u){
-        return("usuario generado");
+   private Conexion c;
+
+    public ControladorUsuario() {
+        c = new Conexion();
+
     }
-    /** metodo para cambiar el estado del usuario  por defecto viene disponible**/
-   public String cambiarEstado(){
-       return("estado");
-       
-   }
+
+    public String crearEstudiante(Usuario es) throws SQLException {
+ 
+          
+                String sqlEst = "INSERT INTO USUARIO(ID_CODIGO, NOMBRE_ESTUDIANTE, CONTRASENIA) VALUES (?,?,?)";
+                PreparedStatement consultaEst = c.conectado().prepareStatement(sqlEst);
+                consultaEst.setInt(1, es.getCodigo());
+                consultaEst.setString(2, es.getNombreUsuario());
+                consultaEst.setString(2, es.getContrasenia());
+                consultaEst.executeUpdate();
+           
+        return "Usuario creado";
+    }
+    public String verificarUsuario() {
+        return "Usuario crado";
+    }
+
+    
 }

@@ -5,59 +5,66 @@
  */
 package ec.ups.edu.Controlador;
 
+import ec.ups.edu.Modelo.Asignatura;
+import ec.ups.edu.Modelo.NivelAsignatura;
+import java.sql.PreparedStatement;
+
 /**
  *
  * @author rayner
  */
 public class ControladorAsignatura {
+     private Conexion c;
+    
+    public ControladorAsignatura(){
+        c = new Conexion();
+        
+    }
+    
     int []numeros = {1,2,3,4,5,6,7,8,9,0};
     String [] letras = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
        
     
-     public String crearAsignatura (String descripcionAsignatura, int costo,  int nivelAsignatura){
-        String resultadoCrearAsignatura = "";
-        if (descripcionAsignatura.equals(letras))
-        {
-            resultadoCrearAsignatura = "Creada correctamente";
-            
-        }else if (descripcionAsignatura.equals(numeros)) {
-            resultadoCrearAsignatura = "Ingrese solo letras";
-            
-        }else if (numeros.equals(costo)){
-            resultadoCrearAsignatura = "Creada correctamente";
+     public String crearAsignatura (Asignatura asignatura, NivelAsignatura nivel){
+       
+           String sql = "INSERT INTO NIVEL_ASIGNATURA(ID_NIVEL_ASIGNATURA, DESCRIPCION_NIVEL_ASIGNATURA) VALUES (?,?)";
+        try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            consulta.setString(1, nivel.getDescripcionNivelAsignatura());
+            if (consulta.executeUpdate() == 1) {   
+                    String sqlEst = "INSERT INTO ASIGNATURA(ID_ASIGNATURA, ASIGNATURA_DESCRIPCION, COSTO_CREDITOS, NIVEL_ASIGNATURA) VALUES (?,?,?),?";
+                    PreparedStatement consultaEst = c.conectado().prepareStatement(sqlEst);
+                    consultaEst.setInt(1, asignatura.getCodigoAsignatura());
+                    consultaEst.setString(2, asignatura.getDescripcion());
+                    consultaEst.setInt(3, asignatura.getCostoCreditos());
+                    consultaEst.setObject(4, asignatura.getCodigoNivelAsignatura());
+                    consultaEst.executeUpdate();
+            }
+        } catch (Exception e) {
+            c.desconectar();
         }
-        else if (letras.equals(costo)){
-            resultadoCrearAsignatura = "ingrese solo numeros";
-        }  
-        else if (numeros.equals(nivelAsignatura)) 
-        {
-            resultadoCrearAsignatura = "Creada correctamente";
-        }  
-        else if (letras.equals(nivelAsignatura))
-        {
-           resultadoCrearAsignatura = "Ingrese solo numeros"; 
-        }  
+        return "Asignatura creada";
+         
+     }
+    public String editarAsignatura (Asignatura asignatura, NivelAsignatura nivel){
        
-        return resultadoCrearAsignatura;
-    }
-    public String editarAsignatura (String descripcionAsignatura, int costo ){
-       
-         String resultadoEditaaAsignatura = "";
-        if (descripcionAsignatura.equals(letras))
-        {
-            resultadoEditaaAsignatura = "Creada correctamente";
-            
-        }else if (descripcionAsignatura.equals(numeros)) {
-            resultadoEditaaAsignatura = "Ingrese solo letras";
-            
-        }else if (numeros.equals(costo)){
-            resultadoEditaaAsignatura = "Creada correctamente";
+         String sql = "SELECT * ASIGNATURA (ID_ASIGNATURA, ASIGNATURA_DESCRIPCION,COSTO_CREDITOS, NI) VALUES (?,?)";
+        try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            consulta.setString(1, nivel.getDescripcionNivelAsignatura());
+            if (consulta.executeUpdate() == 1) {   
+                    String sqlEst = "INSERT INTO ASIGNATURA(ID_ASIGNATURA, ASIGNATURA_DESCRIPCION, COSTO_CREDITOS, NIVEL_ASIGNATURA) VALUES (?,?,?,?)";
+                    PreparedStatement consultaEst = c.conectado().prepareStatement(sqlEst);
+                    consultaEst.setInt(1, asignatura.getCodigoAsignatura());
+                    consultaEst.setString(2, asignatura.getDescripcion());
+                    consultaEst.setInt(3, asignatura.getCostoCreditos());
+                    consultaEst.setObject(4, asignatura.getCodigoNivelAsignatura());
+                    consultaEst.executeUpdate();
+            }
+        } catch (Exception e) {
+            c.desconectar();
         }
-        else {
-            resultadoEditaaAsignatura = "ingrese solo numeros";
-        }  
-       
-        return resultadoEditaaAsignatura;
+        return "Asignatura creada";
        
     }
     public String eliminarAsignatura (String descripcionAsignatura){

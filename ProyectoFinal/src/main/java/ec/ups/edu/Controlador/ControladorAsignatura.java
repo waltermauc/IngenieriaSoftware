@@ -8,6 +8,9 @@ package ec.ups.edu.Controlador;
 import ec.ups.edu.Modelo.Asignatura;
 import ec.ups.edu.Modelo.NivelAsignatura;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -27,12 +30,12 @@ public class ControladorAsignatura {
     
      public String crearAsignatura (Asignatura asignatura, NivelAsignatura nivel){
        
-           String sql = "INSERT INTO NIVEL_ASIGNATURA(ID_NIVEL_ASIGNATURA, DESCRIPCION_NIVEL_ASIGNATURA) VALUES (?,?)";
+           String sql = "INSERT INTO NIVEL_ASIGNATURA(NIVELASIGNATURA_ID, NIVELASIGNATURA_DESCRIPCION) VALUES (?,?)";
         try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             consulta.setString(1, nivel.getDescripcionNivelAsignatura());
             if (consulta.executeUpdate() == 1) {   
-                    String sqlEst = "INSERT INTO ASIGNATURA(ID_ASIGNATURA, ASIGNATURA_DESCRIPCION, COSTO_CREDITOS, NIVEL_ASIGNATURA) VALUES (?,?,?),?";
+                    String sqlEst = "INSERT INTO ASIGNATURA(ASIGNATURA_ID, ASIGNATURA_DESCRIPCION, COSTO_CREDITOS, ASIGNATURA_NIVELASIGNATURA) VALUES (?,?,?),?";
                     PreparedStatement consultaEst = c.conectado().prepareStatement(sqlEst);
                     consultaEst.setInt(1, asignatura.getCodigoAsignatura());
                     consultaEst.setString(2, asignatura.getDescripcion());
@@ -46,44 +49,81 @@ public class ControladorAsignatura {
         return "Asignatura creada";
          
      }
-    public String editarAsignatura (Asignatura asignatura, NivelAsignatura nivel){
+    public String editarAsignatura (Asignatura asignatura, int codigo){
        
-         String sql = "SELECT * ASIGNATURA (ID_ASIGNATURA, ASIGNATURA_DESCRIPCION,COSTO_CREDITOS, NI) VALUES (?,?)";
+          String sql = "UPDATE ASIGNATURA"
+                + " SET ASIGNATURA_ID = " + " ' " + asignatura.getCodigoAsignatura()+ " ' " + ","
+                + "  ASIGNATURA_DESCRIPCION =" + " ' " + asignatura.getDescripcion()+ " ' " + ","
+                + "  COSTO_CREDITOS =  " + " ' " + asignatura.getCostoCreditos()+ " ' " + ","
+                + "  ASIGNATURA_NIVELASIGNATURA = " + " ' " + asignatura.getCodigoNivelAsignatura()+ " ' " + ","
+                + "WHERE codigo =" + " ' " + codigo + " ' ";
+             try {
+           
+            PreparedStatement ps;
+            ps = c.conectado().prepareStatement(sql);
+            ps.executeUpdate();
+           
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         try {
-            PreparedStatement consulta = c.conectado().prepareStatement(sql);
-            consulta.setString(1, nivel.getDescripcionNivelAsignatura());
-            if (consulta.executeUpdate() == 1) {   
-                    String sqlEst = "INSERT INTO ASIGNATURA(ID_ASIGNATURA, ASIGNATURA_DESCRIPCION, COSTO_CREDITOS, NIVEL_ASIGNATURA) VALUES (?,?,?,?)";
-                    PreparedStatement consultaEst = c.conectado().prepareStatement(sqlEst);
-                    consultaEst.setInt(1, asignatura.getCodigoAsignatura());
-                    consultaEst.setString(2, asignatura.getDescripcion());
-                    consultaEst.setInt(3, asignatura.getCostoCreditos());
-                    consultaEst.setObject(4, asignatura.getCodigoNivelAsignatura());
-                    consultaEst.executeUpdate();
-            }
-        } catch (Exception e) {
+            c.desconectar();
+        } catch (Exception ex) {
+            System.out.println("Error al momento de cerrar la coneccion :" +ex.getMessage() );
+        
+        }return "Asignatura actualizada";
+       
+    }
+    public String eliminarAsignatura (int codigo){
+        String sql = "DELETE FROM ASIGNATURA"
+                + " WHERE ASIGNATURA_ID = " + "'" + codigo + "'";
+        try {
+           
+            PreparedStatement ps = c.conectado().prepareStatement(sql);
+            ps.executeUpdate();
+        } catch (Exception ex) {
+            ex.printStackTrace();
             c.desconectar();
         }
-        return "Asignatura creada";
-       
-    }
-    public String eliminarAsignatura (String descripcionAsignatura){
-        String eliminarAsignatura = "";
-        if (descripcionAsignatura.equals("matematicas")){
-            eliminarAsignatura = "asignatura eliminada";
-        }else {
-            eliminarAsignatura = "No existe asignatura con ese nombre";
-            
+        try {
+            c.desconectar();
+        } catch (Exception ex) {
+            System.out.println("Error al cerrar la coneccion :" + ex.getMessage());
         }
-        return eliminarAsignatura;
+        
+        return "Asignatura eliminada";
     }
-    public String listarAsignatura ( String descripcionAsignatura){
-        String listarAsignatura = "";
-        if (descripcionAsignatura.equals("Lengua")){
-            listarAsignatura = "mostrar datos de la asignatura";
-        }else {
-            listarAsignatura = "No existe asignatura con ese nombre";
+    public List <Asignatura> listarAsignatura ( ){
+      List<Asignatura> asignaturaList = new ArrayList<>();
+        String sql = "SELECT ASIGNATURA_ID,"
+                + "ASIGNATURA_DESCRIPCION,"          
+                + "COSTO_CREDITOS, "
+                + "ASIGNATURA_NIVELASIGNATURA,"
+                + " FROM ASIGNATURA";
+        //System.out.println(sql);
+        try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            ResultSet resultado = consulta.executeQuery();
+
+            while (resultado.next()) {               
+               // System.out.println(resultado.getString("CEDULA"));
+                Asignatura asignature = new Asignatura();
+                asignature.setCodigoAsignatura(resultado.getInt("ASIGNATURA_ID".trim()));
+                asignature.setDescripcion(resultado.getString("ASIGNATURA_DESCRIPCION".trim()));
+                asignature.setCostoCreditos(resultado.getInt("COSTO_CREDITOS".trim()));
+                asignaturaList.add(asignature);
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
-        return listarAsignatura;
+        try {
+            c.desconectar();
+        } catch (Exception ex) {
+            System.out.println(" Error mientras se cerraba el puerto :" + ex.getMessage());
+        }
+        return asignaturaList;
+     
     }
 }

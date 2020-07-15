@@ -101,13 +101,16 @@ public class ControladorEstudiante {
             }
 
         } catch (Exception e) {
+            c.desconectar();
             return null;
+            
         }
         return estudiante;
 
     }
 
     public String modificarEstudiante(String codigo, Estudiante es) {
+        String res = " ";
         String sql = "UPDATE ESTUDIANTE"
                 + " SET `persona`.`PERSONA_ID` = " + es.getCedula() + " ' " + ","
                 + " `persona`.`PERSONA_NOMBRE`" + es.getNombre() + " ' " + ","
@@ -124,20 +127,19 @@ public class ControladorEstudiante {
             PreparedStatement ps;
             ps = c.conectado().prepareStatement(sql);
             ps.executeUpdate();
+            res = "ESTUDIANTE ACTUALIZADO";
 
         } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        try {
+            
             c.desconectar();
-        } catch (Exception ex) {
-            System.out.println("Error al momento de cerrar la coneccion :" + ex.getMessage());
-
+            res = "ERROR";
         }
-        return "Asignatura actualizada";
+
+        return res;
     }
 
     public String eliminarEstudiante(String codigo) {
+        String res = " ";
         String sql = "DELETE FROM ESTUDIANTE"
                 + " WHERE ASIGNATURA_ID = " + "'" + codigo + "'";
         try {
@@ -145,16 +147,11 @@ public class ControladorEstudiante {
             PreparedStatement ps = c.conectado().prepareStatement(sql);
             ps.executeUpdate();
         } catch (Exception ex) {
-            ex.printStackTrace();
             c.desconectar();
+            res = "ERROR";
         }
-        try {
-            c.desconectar();
-        } catch (Exception ex) {
-            System.out.println("Error al cerrar la coneccion :" + ex.getMessage());
-        }
-
-        return "Estudiante eliminado";
+        
+        return res;
     }
 
     public List<Estudiante> listarDocente() {
@@ -189,7 +186,9 @@ public class ControladorEstudiante {
             }
 
         } catch (Exception e) {
+            c.desconectar();
             return null;
+            
         }
 
         return estudianteList;

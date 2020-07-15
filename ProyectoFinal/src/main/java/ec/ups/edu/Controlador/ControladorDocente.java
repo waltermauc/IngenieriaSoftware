@@ -42,7 +42,7 @@ public class ControladorDocente {
 
     public String crearDocente(Docente docente) {
 
-        String retur = null;
+        String retur = "";
         String sql = "INSERT INTO `proyecto_final`.`persona`"
                 + "(`PERSONA_ID`,"
                 + "`PERSONA_NOMBRE`,"
@@ -83,19 +83,122 @@ public class ControladorDocente {
     }
 
     public String eliminarDocente(int codigo) {
-        return "Docente eliminado";
+        String res = " ";
+        String sql = "DELETE FROM DOCENTE"
+                + " WHERE ASIGNATURA_ID = " + "'" + codigo + "'";
+        try {
+
+            PreparedStatement ps = c.conectado().prepareStatement(sql);
+            ps.executeUpdate();
+        } catch (Exception ex) {
+
+            c.desconectar();
+            res = "ERROR";
+        }
+
+        return res;
     }
 
-    public String buscarDocente(int codigo) {
-        return "Docente encontrado";
+    public Docente buscarDocente(String codigo) {
+        Docente docente = new Docente();
+        String sql = "SELECT `persona`.`PERSONA_ID`,"
+                + "    `persona`.`PERSONA_NOMBRE`,"
+                + "    `persona`.`PERSONA_APELLIDO`,"
+                + "    `persona`.`PERSONA_DIRECCION`,"
+                + "    `persona`.`PERSONA_CORREO`,"
+                + "    `persona`.`PERSONA_CELULAR`,"
+                + "    `persona`.`PERSONA_SEXO`,"
+                + "    `persona`.`PERSONA_FECHANACIMIENTO`,"
+                + "    `dccente`.`DOCENTE_TITULO` "
+                + "FROM `proyecto_final`.`persona`,`proyecto_final`.`dccente`"
+                + " WHERE `persona`.`PERSONA_ID`=`docente`.`DOCENTE_PERSONA` AND `persona`.`PERSONA_ID`=" + "'" + codigo + "';";
+        try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            ResultSet resultado = consulta.executeQuery();
+            while (resultado.next()) {
+                docente.setCedula(resultado.getString("PERSONA_ID".trim()));
+                docente.setNombre(resultado.getString("PERSONA_NOMBRE".trim()));
+                docente.setApellido(resultado.getString("PERSONA_APELLIDO".trim()));
+                docente.setDireccion(resultado.getString("PERSONA_DIRECCION".trim()));
+                docente.setCorreo(resultado.getString("PERSONA_CORREO".trim()));
+                docente.setTelefono(resultado.getInt("PERSONA_CELULAR".trim()));
+                docente.setSexo(resultado.getString("PERSONA_SEXO".trim()));
+                docente.setFechaNacimiento(resultado.getDate("PERSONA_FECHANACIMIENTO".trim()));
+                docente.setTitulo(resultado.getString("DOCENTE_TITULO".trim()));
+
+            }
+
+        } catch (Exception e) {
+            c.desconectar();
+            return null;
+        }
+        return docente;
     }
 
     public List<Docente> listarDocente() {
-        return new ArrayList<>();
+        List<Docente> docenteList = new ArrayList<>();
+        String sql = "SELECT `persona`.`PERSONA_ID`,"
+                + "    `persona`.`PERSONA_NOMBRE`,"
+                + "    `persona`.`PERSONA_APELLIDO`,"
+                + "    `persona`.`PERSONA_DIRECCION`,"
+                + "    `persona`.`PERSONA_CORREO`,"
+                + "    `persona`.`PERSONA_CELULAR`,"
+                + "    `persona`.`PERSONA_SEXO`,"
+                + "    `persona`.`PERSONA_FECHANACIMIENTO`,"
+                + "    `dccente`.`DOCENTE_TITULO` "
+                + "FROM `proyecto_final`.`persona`,`proyecto_final`.`dccente`"
+                + " WHERE `persona`.`PERSONA_ID`=`docente`.`DOCENTE_PERSONA` ;";
+        Docente docente = new Docente();
+        try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            ResultSet resultado = consulta.executeQuery();
+            while (resultado.next()) {
+                docente.setCedula(resultado.getString("PERSONA_ID".trim()));
+                docente.setNombre(resultado.getString("PERSONA_NOMBRE".trim()));
+                docente.setApellido(resultado.getString("PERSONA_APELLIDO".trim()));
+                docente.setDireccion(resultado.getString("PERSONA_DIRECCION".trim()));
+                docente.setCorreo(resultado.getString("PERSONA_CORREO".trim()));
+                docente.setTelefono(resultado.getInt("PERSONA_CELULAR".trim()));
+                docente.setSexo(resultado.getString("PERSONA_SEXO".trim()));
+                docente.setFechaNacimiento(resultado.getDate("PERSONA_FECHANACIMIENTO".trim()));
+                docente.setTitulo(resultado.getString("DOCENTE_TITULO".trim()));
+                docenteList.add(docente);
+
+            }
+
+        } catch (Exception e) {
+            c.desconectar();
+            return null;
+        }
+
+        return docenteList;
     }
 
-    public String modificarDocente(int codigo) {
-        return "Docente modificado";
+    public String modificarDocente(String codigo, Docente docente) {
+        String res = "";
+        String sql = "UPDATE DOCENTE"
+                + " SET `persona`.`PERSONA_ID` = " + docente.getCedula() + " ' " + ","
+                + " `persona`.`PERSONA_NOMBRE`" + docente.getNombre() + " ' " + ","
+                + " `persona`.`PERSONA_APELLIDO`" + docente.getApellido() + " ' " + ","
+                + " `persona`.`PERSONA_DIRECCION`" + docente.getDireccion() + " ' " + ","
+                + " `persona`.`PERSONA_CORREO`" + docente.getCorreo() + " ' " + ","
+                + " `persona`.`PERSONA_CELULAR`" + docente.getTelefono() + " ' " + ","
+                + " `persona`.`PERSONA_SEXO`" + docente.getSexo() + " ' " + ","
+                + " `persona`.`PERSONA_FECHANACIMIENTO`" + docente.getFechaNacimiento() + " ' " + ","
+                + " `dccente`.`DOCENTE_TITULO``" + docente.getTitulo() + " ' " + ","
+                + "WHERE codigo =" + " ' " + codigo + " ' ";
+        try {
+
+            PreparedStatement ps;
+            ps = c.conectado().prepareStatement(sql);
+            ps.executeUpdate();
+            res = " DOCENTE MODIFICADO";
+
+        } catch (Exception ex) {
+            res = "ERROR";
+            c.desconectar();
+        }
+        return res;
     }
 
     public int obtenerCodigo() {

@@ -92,7 +92,7 @@ public class ControladorEstudianteTest {
     @Test
     public void testEliminarPersona() {
         System.out.println("eliminarPersona");
-        int codigo = 0;
+        String codigo = "";
         ControladorEstudiante instance = new ControladorEstudiante();
         String expResult = "Estudiante eliminado";
         String result = instance.eliminarEstudiante(codigo);

@@ -119,10 +119,10 @@ public class ControladorDocenteTest {
     @Test
     public void testBuscarPersona() {
         System.out.println("buscarPersona");
-        int codigo = 0;
+        String codigo = "";
         ControladorDocente instance = new ControladorDocente();
         String expResult = "Docente encontrado";
-        String result = instance.buscarDocente(codigo);
+        Docente result = instance.buscarDocente(codigo);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
@@ -148,10 +148,11 @@ public class ControladorDocenteTest {
     @Test
     public void testModificarPersona() {
         System.out.println("modificarPersona");
-        int codigo = 0;
+        String codigo = "";
+        Docente docente = null;
         ControladorDocente instance = new ControladorDocente();
         String expResult = "Docente modificado";
-        String result = instance.modificarDocente(codigo);
+        String result = instance.modificarDocente(codigo, docente);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");

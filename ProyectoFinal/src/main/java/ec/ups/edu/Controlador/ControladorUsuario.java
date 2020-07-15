@@ -26,7 +26,8 @@ public class ControladorUsuario {
 
     }
 
-    public void crearUsuario(Usuario usuario) {
+    public String crearUsuario(Usuario usuario) {
+        String res = "";
         String sql = "INSERT INTO `proyecto_final`.`usuario`"
                 + "(`USUARIO_ID`,"
                 + "`USUARIO_NAMEUSER`,"
@@ -44,10 +45,12 @@ public class ControladorUsuario {
             consulta.setString(5, usuario.getEstado());
             consulta.setString(6, usuario.getPersona().getCedula());
             consulta.executeUpdate();
+
+            res = "USUARIO CREADO";
         } catch (Exception e) {
 
         }
-
+        return res;
     }
 
     public int obtenerCodigo() {
@@ -70,7 +73,8 @@ public class ControladorUsuario {
         return ("estado");
 
     }
-     public String getMD5(String input) {
+
+    public String getMD5(String input) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             byte[] messageDigest = md.digest(input.getBytes());

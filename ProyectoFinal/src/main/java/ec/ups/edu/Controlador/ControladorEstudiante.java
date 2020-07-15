@@ -30,7 +30,7 @@ public class ControladorEstudiante {
     }
 
     public String crearEstudiante(Estudiante es) {
-        String retur = null;
+        String res = " ";
         String sql = "INSERT INTO `proyecto_final`.`persona`"
                 + "(`PERSONA_ID`,"
                 + "`PERSONA_NOMBRE`,"
@@ -61,16 +61,17 @@ public class ControladorEstudiante {
                 consultaEst.setDate(2, (java.sql.Date) es.getInscripcion());
                 consultaEst.setString(3, es.getCedula());
                 consultaEst.executeUpdate();
-                retur = "ESTUDIANTE CREADO";
+                res = "ESTUDIANTE CREADO";
             }
         } catch (Exception e) {
             c.desconectar();
-            retur = "ERROR";
+            res = "ERROR";
         }
-        return retur;
+        return res;
     }
 
     public Estudiante buscarEstudiante(String codigo) {
+
         Estudiante estudiante = new Estudiante();
         String sql = "SELECT `persona`.`PERSONA_ID`,"
                 + "    `persona`.`PERSONA_NOMBRE`,"
@@ -79,7 +80,8 @@ public class ControladorEstudiante {
                 + "    `persona`.`PERSONA_CORREO`,"
                 + "    `persona`.`PERSONA_CELULAR`,"
                 + "    `persona`.`PERSONA_SEXO`,"
-                + "    `persona`.`PERSONA_FECHANACIMIENTO`"
+                + "    `persona`.`PERSONA_FECHANACIMIENTO`,"
+                + "    `estudiante`.`ESTUDIANTE_INSCRIPCION` "
                 + "FROM `proyecto_final`.`persona`,`proyecto_final`.`estudiante`"
                 + " WHERE `persona`.`PERSONA_ID`=`estudiante`.`ESTUDIANTE_PERSONA` AND `persona`.`PERSONA_ID`=" + "'" + codigo + "';";
         try {
@@ -94,30 +96,104 @@ public class ControladorEstudiante {
                 estudiante.setTelefono(resultado.getInt("PERSONA_CELULAR".trim()));
                 estudiante.setSexo(resultado.getString("PERSONA_SEXO".trim()));
                 estudiante.setFechaNacimiento(resultado.getDate("PERSONA_FECHANACIMIENTO".trim()));
+                estudiante.setInscripcion(resultado.getDate("ESTUDIANTE_INSCRIPCION".trim()));
 
             }
 
         } catch (Exception e) {
-            System.out.println(e);
-
+            return null;
         }
         return estudiante;
 
     }
 
     public String modificarEstudiante(String codigo, Estudiante es) {
-        Estudiante estudiante = buscarEstudiante(codigo);
-        
-        
-        return "Docente modificado";
+        String sql = "UPDATE ESTUDIANTE"
+                + " SET `persona`.`PERSONA_ID` = " + es.getCedula() + " ' " + ","
+                + " `persona`.`PERSONA_NOMBRE`" + es.getNombre() + " ' " + ","
+                + " `persona`.`PERSONA_APELLIDO`" + es.getApellido() + " ' " + ","
+                + " `persona`.`PERSONA_DIRECCION`" + es.getDireccion() + " ' " + ","
+                + " `persona`.`PERSONA_CORREO`" + es.getCorreo() + " ' " + ","
+                + " `persona`.`PERSONA_CELULAR`" + es.getTelefono() + " ' " + ","
+                + " `persona`.`PERSONA_SEXO`" + es.getSexo() + " ' " + ","
+                + " `persona`.`PERSONA_FECHANACIMIENTO`" + es.getFechaNacimiento() + " ' " + ","
+                + " `estudiante`.`ESTUDIANTE_INSCRIPCION`" + es.getInscripcion() + " ' " + ","
+                + "WHERE codigo =" + " ' " + codigo + " ' ";
+        try {
+
+            PreparedStatement ps;
+            ps = c.conectado().prepareStatement(sql);
+            ps.executeUpdate();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        try {
+            c.desconectar();
+        } catch (Exception ex) {
+            System.out.println("Error al momento de cerrar la coneccion :" + ex.getMessage());
+
+        }
+        return "Asignatura actualizada";
     }
 
-    public String eliminarEstudiante(int codigo) {
+    public String eliminarEstudiante(String codigo) {
+        String sql = "DELETE FROM ESTUDIANTE"
+                + " WHERE ASIGNATURA_ID = " + "'" + codigo + "'";
+        try {
+
+            PreparedStatement ps = c.conectado().prepareStatement(sql);
+            ps.executeUpdate();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            c.desconectar();
+        }
+        try {
+            c.desconectar();
+        } catch (Exception ex) {
+            System.out.println("Error al cerrar la coneccion :" + ex.getMessage());
+        }
+
         return "Estudiante eliminado";
     }
 
     public List<Estudiante> listarDocente() {
-        return new ArrayList<>();
+        List<Estudiante> estudianteList = new ArrayList<>();
+        String sql = "SELECT `persona`.`PERSONA_ID`,"
+                + "    `persona`.`PERSONA_NOMBRE`,"
+                + "    `persona`.`PERSONA_APELLIDO`,"
+                + "    `persona`.`PERSONA_DIRECCION`,"
+                + "    `persona`.`PERSONA_CORREO`,"
+                + "    `persona`.`PERSONA_CELULAR`,"
+                + "    `persona`.`PERSONA_SEXO`,"
+                + "    `persona`.`PERSONA_FECHANACIMIENTO`,"
+                + "    `estudiante`.`ESTUDIANTE_INSCRIPCION` "
+                + "FROM `proyecto_final`.`persona`,`proyecto_final`.`estudiante`"
+                + " WHERE `persona`.`PERSONA_ID`=`estudiante`.`ESTUDIANTE_PERSONA` ;";
+        Estudiante estudiante = new Estudiante();
+        try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            ResultSet resultado = consulta.executeQuery();
+            while (resultado.next()) {
+                estudiante.setCedula(resultado.getString("PERSONA_ID".trim()));
+                estudiante.setNombre(resultado.getString("PERSONA_NOMBRE".trim()));
+                estudiante.setApellido(resultado.getString("PERSONA_APELLIDO".trim()));
+                estudiante.setDireccion(resultado.getString("PERSONA_DIRECCION".trim()));
+                estudiante.setCorreo(resultado.getString("PERSONA_CORREO".trim()));
+                estudiante.setTelefono(resultado.getInt("PERSONA_CELULAR".trim()));
+                estudiante.setSexo(resultado.getString("PERSONA_SEXO".trim()));
+                estudiante.setFechaNacimiento(resultado.getDate("PERSONA_FECHANACIMIENTO".trim()));
+                estudiante.setInscripcion(resultado.getDate("ESTUDIANTE_INSCRIPCION".trim()));
+                estudianteList.add(estudiante);
+
+            }
+
+        } catch (Exception e) {
+            return null;
+        }
+
+        return estudianteList;
+
     }
 
     public String realizarMatricula() {

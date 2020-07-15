@@ -104,13 +104,13 @@ public class ControladorAsignatura {
                 + "COSTO_CREDITOS, "
                 + "ASIGNATURA_NIVELASIGNATURA,"
                 + " FROM ASIGNATURA";
-        //System.out.println(sql);
+
         try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             ResultSet resultado = consulta.executeQuery();
 
             while (resultado.next()) {
-                // System.out.println(resultado.getString("CEDULA"));
+
                 Asignatura asignature = new Asignatura();
                 asignature.setCodigoAsignatura(resultado.getInt("ASIGNATURA_ID".trim()));
                 asignature.setDescripcion(resultado.getString("ASIGNATURA_DESCRIPCION".trim()));

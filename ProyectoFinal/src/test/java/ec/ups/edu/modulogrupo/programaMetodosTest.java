@@ -10,6 +10,9 @@ import ec.ups.edu.Controlador.ControladorEspacioFisico;
 import ec.ups.edu.Controlador.ControladorModalidad;
 import ec.ups.edu.Controlador.ControladorAsignatura;
 import ec.ups.edu.Controlador.ControladorNivelAsignatura;
+import ec.ups.edu.Modelo.Asignatura;
+import ec.ups.edu.Modelo.NivelAsignatura;
+import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -70,12 +73,11 @@ public class programaMetodosTest {
     @Test
     public void testCrearAsignatura() {
         System.out.println("crearAsignatura");
-        String descripcionAsignatura = "Lengua";
-        int costo = 04;
-        int nivelAsignatura = 6;
+        Asignatura asignatura = null;
+        NivelAsignatura nivelAsignatura = null;
         ControladorAsignatura instance = new ControladorAsignatura();
         String expResult = "Asignatura creada correctamente";
-        String result = instance.crearAsignatura(descripcionAsignatura, costo, nivelAsignatura);
+        String result = instance.crearAsignatura(asignatura,nivelAsignatura);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         if (!result.equals(expResult)){
@@ -90,11 +92,11 @@ public class programaMetodosTest {
     @Test
     public void testEditarAsignatura() {
         System.out.println("editarAsignatura");
-        String descripcionAsignatura = "Ciencias";
+        Asignatura asignatura = null;
         int costo = 2;
         ControladorAsignatura instance = new ControladorAsignatura();
         String expResult = "Creada correctamente";
-        String result = instance.editarAsignatura(descripcionAsignatura, costo);
+        String result = instance.editarAsignatura(asignatura, costo);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         if (!result.equals(expResult)){
@@ -110,10 +112,10 @@ public class programaMetodosTest {
     @Test
     public void testEliminarAsignatura() {
         System.out.println("eliminarAsignatura");
-        String descripcionAsignatura = "matematicas";
+        int codigo=0;
         ControladorAsignatura instance = new ControladorAsignatura();
         String expResult = "asignatura eliminada";
-        String result = instance.eliminarAsignatura(descripcionAsignatura);
+        String result = instance.eliminarAsignatura(codigo);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         if (!result.equals(expResult)){
@@ -131,7 +133,7 @@ public class programaMetodosTest {
         String descripcionAsignatura = "Lengua";
         ControladorAsignatura instance = new ControladorAsignatura();
         String expResult = "mostrar datos de la asignatura";
-        String result = instance.listarAsignatura(descripcionAsignatura);
+        List<Asignatura> result = instance.listarAsignatura();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         if (!result.equals(expResult)){

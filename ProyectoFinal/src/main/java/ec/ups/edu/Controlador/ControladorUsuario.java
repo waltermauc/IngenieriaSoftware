@@ -6,38 +6,83 @@
 package ec.ups.edu.Controlador;
 
 import ec.ups.edu.Modelo.Usuario;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-
-
 
 /**
  *
  * @author 59396
  */
 public class ControladorUsuario {
-   private Conexion c;
+
+    private Conexion c;
 
     public ControladorUsuario() {
         c = new Conexion();
 
     }
 
-    public String crearEstudiante(Usuario es) throws SQLException {
- 
-          
-                String sqlEst = "INSERT INTO USUARIO(ID_CODIGO, NOMBRE_ESTUDIANTE, CONTRASENIA) VALUES (?,?,?)";
-                PreparedStatement consultaEst = c.conectado().prepareStatement(sqlEst);
-                consultaEst.setInt(1, es.getCodigo());
-                consultaEst.setString(2, es.getNombreUsuario());
-                consultaEst.setString(2, es.getContrasenia());
-                consultaEst.executeUpdate();
-           
-        return "Usuario creado";
-    }
-    public String verificarUsuario() {
-        return "Usuario crado";
+    public void crearUsuario(Usuario usuario) {
+        String sql = "INSERT INTO `proyecto_final`.`usuario`"
+                + "(`USUARIO_ID`,"
+                + "`USUARIO_NAMEUSER`,"
+                + "`USUARIO_PASSWORD`,"
+                + "`USUARIO_ROL`,"
+                + "`USUARIO_ESTADO`,"
+                + "`USUARIO_PERSONA_ID`)"
+                + "VALUES (?,?,?,?,?,?)";
+        try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            consulta.setInt(1, usuario.getCodigo());
+            consulta.setString(2, usuario.getNombreUsuario());
+            consulta.setString(3, usuario.getContrasenia());
+            consulta.setString(4, usuario.getRol());
+            consulta.setString(5, usuario.getEstado());
+            consulta.setString(6, usuario.getPersona().getCedula());
+            consulta.executeUpdate();
+        } catch (Exception e) {
+
+        }
+
     }
 
-    
+    public int obtenerCodigo() {
+        int n = 0;
+        String sql = "select max(USUARIO_ID) as Codigo from usuario;";
+        try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            ResultSet resultado = consulta.executeQuery();
+            while (resultado.next()) {
+                n = resultado.getInt("Codigo".trim());
+            }
+
+        } catch (Exception e) {
+
+        }
+        return n;
+    }
+
+    public String cambiarEstado() {
+        return ("estado");
+
+    }
+     public String getMD5(String input) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] messageDigest = md.digest(input.getBytes());
+            BigInteger number = new BigInteger(1, messageDigest);
+            String hashtext = number.toString(16);
+
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            }
+            return hashtext;
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

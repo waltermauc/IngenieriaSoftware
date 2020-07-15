@@ -48,7 +48,7 @@ public class ControladorUsuarioTest {
         Usuario u = null;
         ControladorUsuario instance = new ControladorUsuario();
         String expResult = "usuario generado";
-        String result = instance.generarUsuario(u);
+        String result = instance.crearUsuario(u);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
        // fail("The test case is a prototype.");

@@ -14,6 +14,40 @@ public class Usuario {
     private int codigo;
     private String nombreUsuario;
     private String contrasenia;
+    private String estado;
+    private String rol;
+    private Persona persona;
+
+    public Usuario() {
+    }
+
+    public Usuario(int codigo, String nombreUsuario, String contrasenia, String estado, String rol, Persona persona) {
+        this.codigo = codigo;
+        this.nombreUsuario = nombreUsuario;
+        this.contrasenia = contrasenia;
+        this.estado = estado;
+        this.rol = rol;
+        this.persona = persona;
+    }
+
+    
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+    
 
     public int getCodigo() {
         return codigo;
@@ -38,6 +72,15 @@ public class Usuario {
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
+    }
+    
     
     
 }

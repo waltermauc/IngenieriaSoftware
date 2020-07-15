@@ -11,17 +11,8 @@ package ec.ups.edu.Modelo;
  */
 public class Docente extends Persona{
     private int codigo;
-    private String titulo;
     private Persona persona;
-
-    public Docente() {
-    }
-
-    public Docente(int codigo, String titulo, Persona persona) {
-        this.codigo = codigo;
-        this.titulo = titulo;
-        this.persona = persona;
-    }
+    private String titulo;
 
     public int getCodigo() {
         return codigo;
@@ -31,14 +22,6 @@ public class Docente extends Persona{
         this.codigo = codigo;
     }
 
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
     public Persona getPersona() {
         return persona;
     }
@@ -46,5 +29,15 @@ public class Docente extends Persona{
     public void setPersona(Persona persona) {
         this.persona = persona;
     }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+    
+    
     
 }

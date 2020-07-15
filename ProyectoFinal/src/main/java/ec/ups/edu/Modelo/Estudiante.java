@@ -8,8 +8,6 @@ package ec.ups.edu.Modelo;
 import java.util.Date;
 import java.util.List;
 
-import java.util.Date;
-
 /**
  *
  * @author 59396
@@ -22,6 +20,13 @@ public class Estudiante extends Persona{
     public Estudiante(){
         
     }
+
+    public Estudiante(int codigo, Date inscripcion, Persona persona) {
+        this.codigo = codigo;
+        this.inscripcion = inscripcion;
+        this.persona = persona;
+    }
+    
 
     public int getCodigo() {
         return codigo;
@@ -47,8 +52,7 @@ public class Estudiante extends Persona{
         this.persona = persona;
     }
    
-    
-    
+     
    
     
             

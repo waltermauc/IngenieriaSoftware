@@ -7,8 +7,8 @@ package ec.ups.edu.Controlador;
 
 import ec.ups.edu.Modelo.Calificacion;
 import ec.ups.edu.Modelo.Estudiante;
-import ec.ups.edu.Modelo.Persona;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,32 +20,114 @@ public class ControladorEstudiante {
 
     private Conexion c;
 
+    public ControladorEstudiante(Conexion c) {
+        this.c = c;
+
+    }
+
     public ControladorEstudiante() {
-        c = new Conexion();
 
     }
 
     public String crearEstudiante(Estudiante es) {
-        String sql = "INSERT INTO PERSONA(ID_PERSONA, NOMBRE_PERSONA, APELLIDO_PERSONA) VALUES (?,?,?)";
+        String retur = null;
+        String sql = "INSERT INTO `proyecto_final`.`persona`"
+                + "(`PERSONA_ID`,"
+                + "`PERSONA_NOMBRE`,"
+                + "`PERSONA_APELLIDO`,"
+                + "`PERSONA_DIRECCION`,"
+                + "`PERSONA_CORREO`,"
+                + "`PERSONA_CELULAR`,"
+                + "`PERSONA_SEXO`,"
+                + "`PERSONA_FECHANACIMIENTO`)"
+                + "VALUES (?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             consulta.setString(1, es.getCedula());
             consulta.setString(2, es.getNombre());
             consulta.setString(3, es.getApellido());
-
+            consulta.setString(4, es.getDireccion());
+            consulta.setString(5, es.getCorreo());
+            consulta.setInt(6, es.getTelefono());
+            consulta.setString(7, es.getSexo());
+            consulta.setDate(8, (java.sql.Date) es.getFechaNacimiento());
             if (consulta.executeUpdate() == 1) {
-                String sqlEst = "INSERT INTO ESTUDIANTE(ID_ESTUDIANTE, INSCRIPCION_ESTUDIANTE, ID_PERSONA) VALUES (?,?,?)";
+                String sqlEst = "INSERT INTO `proyecto_final`.`estudiante`"
+                        + "(`ESTUDIANTE_ID`,"
+                        + "`ESTUDIANTE_INSCRIPCION`,"
+                        + "`ESTUDIANTE_PERSONA`) VALUES (?,?,?)";
                 PreparedStatement consultaEst = c.conectado().prepareStatement(sqlEst);
                 consultaEst.setInt(1, es.getCodigo());
                 consultaEst.setDate(2, (java.sql.Date) es.getInscripcion());
                 consultaEst.setString(3, es.getCedula());
                 consultaEst.executeUpdate();
+                retur = "ESTUDIANTE CREADO";
             }
         } catch (Exception e) {
             c.desconectar();
+            retur = "ERROR";
         }
-        return "Estudiante creado";
+        return retur;
     }
+
+    public Estudiante buscarEstudiante(String codigo) {
+        Estudiante estudiante = new Estudiante();
+        String sql = "SELECT `persona`.`PERSONA_ID`,"
+                + "    `persona`.`PERSONA_NOMBRE`,"
+                + "    `persona`.`PERSONA_APELLIDO`,"
+                + "    `persona`.`PERSONA_DIRECCION`,"
+                + "    `persona`.`PERSONA_CORREO`,"
+                + "    `persona`.`PERSONA_CELULAR`,"
+                + "    `persona`.`PERSONA_SEXO`,"
+                + "    `persona`.`PERSONA_FECHANACIMIENTO`"
+                + "FROM `proyecto_final`.`persona`,`proyecto_final`.`estudiante`"
+                + " WHERE `persona`.`PERSONA_ID`=`estudiante`.`ESTUDIANTE_PERSONA` AND `persona`.`PERSONA_ID`=" + "'" + codigo + "';";
+        try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            ResultSet resultado = consulta.executeQuery();
+            while (resultado.next()) {
+                estudiante.setCedula(resultado.getString("PERSONA_ID".trim()));
+                estudiante.setNombre(resultado.getString("PERSONA_NOMBRE".trim()));
+                estudiante.setApellido(resultado.getString("PERSONA_APELLIDO".trim()));
+                estudiante.setDireccion(resultado.getString("PERSONA_DIRECCION".trim()));
+                estudiante.setCorreo(resultado.getString("PERSONA_CORREO".trim()));
+                estudiante.setTelefono(resultado.getInt("PERSONA_CELULAR".trim()));
+                estudiante.setSexo(resultado.getString("PERSONA_SEXO".trim()));
+                estudiante.setFechaNacimiento(resultado.getDate("PERSONA_FECHANACIMIENTO".trim()));
+
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+
+        }
+        return estudiante;
+
+    }
+
+    public String modificarEstudiante(String codigo, Estudiante es) {
+        Estudiante estudiante = buscarEstudiante(codigo);
+        
+        
+        return "Docente modificado";
+    }
+
+    public String eliminarEstudiante(int codigo) {
+        return "Estudiante eliminado";
+    }
+
+    public List<Estudiante> listarDocente() {
+        return new ArrayList<>();
+    }
+
+    public String realizarMatricula() {
+        return "Matricula Realizada";
+    }
+
+    public List<Calificacion> listarCalificaciones() {
+        return new ArrayList<>();
+    }
+
     public String verificarUsuario() {
         return "Usuario Valido";
     }
@@ -54,33 +136,20 @@ public class ControladorEstudiante {
         return "Cedula Docente valida";
     }
 
-    
+    public int obtenerCodigo() {
+        int n = 0;
+        String sql = "select max(ESTUDIANTE_ID) as Codigo from ESTUDIANTE";
+        try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            ResultSet resultado = consulta.executeQuery();
+            while (resultado.next()) {
+                n = resultado.getInt("Codigo".trim());
+            }
 
-    public String eliminarEstudiante(int codigo) {
-        return "Estudiante eliminado";
-    }
+        } catch (Exception e) {
 
-    public String buscarEstudiante(int codigo) {
-        return "Docente encontrado";
+        }
+        return n;
     }
-
-    public List<Estudiante> listarDocente() {
-        return new ArrayList<>();
-    }
-
-    public String modificarEstudiante(int codigo) {
-        return "Docente modificado";
-    }
-    
-    public String realizarMatricula(){
-        return  "Matricula Realizada";
-    }
-     public List<Calificacion> listarCalificaciones() {
-        return new ArrayList<>();
-    }
-
-    
 
 }
-
-

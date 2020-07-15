@@ -5,7 +5,8 @@
  */
 package ec.ups.edu.Modelo;
 
-import java.util.List;
+import java.util.Date;
+
 
 /**
  *
@@ -19,7 +20,10 @@ public abstract class Persona {
     private String direccion;
     private String correo;
     private int telefono;
-    private Usuario usuario;
+    private String sexo;
+    private Date fechaNacimiento;
+
+    
 
     public String getCedula() {
         return cedula;
@@ -69,13 +73,27 @@ public abstract class Persona {
         this.telefono = telefono;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public String getSexo() {
+        return sexo;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
+
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+   
+    
+    
+
+    
    
     
     

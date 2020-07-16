@@ -25,7 +25,7 @@ public class ControladorAsignatura {
 
     }
 
-    public String crearAsignatura(Asignatura asignatura, NivelAsignatura nivel) {
+    public String crearAsignatura(Asignatura asignatura) {
         String res = "";
         try {
             String sqlEst = "INSERT INTO ASIGNATURA"
@@ -54,7 +54,7 @@ public class ControladorAsignatura {
                 + "  ASIGNATURA_DESCRIPCION =" + " ' " + asignatura.getDescripcion() + " ' " + ","
                 + "  COSTO_CREDITOS =  " + " ' " + asignatura.getCostoCreditos() + " ' " + ","
                 + "  ASIGNATURA_NIVELASIGNATURA = " + " ' " + asignatura.getCodigoNivelAsignatura() + " ' " 
-                + "WHERE codigo =" + " ' " + codigo + " ' ";
+                + "WHERE ASIGNATURA_ID =" + " ' " + codigo + " ' ";
         try {
 
             PreparedStatement ps;

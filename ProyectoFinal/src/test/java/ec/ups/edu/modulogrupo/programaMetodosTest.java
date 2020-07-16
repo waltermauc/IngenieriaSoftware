@@ -78,7 +78,7 @@ public class programaMetodosTest {
         NivelAsignatura nivelAsignatura = null;
         ControladorAsignatura instance = new ControladorAsignatura();
         String expResult = "Asignatura creada correctamente";
-        String result = instance.crearAsignatura(asignatura,nivelAsignatura);
+        String result = instance.crearAsignatura(asignatura);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         if (!result.equals(expResult)){

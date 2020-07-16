@@ -95,8 +95,9 @@ public class ControladorEspacioFisico {
         }
         return espacioList;
     }
-    public String buscaEspacioFisico (int codigo){
-        
+    public EspacioFisico buscaEspacioFisico (int codigo){
+         EspacioFisico espacioFisico = new EspacioFisico();
+
         String sql = "SELECT * from ESPACIOFISICO"
                 + "WHERE ESPACIOFISICO_ID = " + "'" + codigo + "'";
          try {
@@ -105,7 +106,6 @@ public class ControladorEspacioFisico {
 
             while (resultado.next()) {
 
-                EspacioFisico espacioFisico = new EspacioFisico();
                 espacioFisico.setCodigoEspacioFisico(resultado.getInt("ESPACIOFISICO_ID".trim()));
                 espacioFisico.setNumeroDesignadoAula(resultado.getInt("ESPACIOFISICO_NUMEROAULA".trim()));
                 espacioFisico.setNombreEdificio(resultado.getString("ESPACIOFISICO_EDIFICIO".trim()));
@@ -114,6 +114,6 @@ public class ControladorEspacioFisico {
             ex.printStackTrace();
             c.desconectar();
         }
-        return "";
+        return espacioFisico;
     }
 }

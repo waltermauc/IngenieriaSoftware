@@ -15,7 +15,6 @@ public class Grupo {
     private int codigoGrupo;
     private Asignatura asignaturaCodigo;
     private EspacioFisico codigoEspacioFisico;
-    private Modalidad codigoModalidad;
     private Docente docenteCodigo;
 
 
@@ -26,14 +25,6 @@ public class Grupo {
 
     public void setCodigoEspacioFisico(EspacioFisico codigoEspacioFisico) {
         this.codigoEspacioFisico = codigoEspacioFisico;
-    }
-
-    public Modalidad getCodigoModalidad() {
-        return codigoModalidad;
-    }
-
-    public void setCodigoModalidad(Modalidad codigoModalidad) {
-        this.codigoModalidad = codigoModalidad;
     }
 
     public int getCodigoGrupo() {

@@ -5,57 +5,53 @@
  */
 package ec.ups.edu.Controlador;
 
+import ec.ups.edu.Modelo.Modalidad;
+import java.sql.PreparedStatement;
+import java.util.List;
+
 /**
  *
  * @author rayner
  */
 public class ControladorModalidad {
-    int []numeros = {1,2,3,4,5,6,7,8,9,0};
-     String [] letras = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
-     
-    
-    public String crearModalidadCarrera (int codigoModalida,String modalida){
-        String  resultadoCrearModalidad = "";
-        if (numeros.equals(codigoModalida)){
-            resultadoCrearModalidad = " creado correctamente";
-        }else if (letras.equals(codigoModalida)){
-            resultadoCrearModalidad = "Solo numeros";
-            
-        }else if  (modalida.equals("Diurna")|| modalida.endsWith("Vespertina")){
-            resultadoCrearModalidad = "creado correctamente";
-        }
-        else if  (!modalida.equals("Diurna")|| modalida.endsWith("Vespertina")){
-            resultadoCrearModalidad = "modalidad no creada, ingrese solo letras";
-        }
-        return resultadoCrearModalidad;
+    private Conexion c;
+
+    public ControladorModalidad() {
+        c = new Conexion();
+
     }
-    public String editarModalidadCarrera (String modalida){
-        String resultadoEditarModalidad = "";
-        if (modalida.equals("Diurna")){
-            resultadoEditarModalidad = "Ingrese una nueva modalidad";
-        }else {
-            resultadoEditarModalidad = "Modalidad modificada correctamente";
+
+    public String crearModalidadCarrera (Modalidad modalidad){
+       String res = "";
+        String sql = "INSERT INTO NIVEL_ASIGNATURA(NIVELASIGNATURA_ID, NIVELASIGNATURA_DESCRIPCION) VALUES (?,?)";
+        try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            consulta.setString(1, nivel.getDescripcionNivelAsignatura());
+            if (consulta.executeUpdate() == 1) {
+                String sqlEst = "INSERT INTO ASIGNATURA(ASIGNATURA_ID, ASIGNATURA_DESCRIPCION, COSTO_CREDITOS, ASIGNATURA_NIVELASIGNATURA) VALUES (?,?,?),?";
+                PreparedStatement consultaEst = c.conectado().prepareStatement(sqlEst);
+                consultaEst.setInt(1, asignatura.getCodigoAsignatura());
+                consultaEst.setString(2, asignatura.getDescripcion());
+                consultaEst.setInt(3, asignatura.getCostoCreditos());
+                consultaEst.setObject(4, asignatura.getCodigoNivelAsignatura());
+                consultaEst.executeUpdate();
+                res = " ASIGNATURA CREADA";
+            }
+        } catch (Exception e) {
+            res = "ERROR";
+            c.desconectar();
         }
-        return resultadoEditarModalidad;
+        return res;
     }
-    public String eliminarModalidadCarrera (String modalida){
+    public String editarModalidadCarrera (int codigo, Modalidad modalidad){
+       
+       
+    }
+    public String eliminarModalidadCarrera (int  codigo ){
         
-        String resultadoEliminarModalida = "";
-        if (modalida.equals("Diurna")){
-            resultadoEliminarModalida = "Eliminar modalidad";
-        }else {
-            resultadoEliminarModalida = "No existe esta modalidad";
-        }
-        return resultadoEliminarModalida;
+        
     }
-    public String listarModalidadCarrera (String modalida){
-        String resultadoListarModalidad = "";
-        if (modalida.equals("Vespertina")){
-            resultadoListarModalidad = "mostrar datos modalidad";
-            
-        }else {
-            resultadoListarModalidad = "no existe esa modalidad";
-        }
-        return resultadoListarModalidad;
+    public List<Modalidad>listarModalidadCarrera (){
+        
     }
 }

@@ -11,6 +11,7 @@ import ec.ups.edu.Controlador.ControladorModalidad;
 import ec.ups.edu.Controlador.ControladorAsignatura;
 import ec.ups.edu.Controlador.ControladorNivelAsignatura;
 import ec.ups.edu.Modelo.Asignatura;
+import ec.ups.edu.Modelo.Modalidad;
 import ec.ups.edu.Modelo.NivelAsignatura;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
@@ -222,10 +223,10 @@ public class programaMetodosTest {
     public void testCrearModalidadCarrera() {
         System.out.println("crearModalidadCarrera");
         int codigoModalida = 11;
-        String modalida = "Diurna";
+        Modalidad modalida = null;
         ControladorModalidad instance = new ControladorModalidad();
         String expResult = "creado correctamente";
-        String result = instance.crearModalidadCarrera(codigoModalida, modalida);
+        String result = instance.crearModalidadCarrera( modalida);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         if (!result.equals(expResult)){
@@ -240,10 +241,11 @@ public class programaMetodosTest {
     @Test
     public void testEditarModalidadCarrera() {
         System.out.println("editarModalidadCarrera");
-        String modalida = "Diurna";
+        Modalidad modalida = null;
+        int codigo =0;
         ControladorModalidad instance = new ControladorModalidad();
         String expResult = "Ingrese una nueva modalidad";
-        String result = instance.editarModalidadCarrera(modalida);
+        String result = instance.editarModalidadCarrera(codigo,modalida);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
          if (!result.equals(expResult)){
@@ -258,7 +260,7 @@ public class programaMetodosTest {
     @Test
     public void testEliminarModalidadCarrera() {
         System.out.println("eliminarModalidadCarrera");
-        String modalida = "Diurna";
+        int modalida = 0;
         ControladorModalidad instance = new ControladorModalidad();
         String expResult = "Eliminar modalidad";
         String result = instance.eliminarModalidadCarrera(modalida);
@@ -279,7 +281,7 @@ public class programaMetodosTest {
         String modalida = "Vespertina";
         ControladorModalidad instance = new ControladorModalidad();
         String expResult = "mostrar datos modalidad";
-        String result = instance.listarModalidadCarrera(modalida);
+        List<Modalidad>result = instance.listarModalidadCarrera();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
          if (!result.equals(expResult)){

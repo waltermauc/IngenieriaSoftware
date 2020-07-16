@@ -25,25 +25,22 @@ public class ControladorAsignatura {
 
     }
 
-    int[] numeros = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
-    String[] letras = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
-
     public String crearAsignatura(Asignatura asignatura, NivelAsignatura nivel) {
         String res = "";
         String sql = "INSERT INTO NIVEL_ASIGNATURA(NIVELASIGNATURA_ID, NIVELASIGNATURA_DESCRIPCION) VALUES (?,?)";
         try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
-            consulta.setString(1, nivel.getDescripcionNivelAsignatura());
-            if (consulta.executeUpdate() == 1) {
-                String sqlEst = "INSERT INTO ASIGNATURA(ASIGNATURA_ID, ASIGNATURA_DESCRIPCION, COSTO_CREDITOS, ASIGNATURA_NIVELASIGNATURA) VALUES (?,?,?),?";
-                PreparedStatement consultaEst = c.conectado().prepareStatement(sqlEst);
-                consultaEst.setInt(1, asignatura.getCodigoAsignatura());
-                consultaEst.setString(2, asignatura.getDescripcion());
-                consultaEst.setInt(3, asignatura.getCostoCreditos());
-                consultaEst.setObject(4, asignatura.getCodigoNivelAsignatura());
-                consultaEst.executeUpdate();
-                res = " ASIGNATURA CREADA";
-            }
+            String sqlEst = "INSERT INTO ASIGNATURA"
+                    + "(ASIGNATURA_ID, ASIGNATURA_DESCRIPCION, COSTO_CREDITOS, ASIGNATURA_NIVELASIGNATURA) "
+                    + "VALUES (?,?,?),?";
+            PreparedStatement consultaEst = c.conectado().prepareStatement(sqlEst);
+            consultaEst.setInt(1, asignatura.getCodigoAsignatura());
+            consultaEst.setString(2, asignatura.getDescripcion());
+            consultaEst.setInt(3, asignatura.getCostoCreditos());
+            consultaEst.setObject(4, asignatura.getCodigoNivelAsignatura());
+            consultaEst.executeUpdate();
+            res = " ASIGNATURA CREADA";
+
         } catch (Exception e) {
             res = "ERROR";
             c.desconectar();

@@ -135,7 +135,7 @@ public class ControladorAsignatura {
                 asignature.setDescripcion(resultado.getString("ASIGNATURA_DESCRIPCION".trim()));
                 asignature.setCostoCreditos(resultado.getInt("COSTO_CREDITOS".trim()));
                 int codigoNivelAsignatura = resultado.getInt("ASIGNATURA_NIVELASIGNATURA".trim());
-                NivelAsignatura nivelAsig = controladorNivelAsignatura.buscar(codigoNivelAsignatura);
+                NivelAsignatura nivelAsig = controladorNivelAsignatura.buscarAsignatura(codigoNivelAsignatura);
                 asignature.setCodigoNivelAsignatura(nivelAsig);
             }
 

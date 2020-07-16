@@ -95,6 +95,40 @@ public class ControladorGrupo {
 
         return res;
     }
+ 
+    public List<Grupo> listarGrupo(ControladorAsignatura controlAsig, ControladorDocente controlDocen, ControladorEspacioFisico controlEspacio, ControladorNivelAsignatura nivel) {
+        List<Grupo> grupoList = new ArrayList<>();
+        String sql = "SELECT GRUPO_ID,"
+                + "GRUPO_ASIGNTURA,"
+                + "GRUPO_ESPACIOFISICO, "
+                + "GRUPO_DOCENTE,"
+                + " FROM GRUPO";
+        try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            ResultSet resultado = consulta.executeQuery();
+            while (resultado.next()) {
+
+                Grupo grupo = new Grupo();
+                grupo.setCodigoGrupo(resultado.getInt("ASIGNATURA_ID".trim()));
+                int codigoAsignatura = resultado.getInt("GRUPO_ASIGNTURA".trim());
+             Asignatura asig = controlAsig.buscarAsignatura(codigoAsignatura,nivel);
+             grupo.setC(asig);
+             int codigoEspacio = resultado.getInt("GRUPO_ESPACIOFISICO".trim());
+             EspacioFisico esp = controlEspacio.buscaEspacioFisico(codigoEspacio);
+             grupo.setCodigoEspacioFisico(esp);
+             int codigoDoccente = resultado.getInt("GRUPO_DOCENTE".trim());
+             Docente docne = controlDocen.buscarEsCodigo(codigoEspacio);
+             grupo.setDocenteCodigo(docne);
+             
+                grupoList.add(grupo);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            c.desconectar();
+
+        }
+        return grupoList;
+    }
     public Grupo buscarGrupo(int codigo) {
         Grupo grupo = new Grupo();
         return grupo;

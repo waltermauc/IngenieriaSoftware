@@ -6,7 +6,6 @@
 package ec.ups.edu.Controlador;
 
 import ec.ups.edu.Modelo.Asignatura;
-import ec.ups.edu.Modelo.NivelAsignatura;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;

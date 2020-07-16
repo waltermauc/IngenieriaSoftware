@@ -53,6 +53,28 @@ public class ControladorUsuario {
         return res;
     }
 
+    public String cambiarEstado(Usuario usaurio, int codigo) {
+        String res = " ";
+        String sql = "UPDATE USUARIO"
+                + " SET `usuario`.`USUARIO_ESTADO` = " + usaurio.getEstado() + " ' " + ","
+                + "WHERE codigo =" + " ' " + codigo + " ' ";
+        try {
+
+            PreparedStatement ps;
+            ps = c.conectado().prepareStatement(sql);
+            ps.executeUpdate();
+            res = "USUARIO ACTUALIZADO";
+
+        } catch (Exception ex) {
+
+            c.desconectar();
+            res = "ERROR";
+        }
+
+        return res;
+
+    }
+
     public int obtenerCodigo() {
         int n = 0;
         String sql = "select max(USUARIO_ID) as Codigo from usuario;";
@@ -67,11 +89,6 @@ public class ControladorUsuario {
 
         }
         return n;
-    }
-
-    public String cambiarEstado() {
-        return ("estado");
-
     }
 
     public String getMD5(String input) {

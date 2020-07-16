@@ -29,7 +29,8 @@ public class ControladorEspecialidad {
     public String crearEspecialidad(Especialidad especialidad) {
         String res = "";
         try {
-            String sql = "INSERT INTO proyecto_final.especialidad(MODALIDAD_ID, MODALIDAD_DESCRIPCION)VALUES (?,?)";
+            String sql = "INSERT INTO proyecto_final.especialidad"
+                    + "(MODALIDAD_ID, MODALIDAD_DESCRIPCION)VALUES (?,?)";
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             consulta.setInt(1, especialidad.getCodigo());
             consulta.setString(2, especialidad.getDescripcion());

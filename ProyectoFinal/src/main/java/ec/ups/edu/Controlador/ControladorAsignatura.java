@@ -27,9 +27,7 @@ public class ControladorAsignatura {
 
     public String crearAsignatura(Asignatura asignatura, NivelAsignatura nivel) {
         String res = "";
-        String sql = "INSERT INTO NIVEL_ASIGNATURA(NIVELASIGNATURA_ID, NIVELASIGNATURA_DESCRIPCION) VALUES (?,?)";
         try {
-            PreparedStatement consulta = c.conectado().prepareStatement(sql);
             String sqlEst = "INSERT INTO ASIGNATURA"
                     + "(ASIGNATURA_ID, ASIGNATURA_DESCRIPCION, COSTO_CREDITOS, ASIGNATURA_NIVELASIGNATURA) "
                     + "VALUES (?,?,?),?";

@@ -22,26 +22,7 @@ public class ControladorModalidad {
     }
 
     public String crearModalidadCarrera (Modalidad modalidad){
-       String res = "";
-        String sql = "INSERT INTO NIVEL_ASIGNATURA(NIVELASIGNATURA_ID, NIVELASIGNATURA_DESCRIPCION) VALUES (?,?)";
-        try {
-            PreparedStatement consulta = c.conectado().prepareStatement(sql);
-            consulta.setString(1, nivel.getDescripcionNivelAsignatura());
-            if (consulta.executeUpdate() == 1) {
-                String sqlEst = "INSERT INTO ASIGNATURA(ASIGNATURA_ID, ASIGNATURA_DESCRIPCION, COSTO_CREDITOS, ASIGNATURA_NIVELASIGNATURA) VALUES (?,?,?),?";
-                PreparedStatement consultaEst = c.conectado().prepareStatement(sqlEst);
-                consultaEst.setInt(1, asignatura.getCodigoAsignatura());
-                consultaEst.setString(2, asignatura.getDescripcion());
-                consultaEst.setInt(3, asignatura.getCostoCreditos());
-                consultaEst.setObject(4, asignatura.getCodigoNivelAsignatura());
-                consultaEst.executeUpdate();
-                res = " ASIGNATURA CREADA";
-            }
-        } catch (Exception e) {
-            res = "ERROR";
-            c.desconectar();
-        }
-        return res;
+       
     }
     public String editarModalidadCarrera (int codigo, Modalidad modalidad){
        

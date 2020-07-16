@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ec.ups.edu.Modelo.Grupo;
+import java.sql.ResultSet;
 
 /**
  *
@@ -25,20 +26,23 @@ public class ControladorGrupo {
          this.c =c;
      }
      
-    public  String crearGrupo(Grupo grupo,ControladorAsignatura controlAsig){
-        String resultado = "";
+    public  String crearGrupo(Grupo grupo,ControladorAsignatura controlAsig, ControladorDocente controlDocen, ControladorModalidad controlModalidad, ControladorEspacioFisico controlEspacio){
          String res = "";
-        List<Asignatura> asignaturaList = new ArrayList<>();
-
+      
         try {
-            String sqlEst = "INSERT INTO GRUPO"
+            
+             String sqlEst = "INSERT INTO GRUPO"
                     + "(GRUPO_ID, GRUPO_ASIGNTURA, GRUPO_ESPACIOFISICO, GRUPO_DOCENTE) "
                     + "VALUES (?,?,?,?)";
-            PreparedStatement consultaEst = c.conectado().prepareStatement(sqlEst);
+            PreparedStatement consulta = c.conectado().prepareStatement(sqlEst);
+            ResultSet resultado = consulta.executeQuery();
+           
+         while (resultado.next()) {
+             grupo.setCodigoGrupo(resultado.getInt("GRUPO_ID".trim()));
+           
+          
             
-            consultaEst.executeUpdate();
-            res = " ASIGNATURA CREADA";
-
+         }
         } catch (Exception e) {
             res = "ERROR";
             c.desconectar();

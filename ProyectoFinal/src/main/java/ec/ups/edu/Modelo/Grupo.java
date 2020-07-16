@@ -13,26 +13,12 @@ import java.util.List;
  */
 public class Grupo {
     private int codigoGrupo;
-    private List <Asignatura> Asignatura;
+    private Asignatura asignaturaCodigo;
     private EspacioFisico codigoEspacioFisico;
     private Modalidad codigoModalidad;
-    private List <Docente> docente;
+    private Docente docenteCodigo;
 
-    public int getCodigo() {
-        return codigoGrupo;
-    }
 
-    public void setCodigo(int codigo) {
-        this.codigoGrupo = codigo;
-    }
-
-    public List<Asignatura> getAsignatura() {
-        return Asignatura;
-    }
-
-    public void setAsignatura(List<Asignatura> Asignatura) {
-        this.Asignatura = Asignatura;
-    }
 
     public EspacioFisico getCodigoEspacioFisico() {
         return codigoEspacioFisico;
@@ -50,13 +36,31 @@ public class Grupo {
         this.codigoModalidad = codigoModalidad;
     }
 
-    public List<Docente> getDocente() {
-        return docente;
+    public int getCodigoGrupo() {
+        return codigoGrupo;
     }
 
-    public void setDocente(List<Docente> docente) {
-        this.docente = docente;
+    public void setCodigoGrupo(int codigoGrupo) {
+        this.codigoGrupo = codigoGrupo;
     }
+
+    public Asignatura getC() {
+        return asignaturaCodigo;
+    }
+
+    public void setC(Asignatura c) {
+        this.asignaturaCodigo = c;
+    }
+
+    public Docente getDocenteCodigo() {
+        return docenteCodigo;
+    }
+
+    public void setDocenteCodigo(Docente docenteCodigo) {
+        this.docenteCodigo = docenteCodigo;
+    }
+
+   
     
     
     

@@ -121,4 +121,31 @@ public class ControladorAsignatura {
         return asignaturaList;
 
     }
+    public String buscarAsignatura (int codigo){
+        
+        String sql = "SELECT ASIGNATURA_ID,"
+                + " ASIGNATURA_DESCRIPCION,"
+                + "COSTO_CREDITO, "
+                + "ASIGNATURA_NIVELASIGNATURA "
+                + "from ASIGNATURA"
+                + "WHERE ASIGNATURA_ID = " + "'" + codigo + "'";
+         try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            ResultSet resultado = consulta.executeQuery();
+
+            while (resultado.next()) {
+
+                Asignatura asignature = new Asignatura();
+                asignature.setCodigoAsignatura(resultado.getInt("ASIGNATURA_ID".trim()));
+                asignature.setDescripcion(resultado.getString("ASIGNATURA_DESCRIPCION".trim()));
+                asignature.setCostoCreditos(resultado.getInt("COSTO_CREDITOS".trim()));
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            c.desconectar();
+
+        }
+        return "";
+    }
 }

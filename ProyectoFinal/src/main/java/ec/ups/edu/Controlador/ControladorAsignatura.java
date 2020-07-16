@@ -140,7 +140,6 @@ public class ControladorAsignatura {
                 asignature.setCostoCreditos(resultado.getInt("COSTO_CREDITOS".trim()));
                 asignature.setCodigoAsignatura((int) resultado.getObject("ASIGNATURA_NIVELASIGNATURA".trim()));
             }
-            
 
         } catch (Exception ex) {
             ex.printStackTrace();

@@ -5,6 +5,8 @@
  */
 package ec.ups.edu.Controlador;
 
+import ec.ups.edu.Modelo.NivelAsignatura;
+
 /**
  *
  * @author rayner
@@ -67,4 +69,8 @@ public class ControladorNivelAsignatura {
         
         return resultadolistarNivel;
     }
+       public NivelAsignatura buscar(int codigo){
+           NivelAsignatura nivelAsignatura = new NivelAsignatura();
+           return nivelAsignatura;
+       }
 }

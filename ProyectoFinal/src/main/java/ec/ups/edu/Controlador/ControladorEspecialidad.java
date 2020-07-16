@@ -16,7 +16,8 @@ import java.util.List;
  * @author DELL
  */
 public class ControladorEspecialidad {
-    private Conexion c ;
+
+    private Conexion c;
 
     public ControladorEspecialidad(Conexion c) {
         this.c = c;
@@ -24,7 +25,6 @@ public class ControladorEspecialidad {
 
     public ControladorEspecialidad() {
     }
-    
 
     public String crearEspecialidad(Especialidad especialidad) {
         String res = "";
@@ -67,7 +67,7 @@ public class ControladorEspecialidad {
     }
 
     public List<Especialidad> listarEspecialidad() {
-         List<Especialidad> listPeriodoLectivo = new ArrayList<>();
+        List<Especialidad> listPeriodoLectivo = new ArrayList<>();
         String sql = "SELECT * FROM proyecto_final.modalidad;";
         try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
@@ -87,9 +87,10 @@ public class ControladorEspecialidad {
 
     }
 
-      public Especialidad buscarEspecialidad(int codigo) {
+    public Especialidad buscarEspecialidad(int codigo) {
         Especialidad especialidad = new Especialidad();
-        String sql = "SELECT * FROM proyecto_final.especialidad;";
+        String sql = "SELECT * FROM proyecto_final.especialidad"
+                + "WHERE ESPECIALIDAD_ID =" + " ' " + codigo + " ' ";
         try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             ResultSet resultado = consulta.executeQuery();

@@ -6,6 +6,7 @@
 package ec.ups.edu.Controlador;
 
 import ec.ups.edu.Modelo.Asignatura;
+import ec.ups.edu.Modelo.NivelAsignatura;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class ControladorAsignatura {
     private Conexion c;
 
     public ControladorAsignatura(Conexion c) {
-         this.c = c;
+        this.c = c;
 
     }
 
@@ -30,15 +31,15 @@ public class ControladorAsignatura {
     public String crearAsignatura(Asignatura asignatura) {
         String res = "";
         try {
-            String sqlEst = "INSERT INTO ASIGNATURA"
+            String sql = "INSERT INTO ASIGNATURA"
                     + "(ASIGNATURA_ID, ASIGNATURA_DESCRIPCION, COSTO_CREDITOS, ASIGNATURA_NIVELASIGNATURA) "
                     + "VALUES (?,?,?,?)";
-            PreparedStatement consultaEst = c.conectado().prepareStatement(sqlEst);
-            consultaEst.setInt(1, asignatura.getCodigoAsignatura());
-            consultaEst.setString(2, asignatura.getDescripcion());
-            consultaEst.setInt(3, asignatura.getCostoCreditos());
-            consultaEst.setInt(4, asignatura.getCodigoNivelAsignatura().getCodigoNivelAsignatura());
-            consultaEst.executeUpdate();
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            consulta.setInt(1, asignatura.getCodigoAsignatura());
+            consulta.setString(2, asignatura.getDescripcion());
+            consulta.setInt(3, asignatura.getCostoCreditos());
+            consulta.setInt(4, asignatura.getCodigoNivelAsignatura().getCodigoNivelAsignatura());
+            consulta.executeUpdate();
             res = " ASIGNATURA CREADA";
 
         } catch (Exception e) {
@@ -55,7 +56,7 @@ public class ControladorAsignatura {
                 + " SET ASIGNATURA_ID = " + " ' " + asignatura.getCodigoAsignatura() + " ' " + ","
                 + "  ASIGNATURA_DESCRIPCION =" + " ' " + asignatura.getDescripcion() + " ' " + ","
                 + "  COSTO_CREDITOS =  " + " ' " + asignatura.getCostoCreditos() + " ' " + ","
-                + "  ASIGNATURA_NIVELASIGNATURA = " + " ' " + asignatura.getCodigoNivelAsignatura() + " ' " 
+                + "  ASIGNATURA_NIVELASIGNATURA = " + " ' " + asignatura.getCodigoNivelAsignatura() + " ' "
                 + "WHERE ASIGNATURA_ID =" + " ' " + codigo + " ' ";
         try {
 
@@ -120,33 +121,34 @@ public class ControladorAsignatura {
         return asignaturaList;
 
     }
-    public String buscarAsignatura (int codigo){
-        
+
+    public Asignatura buscarAsignatura(int codigo, ControladorNivelAsignatura controladorNivelAsignatura) {
+        Asignatura asignature = new Asignatura();
         String sql = "SELECT ASIGNATURA_ID,"
                 + " ASIGNATURA_DESCRIPCION,"
                 + "COSTO_CREDITO, "
                 + "ASIGNATURA_NIVELASIGNATURA "
                 + "from ASIGNATURA"
                 + "WHERE ASIGNATURA_ID = " + "'" + codigo + "'";
-         try {
+        try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             ResultSet resultado = consulta.executeQuery();
 
             while (resultado.next()) {
 
-                Asignatura asignature = new Asignatura();
                 asignature.setCodigoAsignatura(resultado.getInt("ASIGNATURA_ID".trim()));
                 asignature.setDescripcion(resultado.getString("ASIGNATURA_DESCRIPCION".trim()));
                 asignature.setCostoCreditos(resultado.getInt("COSTO_CREDITOS".trim()));
-                asignature.setCodigoAsignatura((int) resultado.getObject("ASIGNATURA_NIVELASIGNATURA".trim()));
+                int codigoNivelAsignatura = resultado.getInt("ASIGNATURA_NIVELASIGNATURA".trim());
+                NivelAsignatura nivelAsig = controladorNivelAsignatura.buscar(codigoNivelAsignatura);
+                asignature.setCodigoNivelAsignatura(nivelAsig);
             }
-            
 
         } catch (Exception ex) {
             ex.printStackTrace();
             c.desconectar();
-
+            return null;
         }
-        return "";
+        return asignature;
     }
 }

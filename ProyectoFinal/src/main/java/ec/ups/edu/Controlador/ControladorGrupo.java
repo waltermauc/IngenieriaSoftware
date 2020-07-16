@@ -11,11 +11,14 @@ import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 
+import ec.ups.edu.Modelo.Grupo;
+
 /**
  *
  * @author rayner
  */
 public class ControladorGrupo {
+
     
      private Conexion c ;
      public ControladorGrupo (Conexion c) {
@@ -32,10 +35,7 @@ public class ControladorGrupo {
                     + "(GRUPO_ID, GRUPO_ASIGNTURA, GRUPO_ESPACIOFISICO, GRUPO_DOCENTE) "
                     + "VALUES (?,?,?,?)";
             PreparedStatement consultaEst = c.conectado().prepareStatement(sqlEst);
-            consultaEst.setInt(1, grupo.getCodigo());
-            consultaEst.setString(2, grupo.getAsignatura());
-            consultaEst.setInt(3, grupo.getCostoCreditos());
-            consultaEst.setInt(4, grupo.getCodigoNivelAsignatura().getCodigoNivelAsignatura());
+            
             consultaEst.executeUpdate();
             res = " ASIGNATURA CREADA";
 
@@ -43,9 +43,19 @@ public class ControladorGrupo {
             res = "ERROR";
             c.desconectar();
         }
-          
+            return "";
+    } 
+    public String crearGrupo(int codigoGrupo, String asignatura, int codigoEspacio, int codigoModalidad, String nombreDocente) {
+        String resultado = "";
+
         return resultado;
-        
-    }   
-    
+
+    }
+
+    public Grupo buscarGrupo() {
+        Grupo grupo = new Grupo();
+        return grupo;
+
+    }
+
 }

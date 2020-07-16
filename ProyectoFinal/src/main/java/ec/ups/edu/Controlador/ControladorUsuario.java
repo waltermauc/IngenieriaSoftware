@@ -56,8 +56,8 @@ public class ControladorUsuario {
     public String cambiarEstado(Usuario usaurio, int codigo) {
         String res = " ";
         String sql = "UPDATE USUARIO"
-                + " SET `usuario`.`USUARIO_ESTADO` = " + usaurio.getEstado() + " ' " + ","
-                + "WHERE codigo =" + " ' " + codigo + " ' ";
+                + " SET `usuario`.`USUARIO_ESTADO` = " + usaurio.getEstado() + " ' " 
+                + "WHERE USUARIO_ID  =" + " ' " + codigo + " ' ";
         try {
 
             PreparedStatement ps;

@@ -29,7 +29,8 @@ public class ControladorPeriodoLectivo {
     public String crearPeriLect(PeriodoLectivo pLectivo) {
         String res = "";
         try {
-            String sql = "INSERT INTO proyecto_final.periodolectivo(MODALIDAD_ID, MODALIDAD_DESCRIPCION)VALUES (?,?)";
+            String sql = "INSERT INTO proyecto_final.periodolectivo"
+                    + "(MODALIDAD_ID, MODALIDAD_DESCRIPCION)VALUES (?,?)";
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             consulta.setInt(1, pLectivo.getCodigo());
             consulta.setString(2, pLectivo.getDescripcion());
@@ -68,7 +69,8 @@ public class ControladorPeriodoLectivo {
 
     public PeriodoLectivo buscarPeriLect(int codigo) {
         PeriodoLectivo pLectivo = new PeriodoLectivo();
-        String sql = "SELECT * FROM proyecto_final.periodolectivo;";
+        String sql = "SELECT * FROM proyecto_final.periodolectivo "
+                + "WHERE PERIODOLECTIVO_ID  =" + " ' " + codigo + " ' ";
         try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             ResultSet resultado = consulta.executeQuery();

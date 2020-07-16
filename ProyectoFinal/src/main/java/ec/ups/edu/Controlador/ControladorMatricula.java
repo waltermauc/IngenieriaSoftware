@@ -80,9 +80,9 @@ public class ControladorMatricula {
     }
 
     public Matricula buscarMatricula(int codigo, ControladorPeriodoLectivo cpl, ControladorModalidad cm,
-                                     ControladorEspecialidad ce, ControladorGrupo cg, ControladorEstudiante ces, ControladorAsignatura ca,
-                                     ControladorDocente cd, ControladorEspacioFisico cef, ControladorNivelAsignatura cn
-     ) {
+            ControladorEspecialidad ce, ControladorGrupo cg, ControladorEstudiante ces, ControladorAsignatura ca,
+            ControladorDocente cd, ControladorEspacioFisico cef, ControladorNivelAsignatura cn
+    ) {
         Matricula matricula = new Matricula();
         String sql = " SELECT * FROM proyecto_final.matricula"
                 + "WHERE MATRICULA_ID  =" + " ' " + codigo + " ' ";
@@ -114,15 +114,58 @@ public class ControladorMatricula {
         return matricula;
     }
 
-    public List<Matricula> listarMatricula() {
+    public List<Matricula> listarMatricula(ControladorPeriodoLectivo cpl, ControladorModalidad cm,
+            ControladorEspecialidad ce, ControladorGrupo cg, ControladorEstudiante ces, ControladorAsignatura ca,
+            ControladorDocente cd, ControladorEspacioFisico cef, ControladorNivelAsignatura cn) {
         List<Matricula> listMatricula = new ArrayList<>();
+        Matricula matricula = new Matricula();
+        String sql = " SELECT * FROM proyecto_final.matricula";
+               
+        try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            ResultSet resultado = consulta.executeQuery();
+
+            while (resultado.next()) {
+
+                matricula.setCodigo(resultado.getInt("MATRICULA_ID".trim()));
+                int codigoPeridoLectivo = resultado.getInt("MATRICULA_PERIODO".trim());
+                matricula.setPeriodoLectivo(cpl.buscarPeriLect(codigoPeridoLectivo));
+                int codigoModalidad = resultado.getInt("MATRICULA_MODALIDAD".trim());
+                matricula.setModalidad(cm.buscarModalidad(codigoModalidad));
+                int codigoEspecialida = resultado.getInt("MATRICULA_ESPECIALIDAD".trim());
+                matricula.setEspecialidad(ce.buscarEspecialidad(codigoEspecialida));
+                int codigoGrupo = resultado.getInt("MATRICULA_GRUPO");
+                matricula.setGrupo(cg.buscarGrupo(codigoGrupo, ca, cd, cef, cn));
+                String codigoEst = resultado.getString("MATRICULA_ESTUDIANTE");
+                matricula.setEstudiante(ces.buscarEstudiante(codigoEst));
+                listMatricula.add(matricula);
+
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            c.desconectar();
+            return null;
+        }
+
         return listMatricula;
     }
 
     public String eliminarMatricula(int codigo) {
-        String matricula = "eliminar Mat";
+         String res = "";
+        String sql = "DELETE FROM MATRICULA"
+                + " WHERE MATRICULA_ID = " + "'" + codigo + "'";
+        try {
 
-        return matricula;
+            PreparedStatement ps = c.conectado().prepareStatement(sql);
+            ps.executeUpdate();
+            res = "ELIMINADA";
+        } catch (Exception ex) {
+            res = " ERROR ";
+            c.desconectar();
+        }
+
+        return res;
 
     }
 

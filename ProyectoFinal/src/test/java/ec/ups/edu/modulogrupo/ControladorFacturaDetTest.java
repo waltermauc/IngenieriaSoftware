@@ -5,8 +5,19 @@
  */
 package ec.ups.edu.modulogrupo;
 
+import ec.ups.edu.Controlador.ControladorAsignatura;
+import ec.ups.edu.Controlador.ControladorDocente;
+import ec.ups.edu.Controlador.ControladorEspacioFisico;
+import ec.ups.edu.Controlador.ControladorEspecialidad;
+import ec.ups.edu.Controlador.ControladorEstudiante;
 import ec.ups.edu.Controlador.ControladorFacturaDet;
+import ec.ups.edu.Controlador.ControladorGrupo;
+import ec.ups.edu.Controlador.ControladorMatricula;
+import ec.ups.edu.Controlador.ControladorModalidad;
+import ec.ups.edu.Controlador.ControladorNivelAsignatura;
+import ec.ups.edu.Controlador.ControladorPeriodoLectivo;
 import ec.ups.edu.Modelo.FacturaDet;
+import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -61,9 +72,10 @@ public class ControladorFacturaDetTest {
     public void testModificarFactDet() {
         System.out.println("modificarFactDet");
         int codigo = 0;
+        FacturaDet facturaDet = null;
         ControladorFacturaDet instance = new ControladorFacturaDet();
         String expResult = "modi Det";
-        String result = instance.modificarFactDet(codigo);
+        String result = instance.modificarFactDet(codigo,facturaDet);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
@@ -77,7 +89,17 @@ public class ControladorFacturaDetTest {
         System.out.println("listarFactDet");
         ControladorFacturaDet instance = new ControladorFacturaDet();
         String expResult = "listar Det";
-        String result = instance.listarFactDet();
+        ControladorPeriodoLectivo cpl = null;
+        ControladorModalidad cm = null;
+        ControladorEspecialidad ce = null;
+        ControladorGrupo cg = null;
+        ControladorEstudiante ces = null;
+        ControladorAsignatura ca = null;
+        ControladorDocente cd = null;
+        ControladorEspacioFisico cef = null;
+        ControladorNivelAsignatura cn = null;
+        ControladorMatricula cma = null;
+        List<FacturaDet> result = instance.listarFactDet(cma, cpl, cm, ce, cg, ces, ca, cd, cef, cn);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");

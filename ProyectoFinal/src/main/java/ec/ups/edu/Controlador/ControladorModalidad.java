@@ -27,7 +27,7 @@ public class ControladorModalidad {
     public String crearModalidadCarrera(Modalidad modalidad) {
         String res = "";
         try {
-            String sql = "INSERT INTO ASIGNATURA(MODALIDAD_ID, MODALIDAD_DESCRIPCION)VALUES (?,?)";
+            String sql = "INSERT INTO MODALIDAD(MODALIDAD_ID, MODALIDAD_DESCRIPCION)VALUES (?,?)";
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             consulta.setInt(1, modalidad.getCodigoModalidad());
             consulta.setString(2, modalidad.getDescripcionModalidad());

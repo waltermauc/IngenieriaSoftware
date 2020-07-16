@@ -20,8 +20,8 @@ public class ControladorAsignatura {
 
     private Conexion c;
 
-    public ControladorAsignatura() {
-        c = new Conexion();
+    public ControladorAsignatura(Conexion c) {
+         this.c = c;
 
     }
 

@@ -56,7 +56,7 @@ public class ControladorGrupo {
 
     }
 
-    public Grupo buscarGrupo() {
+    public Grupo buscarGrupo(int codigo) {
         Grupo grupo = new Grupo();
         return grupo;
 

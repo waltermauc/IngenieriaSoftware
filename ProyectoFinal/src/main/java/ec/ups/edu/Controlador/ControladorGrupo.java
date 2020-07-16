@@ -27,9 +27,6 @@ public class ControladorGrupo {
      }
 
     public  String crearGrupo(Grupo grupo,ControladorAsignatura controlAsig, ControladorDocente controlDocen, ControladorEspacioFisico controlEspacio, ControladorNivelAsignatura nivel){
-
-    public  String crearGrupo(Grupo grupo,ControladorAsignatura controlAsig){
-        String resultado = "";
          String res = "";
 
         try {
@@ -60,13 +57,44 @@ public class ControladorGrupo {
         }
             return "GRUPO CREADO";
     } 
-    public String crearGrupo(int codigoGrupo, String asignatura, int codigoEspacio, int codigoModalidad, String nombreDocente) {
-        String resultado = "";
+    public String buscarGrupo (Grupo grupo, int codigo){
+         String res = "";
+        String sql = "UPDATE GRUPO"
+                + " SET GRUPO_ID = " + " ' " + grupo.getCodigoGrupo()+ " ' " + ","
+                + "  GRUPO_ASIGNTURA =" + " ' " + grupo.getC()+ " ' " + ","
+                + "  GRUPO_ESPACIOFISICO =  " + " ' " + grupo.getCodigoEspacioFisico()+ " ' " + ","
+                + "  GRUPO_DOCENTE = " + " ' " + grupo.getDocenteCodigo()+ " ' "
+                + "WHERE GRUPO_ID =" + " ' " + codigo + " ' ";
+        try {
 
-        return resultado;
+            PreparedStatement ps;
+            ps = c.conectado().prepareStatement(sql);
+            ps.executeUpdate();
+            res = "ASIGNATURA EDITADA";
 
+        } catch (Exception ex) {
+            res = "ERROR ";
+            c.desconectar();
+        }
+        return res;
     }
 
+ public String eliminarGrupo(int codigo) {
+        String res = "";
+        String sql = "DELETE FROM GRUPO"
+                + " WHERE GRUPO_ID = " + "'" + codigo + "'";
+        try {
+
+            PreparedStatement ps = c.conectado().prepareStatement(sql);
+            ps.executeUpdate();
+            res = "GRUPO ELIMINADO";
+        } catch (Exception ex) {
+            res = " ERROR ";
+            c.desconectar();
+        }
+
+        return res;
+    }
     public Grupo buscarGrupo(int codigo) {
         Grupo grupo = new Grupo();
         return grupo;

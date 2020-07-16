@@ -60,7 +60,7 @@ public class ControladorMatricula {
                 + "MATRICULA_PERIODO = " + " ' " + matricula.getCodigo() + " ' " + ","
                 + "MATRICULA_MODALIDAD = " + " ' " + matricula.getCodigo() + " ' " + ","
                 + "MATRICULA_ESPECIALIDAD = " + " ' " + matricula.getCodigo() + " ' " + ","
-                + "MATRICULA_GRUPO = " + " ' " + matricula.getCodigo() + " ' " + ","
+                + "MATRICULA_GRUPO = " + " ' " + matricula.getCodigo()+ " ' " + ","
                 + "MATRICULA_ESTUDIANTE = " + " ' " + matricula.getCodigo() + " ' "
                 + "WHERE MATRICULA_ID =" + " ' " + codigo + " ' ";
         try {
@@ -100,7 +100,7 @@ public class ControladorMatricula {
                 int codigoGrupo = resultado.getInt("MATRICULA_GRUPO");
                 matricula.setGrupo(cg.buscarGrupo(codigoGrupo));
                 int codigoEst = resultado.getInt("MATRICULA_ESTUDIANTE");
-                matricula.setEstudiante(ces.buscarEsCodigo(codigoEst));
+                //matricula.setEstudiante(ces.buscarEstudiante());
 
             }
 
@@ -112,51 +112,15 @@ public class ControladorMatricula {
         return matricula;
     }
 
-    public List<Matricula> listarMatricula(ControladorPeriodoLectivo cpl, ControladorModalidad cm,
-            ControladorEspecialidad ce, ControladorGrupo cg, ControladorEstudiante ces) {
+    public List<Matricula> listarMatricula() {
         List<Matricula> listMatricula = new ArrayList<>();
-        String sql = "SELECT * FROM proyecto_final.matricula;";
-        Matricula matricula = new Matricula();
-        try {
-            PreparedStatement consulta = c.conectado().prepareStatement(sql);
-            ResultSet resultado = consulta.executeQuery();
-            while (resultado.next()) {
-
-                matricula.setCodigo(resultado.getInt("MATRICULA_ID".trim()));
-                int codigoPeridoLectivo = resultado.getInt("MATRICULA_PERIODO".trim());
-                matricula.setPeriodoLectivo(cpl.buscarPeriLect(codigoPeridoLectivo));
-                int codigoModalidad = resultado.getInt("MATRICULA_MODALIDAD".trim());
-                matricula.setModalidad(cm.buscarModalidad(codigoModalidad));
-                int codigoEspecialida = resultado.getInt("MATRICULA_ESPECIALIDAD".trim());
-                matricula.setEspecialidad(ce.buscarEspecialidad(codigoEspecialida));
-                int codigoGrupo = resultado.getInt("MATRICULA_GRUPO");
-                matricula.setGrupo(cg.buscarGrupo(codigoGrupo));
-                int codigoEst = resultado.getInt("MATRICULA_ESTUDIANTE");
-                matricula.setEstudiante(ces.buscarEsCodigo(codigoEst));
-                listMatricula.add(matricula);
-
-            }
-        } catch (Exception e) {
-            c.desconectar();
-            return null;
-        }
         return listMatricula;
     }
 
     public String eliminarMatricula(int codigo) {
-         String res = " ";
-        String sql = "DELETE FROM MATRICULA"
-                + " WHERE MATRICULA_ID= " + "'" + codigo + "'";
-        try {
+        String matricula = "eliminar Mat";
 
-            PreparedStatement ps = c.conectado().prepareStatement(sql);
-            ps.executeUpdate();
-        } catch (Exception ex) {
-            c.desconectar();
-            res = "ERROR";
-        }
-
-        return res;
+        return matricula;
 
     }
 

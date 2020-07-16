@@ -42,7 +42,7 @@ public class ControladorMatricula {
             consulta.setInt(2, matricula.getPeriodoLectivo().getCodigo());
             consulta.setInt(3, matricula.getModalidad().getCodigoModalidad());
             consulta.setInt(4, matricula.getEspecialidad().getCodigo());
-            consulta.setInt(5, matricula.getGrupo().getCodigo());
+            consulta.setInt(5, matricula.getGrupo().getCodigoGrupo());
             consulta.setString(6, matricula.getEstudiante().getCedula());
 
         } catch (Exception e) {

@@ -6,13 +6,12 @@
 package ec.ups.edu.Controlador;
 
 import ec.ups.edu.Modelo.NivelAsignatura;
-<<<<<<< HEAD
-=======
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
->>>>>>> 76738f035fcd9ef3f2499bbd8ee05747de2ba3bd
+
 
 /**
  *
@@ -110,8 +109,8 @@ public class ControladorNivelAsignatura {
 
     }
     
-    public String buscarAsignatura (int codigo){
-        
+    public NivelAsignatura buscarAsignatura (int codigo){
+         NivelAsignatura asignature = new NivelAsignatura();
         String sql = "SELECT NIVELASIGNATURA_ID,"
                 + " NIVELASIGNATURA_DESCRIPCION,"
                 + "FROM NIVELASIGNATURA"
@@ -121,7 +120,7 @@ public class ControladorNivelAsignatura {
             ResultSet resultado = consulta.executeQuery();
             while (resultado.next()) {
 
-                NivelAsignatura asignature = new NivelAsignatura();
+               
                 asignature.setCodigoNivelAsignatura(resultado.getInt("NIVELASIGNATURA_ID".trim()));
                 asignature.setDescripcionNivelAsignatura(resultado.getString("NIVELASIGNATURA_DESCRIPCION".trim()));
             }
@@ -130,10 +129,7 @@ public class ControladorNivelAsignatura {
             c.desconectar();
 
         }
-        return "";
+        return asignature;
     }
-       public NivelAsignatura buscar(int codigo){
-           NivelAsignatura nivelAsignatura = new NivelAsignatura();
-           return nivelAsignatura;
-       }
+       
 }

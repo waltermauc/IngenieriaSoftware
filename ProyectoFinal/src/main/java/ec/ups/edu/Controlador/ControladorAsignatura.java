@@ -25,7 +25,7 @@ public class ControladorAsignatura {
 
     }
 
-    public String crearAsignatura(Asignatura asignatura, NivelAsignatura nivelAsignatura) {
+    public String crearAsignatura(Asignatura asignatura) {
         String res = "";
         try {
             String sqlEst = "INSERT INTO ASIGNATURA"

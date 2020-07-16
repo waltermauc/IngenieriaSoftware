@@ -53,7 +53,7 @@ public class ControladorAsignatura {
                 + " SET ASIGNATURA_ID = " + " ' " + asignatura.getCodigoAsignatura() + " ' " + ","
                 + "  ASIGNATURA_DESCRIPCION =" + " ' " + asignatura.getDescripcion() + " ' " + ","
                 + "  COSTO_CREDITOS =  " + " ' " + asignatura.getCostoCreditos() + " ' " + ","
-                + "  ASIGNATURA_NIVELASIGNATURA = " + " ' " + asignatura.getCodigoNivelAsignatura() + " ' " + ","
+                + "  ASIGNATURA_NIVELASIGNATURA = " + " ' " + asignatura.getCodigoNivelAsignatura() + " ' " 
                 + "WHERE codigo =" + " ' " + codigo + " ' ";
         try {
 

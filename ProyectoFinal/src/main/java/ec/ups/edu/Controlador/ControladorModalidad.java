@@ -14,6 +14,7 @@ import java.util.List;
  * @author rayner
  */
 public class ControladorModalidad {
+
     private Conexion c;
 
     public ControladorModalidad() {
@@ -21,18 +22,38 @@ public class ControladorModalidad {
 
     }
 
-    public String crearModalidadCarrera (Modalidad modalidad){
-       
+    public String crearModalidadCarrera(Modalidad modalidad) {
+        String res = "";
+        try {
+            String sql = "INSERT INTO ASIGNATURA(MODALIDAD_ID, MODALIDAD_DESCRIPCION)VALUES (?,?)";
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            consultaEst.setInt(1, modalidad.getCodigoModalidad());
+            consultaEst.setString(2, modalidad.getDescripcionModalidad());
+            consultaEst.executeUpdate();
+            res = " MODALIDAD CREADA";
+
+        } catch (Exception e) {
+            res = "ERROR";
+            c.desconectar();
+        }
+        return res;
+
     }
-    public String editarModalidadCarrera (int codigo, Modalidad modalidad){
-       
-       
+
+    public String editarModalidadCarrera(int codigo, Modalidad modalidad) {
+        Strin sql 
+
     }
-    public String eliminarModalidadCarrera (int  codigo ){
-        
-        
+
+    public Modalidad buscar() {
+
     }
-    public List<Modalidad>listarModalidadCarrera (){
-        
+
+    public String eliminarModalidadCarrera(int codigo) {
+
+    }
+
+    public List<Modalidad> listarModalidadCarrera() {
+
     }
 }

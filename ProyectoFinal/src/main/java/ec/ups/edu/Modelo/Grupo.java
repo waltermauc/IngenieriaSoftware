@@ -16,7 +16,7 @@ public class Grupo {
     private List <Asignatura> Asignatura;
     private EspacioFisico codigoEspacioFisico;
     private Modalidad codigoModalidad;
-    private List <Persona> docente;
+    private List <Docente> docente;
 
     public int getCodigo() {
         return codigoGrupo;
@@ -50,11 +50,11 @@ public class Grupo {
         this.codigoModalidad = codigoModalidad;
     }
 
-    public List<Persona> getDocente() {
+    public List<Docente> getDocente() {
         return docente;
     }
 
-    public void setDocente(List<Persona> docente) {
+    public void setDocente(List<Docente> docente) {
         this.docente = docente;
     }
     

@@ -60,9 +60,11 @@ public class ControladorUsuarioTest {
     @Test
     public void testCambiarEstado() {
         System.out.println("cambiarEstado");
+        int codigo=0;
+        Usuario usuario= null;
         ControladorUsuario instance = new ControladorUsuario();
         String expResult = "estado";
-        String result = instance.cambiarEstado();
+        String result = instance.cambiarEstado(usuario,codigo);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Contabilidad.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;CitasMedicas&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">ec.edu.ups.modelo</a> &gt; <span class="el_source">Contabilidad.java</span></div><h1>Contabilidad.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package ec.edu.ups.modelo;
+
+import java.util.Date;
+
+/**
+ *
+ * @author hp
+ */
+public class Contabilidad {
+
+    private int codigoLibroD;
+    private Date fecha;
+    private double ingresos;
+    private double egresos;
+
+<span class="fc" id="L21">    public Contabilidad() {</span>
+<span class="fc" id="L22">    }</span>
+
+<span class="nc" id="L24">    public Contabilidad(int codigoLibroD, Date fecha, double ingresos, double egresos) {</span>
+<span class="nc" id="L25">        this.codigoLibroD = codigoLibroD;</span>
+<span class="nc" id="L26">        this.fecha = fecha;</span>
+<span class="nc" id="L27">        this.ingresos = ingresos;</span>
+<span class="nc" id="L28">        this.egresos = egresos;</span>
+<span class="nc" id="L29">    }</span>
+
+    public int getCodigoLibroD() {
+<span class="fc" id="L32">        return codigoLibroD;</span>
+    }
+
+    public void setCodigoLibroD(int codigoLibroD) {
+<span class="fc" id="L36">        this.codigoLibroD = codigoLibroD;</span>
+<span class="fc" id="L37">    }</span>
+
+    public Date getFecha() {
+<span class="fc" id="L40">        return fecha;</span>
+    }
+
+    public void setFecha(Date fecha) {
+<span class="fc" id="L44">        this.fecha = fecha;</span>
+<span class="fc" id="L45">    }</span>
+
+    public double getIngresos() {
+<span class="fc" id="L48">        return ingresos;</span>
+    }
+
+    public void setIngresos(double ingresos) {
+<span class="fc" id="L52">        this.ingresos = ingresos;</span>
+<span class="fc" id="L53">    }</span>
+
+    public double getEgresos() {
+<span class="fc" id="L56">        return egresos;</span>
+    }
+
+    public void setEgresos(double egresos) {
+<span class="fc" id="L60">        this.egresos = egresos;</span>
+<span class="fc" id="L61">    }</span>
+
+    public void calcularTotalIngresos() {
+<span class="fc" id="L64">    }</span>
+
+    public void calcularTotalEgresos() {
+<span class="fc" id="L67">    }</span>
+
+    public void generarReporte() {
+
+<span class="fc" id="L71">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

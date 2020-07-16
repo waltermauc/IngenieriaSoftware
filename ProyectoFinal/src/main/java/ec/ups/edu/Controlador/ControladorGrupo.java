@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package ec.ups.edu.Controlador;
-
 import ec.ups.edu.Modelo.Asignatura;
 import ec.ups.edu.Modelo.Docente;
 import ec.ups.edu.Modelo.EspacioFisico;
@@ -22,13 +21,15 @@ import java.sql.ResultSet;
  */
 public class ControladorGrupo {
 
-    
      private Conexion c ;
      public ControladorGrupo (Conexion c) {
          this.c =c;
      }
-     
+
     public  String crearGrupo(Grupo grupo,ControladorAsignatura controlAsig, ControladorDocente controlDocen, ControladorEspacioFisico controlEspacio, ControladorNivelAsignatura nivel){
+
+    public  String crearGrupo(Grupo grupo,ControladorAsignatura controlAsig){
+        String resultado = "";
          String res = "";
 
         try {
@@ -52,7 +53,6 @@ public class ControladorGrupo {
              grupo.setDocenteCodigo(docne);
              
                 consulta.executeUpdate();
-
          }
         } catch (Exception e) {
             res = "ERROR";

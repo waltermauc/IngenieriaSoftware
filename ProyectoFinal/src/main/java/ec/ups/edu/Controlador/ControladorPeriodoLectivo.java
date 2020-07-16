@@ -5,7 +5,6 @@
  */
 package ec.ups.edu.Controlador;
 
-
 import ec.ups.edu.Modelo.PeriodoLectivo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,17 +16,18 @@ import java.util.List;
  * @author DELL
  */
 public class ControladorPeriodoLectivo {
-    private Conexion c ;
-    public ControladorPeriodoLectivo(Conexion conexion){
+
+    private Conexion c;
+
+    public ControladorPeriodoLectivo(Conexion conexion) {
         this.c = conexion;
     }
 
     public ControladorPeriodoLectivo() {
     }
 
-   
     public String crearPeriLect(PeriodoLectivo pLectivo) {
-         String res = "";
+        String res = "";
         try {
             String sql = "INSERT INTO proyecto_final.periodolectivo(MODALIDAD_ID, MODALIDAD_DESCRIPCION)VALUES (?,?)";
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
@@ -45,7 +45,7 @@ public class ControladorPeriodoLectivo {
     }
 
     public String editarPeriLect(int codigo, PeriodoLectivo pLectivo) {
-          String res = "";
+        String res = "";
         String sql = "UPDATE proyecto_final.periodolectivo"
                 + " SET PERIODOLECTIVO_ID = " + " ' " + pLectivo.getCodigo() + " ' " + ","
                 + "  PERIODOLECTIVO_DESCRIPCION =" + " ' " + pLectivo.getDescripcion() + " ' "
@@ -67,25 +67,25 @@ public class ControladorPeriodoLectivo {
     }
 
     public PeriodoLectivo buscarPeriLect(int codigo) {
-         PeriodoLectivo modalidad = new PeriodoLectivo();
+        PeriodoLectivo pLectivo = new PeriodoLectivo();
         String sql = "SELECT * FROM proyecto_final.periodolectivo;";
         try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             ResultSet resultado = consulta.executeQuery();
             while (resultado.next()) {
-                modalidad.setCodigo(resultado.getInt("PERIODOLECTIVO_ID".trim()));
-                modalidad.setDescripcion(resultado.getString("PERIODOLECTIVO_DESCRIPCION".trim()));
+                pLectivo.setCodigo(resultado.getInt("PERIODOLECTIVO_ID".trim()));
+                pLectivo.setDescripcion(resultado.getString("PERIODOLECTIVO_DESCRIPCION".trim()));
             }
 
         } catch (Exception e) {
             c.desconectar();
             return null;
         }
-        return modalidad;
+        return pLectivo;
     }
 
-    public List<PeriodoLectivo> listar(){
-          List<PeriodoLectivo> listPeriodoLectivo = new ArrayList<>();
+    public List<PeriodoLectivo> listar() {
+        List<PeriodoLectivo> listPeriodoLectivo = new ArrayList<>();
         String sql = "SELECT * FROM proyecto_final.modalidad;";
         try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
@@ -102,6 +102,6 @@ public class ControladorPeriodoLectivo {
             return null;
         }
         return listPeriodoLectivo;
-        
+
     }
 }

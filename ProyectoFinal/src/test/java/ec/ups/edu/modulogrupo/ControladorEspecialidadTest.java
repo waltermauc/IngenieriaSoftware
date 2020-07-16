@@ -7,6 +7,7 @@ package ec.ups.edu.modulogrupo;
 
 import ec.ups.edu.Controlador.ControladorEspecialidad;
 import ec.ups.edu.Modelo.Especialidad;
+import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -61,9 +62,10 @@ public class ControladorEspecialidadTest {
     public void testModificarEspecialidad() {
         System.out.println("modificarEspecialidad");
         int codigo = 0;
+        Especialidad especialidad = null;
         ControladorEspecialidad instance = new ControladorEspecialidad();
         String expResult = "modifcar Esp";
-        String result = instance.modificarEspecialidad(codigo);
+        String result = instance.modificarEspecialidad(codigo,especialidad);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
        // fail("The test case is a prototype.");
@@ -77,7 +79,7 @@ public class ControladorEspecialidadTest {
         System.out.println("listarEspecialidad");
         ControladorEspecialidad instance = new ControladorEspecialidad();
         String expResult = "listar Esp";
-        String result = instance.listarEspecialidad();
+        List<Especialidad> result = instance.listarEspecialidad();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
@@ -86,16 +88,6 @@ public class ControladorEspecialidadTest {
     /**
      * Test of eliminarEspecialidad method, of class ControladorEspecialidad.
      */
-    @Test
-    public void testEliminarEspecialidad() {
-        System.out.println("eliminarEspecialidad");
-        int codigo = 0;
-        ControladorEspecialidad instance = new ControladorEspecialidad();
-        String expResult = "eliminar Esp";
-        String result = instance.eliminarEspecialidad(codigo);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
+    
     
 }

@@ -17,6 +17,9 @@ public class ControladorEspecialidad {
     public ControladorEspecialidad(Conexion c) {
         this.c = c;
     }
+
+    public ControladorEspecialidad() {
+    }
     
 
     public String crearEspecialidad(Especialidad especial) {

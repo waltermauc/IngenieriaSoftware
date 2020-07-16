@@ -80,8 +80,7 @@ public class ControladorEstudiante {
                 + "    `persona`.`PERSONA_CORREO`,"
                 + "    `persona`.`PERSONA_CELULAR`,"
                 + "    `persona`.`PERSONA_SEXO`,"
-                + "    `persona`.`PERSONA_FECHANACIMIENTO`,"
-                + "    `estudiante`.`ESTUDIANTE_INSCRIPCION` "
+                + "    `persona`.`PERSONA_FECHANACIMIENTO`"
                 + "FROM `proyecto_final`.`persona`,`proyecto_final`.`estudiante`"
                 + " WHERE `persona`.`PERSONA_ID`=`estudiante`.`ESTUDIANTE_PERSONA` AND `persona`.`PERSONA_ID`=" + "'" + codigo + "';";
         try {
@@ -103,7 +102,7 @@ public class ControladorEstudiante {
         } catch (Exception e) {
             c.desconectar();
             return null;
-            
+
         }
         return estudiante;
 
@@ -130,7 +129,7 @@ public class ControladorEstudiante {
             res = "ESTUDIANTE ACTUALIZADO";
 
         } catch (Exception ex) {
-            
+
             c.desconectar();
             res = "ERROR";
         }
@@ -150,7 +149,7 @@ public class ControladorEstudiante {
             c.desconectar();
             res = "ERROR";
         }
-        
+
         return res;
     }
 
@@ -188,10 +187,32 @@ public class ControladorEstudiante {
         } catch (Exception e) {
             c.desconectar();
             return null;
-            
+
         }
 
         return estudianteList;
+
+    }
+
+    public Estudiante buscarEsCodigo(int codigo) {
+        Estudiante estudiante = new Estudiante();
+        String sql = "SELECT * FROM ESTUDIANTE "
+                + "WHERE ESTUDIANTE_ID  =" + " ' " + codigo + " ' ";
+        try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            ResultSet resultado = consulta.executeQuery();
+            while (resultado.next()) {
+                estudiante.setCodigo(resultado.getInt("ESTUDIANTE_ID".trim()));
+                estudiante.setInscripcion(resultado.getDate("ESTUDIANTE_INSCRIPCION".trim()));
+                String cedula = resultado.getString("ESTUDIANTE_PERSONA".trim());
+                estudiante.setPersona(buscarEstudiante(cedula));
+            }
+        } catch (Exception e) {
+            c.desconectar();
+            return null;
+        }
+
+        return estudiante;
 
     }
 

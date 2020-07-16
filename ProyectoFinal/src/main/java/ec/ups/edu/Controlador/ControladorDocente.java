@@ -6,6 +6,7 @@
 package ec.ups.edu.Controlador;
 
 import ec.ups.edu.Modelo.Docente;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -108,8 +109,7 @@ public class ControladorDocente {
                 + "    `persona`.`PERSONA_CORREO`,"
                 + "    `persona`.`PERSONA_CELULAR`,"
                 + "    `persona`.`PERSONA_SEXO`,"
-                + "    `persona`.`PERSONA_FECHANACIMIENTO`,"
-                + "    `dccente`.`DOCENTE_TITULO` "
+                + "    `persona`.`PERSONA_FECHANACIMIENTO`"
                 + "FROM `proyecto_final`.`persona`,`proyecto_final`.`dccente`"
                 + " WHERE `persona`.`PERSONA_ID`=`docente`.`DOCENTE_PERSONA` AND `persona`.`PERSONA_ID`=" + "'" + codigo + "';";
         try {
@@ -200,7 +200,28 @@ public class ControladorDocente {
         }
         return res;
     }
+    public Docente buscarEsCodigo(int codigo) {
+        Docente docente = new Docente();
+        String sql = "SELECT * FROM ESTUDIANTE "
+                + "WHERE DOCENTE_ID  =" + " ' " + codigo + " ' ";
+        try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            ResultSet resultado = consulta.executeQuery();
+            while (resultado.next()) {
+                docente.setCodigo(resultado.getInt("DOCENTE_ID".trim()));
+                docente.setTitulo(resultado.getString("DOCENTE_TITULO".trim()));
+                String cedula = resultado.getString("DOCENTE_PERSONA".trim());
+                docente.setPersona(buscarDocente(cedula));
+            }
+        } catch (Exception e) {
+            c.desconectar();
+            return null;
+        }
 
+        return docente;
+
+    }
+    
     public int obtenerCodigo() {
         int n = 0;
         String sql = "select max(ESTUDIANTE_ID) as Codigo from ESTUDIANTE";

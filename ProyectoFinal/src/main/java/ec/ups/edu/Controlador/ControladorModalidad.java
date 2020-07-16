@@ -66,8 +66,13 @@ public class ControladorModalidad {
 
     public Modalidad buscarModalidad(int codigo) {
         Modalidad modalidad = new Modalidad();
+<<<<<<< HEAD
         String sql = "SELECT * FROM proyecto_final.modalidad"
                 + "WHERE MODALIDAD_ID =" + " ' " + codigo + " ' ";
+=======
+        String sql = "SELECT MODALIDAD_ID, MODALIDAD_DESCRIPCION FROM proyecto_final.modalidad "
+                + "where MODALIDAD_ID = " + "'" + codigo + "'";
+>>>>>>> 76738f035fcd9ef3f2499bbd8ee05747de2ba3bd
         try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             ResultSet resultado = consulta.executeQuery();

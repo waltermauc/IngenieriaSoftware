@@ -5,11 +5,15 @@
  */
 package ec.ups.edu.modulogrupo;
 
+import ec.ups.edu.Controlador.ControladorAsignatura;
+import ec.ups.edu.Controlador.ControladorDocente;
+import ec.ups.edu.Controlador.ControladorEspacioFisico;
 import ec.ups.edu.Controlador.ControladorEspecialidad;
 import ec.ups.edu.Controlador.ControladorEstudiante;
 import ec.ups.edu.Controlador.ControladorGrupo;
 import ec.ups.edu.Controlador.ControladorMatricula;
 import ec.ups.edu.Controlador.ControladorModalidad;
+import ec.ups.edu.Controlador.ControladorNivelAsignatura;
 import ec.ups.edu.Controlador.ControladorPeriodoLectivo;
 import ec.ups.edu.Modelo.Matricula;
 import java.util.List;
@@ -88,8 +92,12 @@ public class ControladorMatriculaTest {
         ControladorEspecialidad ce = null;
         ControladorGrupo cg = null;
         ControladorEstudiante ces = null;
+        ControladorAsignatura ca = null;
+        ControladorDocente cd = null;
+        ControladorEspacioFisico cef = null;
+        ControladorNivelAsignatura cn = null;
         String expResult = "listar Mat";
-        List<Matricula> result = instance.listarMatricula();
+        List<Matricula> result = instance.listarMatricula(cpl, cm, ce, cg, ces, ca, cd, cef, cn);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");

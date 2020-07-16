@@ -139,7 +139,9 @@ public class ControladorAsignatura {
                 asignature.setCodigoAsignatura(resultado.getInt("ASIGNATURA_ID".trim()));
                 asignature.setDescripcion(resultado.getString("ASIGNATURA_DESCRIPCION".trim()));
                 asignature.setCostoCreditos(resultado.getInt("COSTO_CREDITOS".trim()));
+                asignature.setCodigoAsignatura((int) resultado.getObject("ASIGNATURA_NIVELASIGNATURA".trim()));
             }
+            
 
         } catch (Exception ex) {
             ex.printStackTrace();

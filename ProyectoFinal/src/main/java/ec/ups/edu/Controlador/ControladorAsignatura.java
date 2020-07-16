@@ -30,7 +30,7 @@ public class ControladorAsignatura {
         try {
             String sqlEst = "INSERT INTO ASIGNATURA"
                     + "(ASIGNATURA_ID, ASIGNATURA_DESCRIPCION, COSTO_CREDITOS, ASIGNATURA_NIVELASIGNATURA) "
-                    + "VALUES (?,?,?),?";
+                    + "VALUES (?,?,?,?)";
             PreparedStatement consultaEst = c.conectado().prepareStatement(sqlEst);
             consultaEst.setInt(1, asignatura.getCodigoAsignatura());
             consultaEst.setString(2, asignatura.getDescripcion());

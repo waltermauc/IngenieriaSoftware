@@ -12,22 +12,24 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  *
  * @author rayner
  */
 public class ControladorNivelAsignatura {
-     
-        private Conexion c;
 
-    public ControladorNivelAsignatura(Conexion c){
+    private Conexion c;
+
+    public ControladorNivelAsignatura(Conexion c) {
         this.c = c;
     }
-       
-    public String crearNivelAsignatura (NivelAsignatura nivelAsignatura){
-       
-          String res = "";
+
+    public ControladorNivelAsignatura() {
+    }
+
+    public String crearNivelAsignatura(NivelAsignatura nivelAsignatura) {
+
+        String res = "";
         try {
             String sqlEst = "INSERT INTO NIVELASIGNATURA"
                     + "(NIVELASIGNATURA_ID, NIVELASIGNATURA_DESCRIPCION) "
@@ -35,22 +37,23 @@ public class ControladorNivelAsignatura {
             PreparedStatement consultaEst = c.conectado().prepareStatement(sqlEst);
             consultaEst.setInt(1, nivelAsignatura.getCodigoNivelAsignatura());
             consultaEst.setString(2, nivelAsignatura.getDescripcionNivelAsignatura());
-           
+
             consultaEst.executeUpdate();
             res = "NIVEL ASIGNATURA CREADA";
 
         } catch (Exception e) {
             res = "ERROR";
             c.desconectar();
-    }
-        
+        }
+
         return "";
     }
-     public String editarNivelAsignatura (NivelAsignatura nivelAsignature,int codigo){
+
+    public String editarNivelAsignatura(NivelAsignatura nivelAsignature, int codigo) {
         String res = "";
         String sql = "UPDATE NIVELASIGNATURA"
-                + " SET NIVELASIGNATURA_ID = " + " ' " + nivelAsignature.getCodigoNivelAsignatura()+ " ' " + ","
-                + "  NIVELASIGNATURA_DESCRIPCION =" + " ' " + nivelAsignature.getDescripcionNivelAsignatura()+ " ' " + ","
+                + " SET NIVELASIGNATURA_ID = " + " ' " + nivelAsignature.getCodigoNivelAsignatura() + " ' " + ","
+                + "  NIVELASIGNATURA_DESCRIPCION =" + " ' " + nivelAsignature.getDescripcionNivelAsignatura() + " ' " + ","
                 + "WHERE NIVELASIGNATURA_ID =" + " ' " + codigo + " ' ";
         try {
 
@@ -66,9 +69,8 @@ public class ControladorNivelAsignatura {
 
         return res;
     }
-     
-     
-      public String eliminarAsignatura(int codigo) {
+
+    public String eliminarAsignatura(int codigo) {
         String res = "";
         String sql = "DELETE FROM NIVELASIGNATURA"
                 + " WHERE NIVELASIGNATURA_ID = " + "'" + codigo + "'";
@@ -108,19 +110,18 @@ public class ControladorNivelAsignatura {
         return asignaturaList;
 
     }
-    
-    public NivelAsignatura buscarAsignatura (int codigo){
-         NivelAsignatura asignature = new NivelAsignatura();
+
+    public NivelAsignatura buscarAsignatura(int codigo) {
+        NivelAsignatura asignature = new NivelAsignatura();
         String sql = "SELECT NIVELASIGNATURA_ID,"
                 + " NIVELASIGNATURA_DESCRIPCION,"
                 + "FROM NIVELASIGNATURA"
                 + "WHERE NIVELASIGNATURA_ID = " + "'" + codigo + "'";
-         try {
+        try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             ResultSet resultado = consulta.executeQuery();
             while (resultado.next()) {
 
-               
                 asignature.setCodigoNivelAsignatura(resultado.getInt("NIVELASIGNATURA_ID".trim()));
                 asignature.setDescripcionNivelAsignatura(resultado.getString("NIVELASIGNATURA_DESCRIPCION".trim()));
             }
@@ -131,5 +132,5 @@ public class ControladorNivelAsignatura {
         }
         return asignature;
     }
-       
+
 }

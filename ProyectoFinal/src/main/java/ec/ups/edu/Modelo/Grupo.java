@@ -12,12 +12,19 @@ import java.util.List;
  * @author rayner
  */
 public class Grupo {
+
     private int codigoGrupo;
     private Asignatura asignaturaCodigo;
     private EspacioFisico codigoEspacioFisico;
     private Docente docenteCodigo;
 
+    public Asignatura getAsignaturaCodigo() {
+        return asignaturaCodigo;
+    }
 
+    public void setAsignaturaCodigo(Asignatura asignaturaCodigo) {
+        this.asignaturaCodigo = asignaturaCodigo;
+    }
 
     public EspacioFisico getCodigoEspacioFisico() {
         return codigoEspacioFisico;
@@ -51,8 +58,4 @@ public class Grupo {
         this.docenteCodigo = docenteCodigo;
     }
 
-   
-    
-    
-    
 }

@@ -19,8 +19,12 @@ public class ControladorModalidad {
 
     private Conexion c;
 
+    public ControladorModalidad(Conexion c) {
+        this.c = c;
+
+    }
+
     public ControladorModalidad() {
-        c = new Conexion();
 
     }
 

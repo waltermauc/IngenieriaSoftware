@@ -21,8 +21,12 @@ public class ControladorUsuario {
 
     private Conexion c;
 
+    public ControladorUsuario(Conexion c) {
+        this.c = c;
+
+    }
+
     public ControladorUsuario() {
-        c = new Conexion();
 
     }
 
@@ -56,7 +60,7 @@ public class ControladorUsuario {
     public String cambiarEstado(Usuario usaurio, int codigo) {
         String res = " ";
         String sql = "UPDATE USUARIO"
-                + " SET `usuario`.`USUARIO_ESTADO` = " + usaurio.getEstado() + " ' " 
+                + " SET `usuario`.`USUARIO_ESTADO` = " + usaurio.getEstado() + " ' "
                 + "WHERE USUARIO_ID  =" + " ' " + codigo + " ' ";
         try {
 

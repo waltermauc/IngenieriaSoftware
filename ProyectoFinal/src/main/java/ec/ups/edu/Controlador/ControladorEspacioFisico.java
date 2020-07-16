@@ -20,6 +20,10 @@ public class ControladorEspacioFisico {
     public ControladorEspacioFisico(Conexion c){
         this.c = c;
     }
+
+    public ControladorEspacioFisico() {
+    }
+    
     public String crearEspacioFisico (EspacioFisico espacio){
         String res = "";
         try {

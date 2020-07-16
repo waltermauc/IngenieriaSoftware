@@ -89,7 +89,7 @@ public class ControladorMatriculaTest {
         ControladorGrupo cg = null;
         ControladorEstudiante ces = null;
         String expResult = "listar Mat";
-        List<Matricula> result = instance.listarMatricula(cpl, cm, ce, cg, ces);
+        List<Matricula> result = instance.listarMatricula();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");

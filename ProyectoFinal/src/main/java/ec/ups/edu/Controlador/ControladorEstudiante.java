@@ -194,27 +194,7 @@ public class ControladorEstudiante {
 
     }
 
-    public Estudiante buscarEsCodigo(int codigo) {
-        Estudiante estudiante = new Estudiante();
-        String sql = "SELECT * FROM ESTUDIANTE "
-                + "WHERE ESTUDIANTE_ID  =" + " ' " + codigo + " ' ";
-        try {
-            PreparedStatement consulta = c.conectado().prepareStatement(sql);
-            ResultSet resultado = consulta.executeQuery();
-            while (resultado.next()) {
-                estudiante.setCodigo(resultado.getInt("ESTUDIANTE_ID".trim()));
-                estudiante.setInscripcion(resultado.getDate("ESTUDIANTE_INSCRIPCION".trim()));
-                String cedula = resultado.getString("ESTUDIANTE_PERSONA".trim());
-                estudiante.setPersona(buscarEstudiante(cedula));
-            }
-        } catch (Exception e) {
-            c.desconectar();
-            return null;
-        }
-
-        return estudiante;
-
-    }
+    
 
     public String realizarMatricula() {
         return "Matricula Realizada";

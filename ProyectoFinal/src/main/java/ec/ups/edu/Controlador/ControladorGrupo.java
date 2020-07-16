@@ -12,8 +12,6 @@ import ec.ups.edu.Modelo.Grupo;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
-
-import ec.ups.edu.Modelo.Grupo;
 import java.sql.ResultSet;
 
 /**
@@ -28,18 +26,38 @@ public class ControladorGrupo {
         this.c = c;
     }
 
-    public String crearGrupo(Grupo grupo, ControladorAsignatura controlAsig, ControladorDocente controlDocen, ControladorEspacioFisico controlEspacio, ControladorNivelAsignatura nivel) {
+    public ControladorGrupo() {
+    }
+
+    public String crearGrupo(Grupo grupo) {
         String res = "";
-
+        String sql = "INSERT INTO GRUPO"
+                + "(GRUPO_ID, GRUPO_ASIGNTURA, GRUPO_ESPACIOFISICO, GRUPO_DOCENTE) "
+                + "VALUES (?,?,?,?)";
         try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            consulta.setInt(1, grupo.getCodigoGrupo());
+            consulta.setInt(2, grupo.getAsignaturaCodigo().getCodigoAsignatura());
+            consulta.setInt(3, grupo.getCodigoEspacioFisico().getCodigoEspacioFisico());
+            consulta.setString(4, grupo.getDocenteCodigo().getCedula());
+            
+        } catch (Exception e) {
 
-            String sqlEst = "INSERT INTO GRUPO"
-                    + "(GRUPO_ID, GRUPO_ASIGNTURA, GRUPO_ESPACIOFISICO, GRUPO_DOCENTE) "
-                    + "VALUES (?,?,?,?)";
-            PreparedStatement consulta = c.conectado().prepareStatement(sqlEst);
+        }
+        return res;
+    }
+
+    public Grupo buscarGrupo(int codigo, ControladorAsignatura controlAsig, ControladorDocente controlDocen, ControladorEspacioFisico controlEspacio, ControladorNivelAsignatura nivel) {
+        String res = "";
+        Grupo grupo = new Grupo();
+        try {
+            String sql = "SELECT * FROM GRUPO "
+                    + "WHERE GRUPO_ID = " + "'" + codigo + "'";
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
             ResultSet resultado = consulta.executeQuery();
 
             while (resultado.next()) {
+
                 grupo.setCodigoGrupo(resultado.getInt("GRUPO_ID".trim()));
                 int codigoAsignatura = resultado.getInt("GRUPO_ASIGNTURA".trim());
                 Asignatura asig = controlAsig.buscarAsignatura(codigoAsignatura, nivel);
@@ -47,20 +65,19 @@ public class ControladorGrupo {
                 int codigoEspacio = resultado.getInt("GRUPO_ESPACIOFISICO".trim());
                 EspacioFisico esp = controlEspacio.buscaEspacioFisico(codigoEspacio);
                 grupo.setCodigoEspacioFisico(esp);
-                int codigoDoccente = resultado.getInt("GRUPO_DOCENTE".trim());
-                Docente docne = controlDocen.buscarEsCodigo(codigoEspacio);
+                String codigoDoccente = resultado.getString("GRUPO_DOCENTE".trim());
+                Docente docne = controlDocen.buscarDocente(codigoDoccente);
                 grupo.setDocenteCodigo(docne);
 
-                consulta.executeUpdate();
             }
         } catch (Exception e) {
-            res = "ERROR";
             c.desconectar();
+            return null;
         }
-        return "GRUPO CREADO";
+        return grupo;
     }
 
-    public String buscarGrupo(Grupo grupo, int codigo) {
+    public String actualizarGrupo(Grupo grupo, int codigo) {
         String res = "";
         String sql = "UPDATE GRUPO"
                 + " SET GRUPO_ID = " + " ' " + grupo.getCodigoGrupo() + " ' " + ","
@@ -119,8 +136,8 @@ public class ControladorGrupo {
                 int codigoEspacio = resultado.getInt("GRUPO_ESPACIOFISICO".trim());
                 EspacioFisico esp = controlEspacio.buscaEspacioFisico(codigoEspacio);
                 grupo.setCodigoEspacioFisico(esp);
-                int codigoDoccente = resultado.getInt("GRUPO_DOCENTE".trim());
-                Docente docne = controlDocen.buscarEsCodigo(codigoEspacio);
+                String codigoDoccente = resultado.getString("GRUPO_DOCENTE".trim());
+                Docente docne = controlDocen.buscarDocente(codigoDoccente);
                 grupo.setDocenteCodigo(docne);
 
                 grupoList.add(grupo);
@@ -131,12 +148,6 @@ public class ControladorGrupo {
 
         }
         return grupoList;
-    }
-
-    public Grupo buscarGrupo(int codigo) {
-        Grupo grupo = new Grupo();
-        return grupo;
-
     }
 
 }

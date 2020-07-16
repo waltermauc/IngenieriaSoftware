@@ -11,6 +11,8 @@ import ec.ups.edu.Controlador.ControladorModalidad;
 import ec.ups.edu.Controlador.ControladorAsignatura;
 import ec.ups.edu.Controlador.ControladorNivelAsignatura;
 import ec.ups.edu.Modelo.Asignatura;
+import ec.ups.edu.Modelo.EspacioFisico;
+import ec.ups.edu.Modelo.Grupo;
 import ec.ups.edu.Modelo.Modalidad;
 import ec.ups.edu.Modelo.NivelAsignatura;
 import java.util.List;
@@ -47,7 +49,7 @@ public class programaMetodosTest {
     }
 
     /**
-     * Test of crearGrupo method, of class programaMetodos.
+     * Test of buscarGrupo method, of class programaMetodos.
      */
     @Test
     public void testCrearGrupo() {
@@ -57,9 +59,10 @@ public class programaMetodosTest {
         int codigoEspacio = 1;
         int codigoModalidad = 1;
         String nombreDocente = "Juan";
+        Grupo grupo= null;
         ControladorGrupo instance = new ControladorGrupo();
         String expResult = "Nombre ingresado correctamente";
-        String result = instance.crearGrupo(codigoGrupo, asignatura, codigoEspacio, codigoModalidad, nombreDocente);
+        String result = instance.crearGrupo(grupo);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         if (!result.equals(expResult)){
@@ -151,9 +154,10 @@ public class programaMetodosTest {
         System.out.println("crearNivelAsignatura");
         int codigoNivelAsignatura = 10;
         String descripcionNivelAsignatura = "quinto ciclo";
+        NivelAsignatura nivelAsignatura = null;
         ControladorNivelAsignatura instance = new ControladorNivelAsignatura();
         String expResult = "Creado correctamnete";
-        String result = instance.crearNivelAsignatura(codigoNivelAsignatura, descripcionNivelAsignatura);
+        String result = instance.crearNivelAsignatura(nivelAsignatura);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
          if (!result.equals(expResult)){
@@ -170,8 +174,10 @@ public class programaMetodosTest {
         System.out.println("editarNivelAsignatura");
         String descripcionNivelAsignatura = "quinto";
         ControladorNivelAsignatura instance = new ControladorNivelAsignatura();
+        int codigo=0;
+        NivelAsignatura nivelAsignatura= null;
         String expResult = "Descripcion del nivel de asignatura creada correctamente";
-        String result = instance.editarNivelAsignatura(descripcionNivelAsignatura);
+        String result = instance.editarNivelAsignatura(nivelAsignatura, codigo);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         if (!result.equals(expResult)){
@@ -189,7 +195,7 @@ public class programaMetodosTest {
         int codigoNivelAsignatura = 10;
         ControladorNivelAsignatura instance = new ControladorNivelAsignatura();
         String expResult = "codigo del nivel eliminado correctamnete";
-        String result = instance.EliminarNivelAsignatura(codigoNivelAsignatura);
+        String result = instance.eliminarAsignatura(codigoNivelAsignatura);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
          if (!result.equals(expResult)){
@@ -207,7 +213,7 @@ public class programaMetodosTest {
         int codigoNivelAsignatura = 10;
         ControladorNivelAsignatura instance = new ControladorNivelAsignatura();
         String expResult = "mostrar datos del nivel de las asignatura";
-        String result = instance.listarNivelAsignatura(codigoNivelAsignatura);
+        List<NivelAsignatura> result = instance.listarAsignatura();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
          if (!result.equals(expResult)){
@@ -299,9 +305,10 @@ public class programaMetodosTest {
         int codigoEspacio = 21;
         int numeroAula = 3;
         String edificioEspacioFisico = "Manuel Peralta";
+        EspacioFisico espacioFisico = null;
         ControladorEspacioFisico instance = new ControladorEspacioFisico();
         String expResult = "espacio fisico creado";
-        String result = instance.crearEspacioFisico(codigoEspacio, numeroAula, edificioEspacioFisico);
+        String result = instance.crearEspacioFisico(espacioFisico);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
          if (!result.equals(expResult)){
@@ -318,9 +325,10 @@ public class programaMetodosTest {
         System.out.println("editarEspacioFisico");
         int numeroAula = 4;
         String edificiEspacioFisico = "Leon Gonzales";
+        EspacioFisico espacioFisico = null;
         ControladorEspacioFisico instance = new ControladorEspacioFisico();
         String expResult = "Edificio cambiado correctamente";
-        String result = instance.editarEspacioFisico(numeroAula, edificiEspacioFisico);
+        String result = instance.editarEspacioFisico(espacioFisico,numeroAula);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
          if (!result.equals(expResult)){
@@ -356,7 +364,7 @@ public class programaMetodosTest {
         int codigoEspacio = 4;
         ControladorEspacioFisico instance = new ControladorEspacioFisico();
         String expResult = "Mostrar datos espacio fisico";
-        String result = instance.listarEspacioFisico(codigoEspacio);
+        List<EspacioFisico> result = instance.listarEspacioFisico();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
          if (!result.equals(expResult)){

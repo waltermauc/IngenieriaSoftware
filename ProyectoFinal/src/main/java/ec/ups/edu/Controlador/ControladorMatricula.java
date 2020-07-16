@@ -57,11 +57,11 @@ public class ControladorMatricula {
         String res = "";
         String sql = "UPDATE `proyecto_final`.`matricula`"
                 + " SET MATRICULA_ID = " + " ' " + matricula.getCodigo() + " ' " + ","
-                + "MATRICULA_PERIODO = " + " ' " + matricula.getCodigo() + " ' " + ","
-                + "MATRICULA_MODALIDAD = " + " ' " + matricula.getCodigo() + " ' " + ","
-                + "MATRICULA_ESPECIALIDAD = " + " ' " + matricula.getCodigo() + " ' " + ","
-                + "MATRICULA_GRUPO = " + " ' " + matricula.getCodigo()+ " ' " + ","
-                + "MATRICULA_ESTUDIANTE = " + " ' " + matricula.getCodigo() + " ' "
+                + "MATRICULA_PERIODO = " + " ' " + matricula.getPeriodoLectivo().getCodigo() + " ' " + ","
+                + "MATRICULA_MODALIDAD = " + " ' " + matricula.getModalidad().getCodigoModalidad() + " ' " + ","
+                + "MATRICULA_ESPECIALIDAD = " + " ' " + matricula.getEspecialidad().getCodigo() + " ' " + ","
+                + "MATRICULA_GRUPO = " + " ' " + matricula.getGrupo().getCodigoGrupo() + " ' " + ","
+                + "MATRICULA_ESTUDIANTE = " + " ' " + matricula.getEstudiante().getCedula() + " ' "
                 + "WHERE MATRICULA_ID =" + " ' " + codigo + " ' ";
         try {
 
@@ -80,7 +80,9 @@ public class ControladorMatricula {
     }
 
     public Matricula buscarMatricula(int codigo, ControladorPeriodoLectivo cpl, ControladorModalidad cm,
-            ControladorEspecialidad ce, ControladorGrupo cg, ControladorEstudiante ces) {
+                                     ControladorEspecialidad ce, ControladorGrupo cg, ControladorEstudiante ces, ControladorAsignatura ca,
+                                     ControladorDocente cd, ControladorEspacioFisico cef, ControladorNivelAsignatura cn
+     ) {
         Matricula matricula = new Matricula();
         String sql = " SELECT * FROM proyecto_final.matricula"
                 + "WHERE MATRICULA_ID  =" + " ' " + codigo + " ' ";
@@ -98,9 +100,9 @@ public class ControladorMatricula {
                 int codigoEspecialida = resultado.getInt("MATRICULA_ESPECIALIDAD".trim());
                 matricula.setEspecialidad(ce.buscarEspecialidad(codigoEspecialida));
                 int codigoGrupo = resultado.getInt("MATRICULA_GRUPO");
-                matricula.setGrupo(cg.buscarGrupo(codigoGrupo));
-                int codigoEst = resultado.getInt("MATRICULA_ESTUDIANTE");
-                //matricula.setEstudiante(ces.buscarEstudiante());
+                matricula.setGrupo(cg.buscarGrupo(codigoGrupo, ca, cd, cef, cn));
+                String codigoEst = resultado.getString("MATRICULA_ESTUDIANTE");
+                matricula.setEstudiante(ces.buscarEstudiante(codigoEst));
 
             }
 

@@ -5,66 +5,128 @@
  */
 package ec.ups.edu.Controlador;
 
+import ec.ups.edu.Modelo.NivelAsignatura;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author rayner
  */
 public class ControladorNivelAsignatura {
-    int []numeros = {1,2,3,4,5,6,7,8,9,0};
-    String [] letras = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
-        
+     
+        private Conexion c;
+
+    public ControladorNivelAsignatura(Conexion c){
+        this.c = c;
+    }
        
-    public String crearNivelAsignatura (int codigoNivelAsignatura, String descripcionNivelAsignatura){
-        String resultadoCrearNivel = "";
-        if(numeros.equals(codigoNivelAsignatura))
-        {
-            resultadoCrearNivel = "Creado correctamnete";
-            
-        }else if (letras.equals(codigoNivelAsignatura)){
-            resultadoCrearNivel = "Solo numeros";
-        }
-        else if (descripcionNivelAsignatura.equals(letras)){
-            resultadoCrearNivel = "Creado correctamnete";
-        }
-        else if (numeros.equals(descripcionNivelAsignatura)){
-            resultadoCrearNivel = "Ingrese en letras  la descripcion del nivel de la asignatura";
-        }
-        return resultadoCrearNivel;
-    }
-     public String editarNivelAsignatura (String descripcionNivelAsignatura){
-        String resultadEditarNivel = "";
-        
-        if (descripcionNivelAsignatura.equals("quinto ciclo")){
-            resultadEditarNivel = "Ingrese una nueva descripcion de la asignatura ";
-        }
-        else  {
-            resultadEditarNivel = "Descripcion del nivel de asignatura creada correctamente";
-        }
-        return resultadEditarNivel;
-    }
-      public String EliminarNivelAsignatura (int codigoNivelAsignatura){
-        String resultadoEliminarNivel = "";
-        if(codigoNivelAsignatura ==10)
-        {
-            resultadoEliminarNivel = "codigo del nivel eliminado correctamnete";
-            
-        }else  {
-            resultadoEliminarNivel = "Solo numeros";
-        }
-      
+    public String crearNivelAsignatura (NivelAsignatura nivelAsignatura){
        
-        return resultadoEliminarNivel;
+          String res = "";
+        try {
+            String sqlEst = "INSERT INTO NIVELASIGNATURA"
+                    + "(NIVELASIGNATURA_ID, NIVELASIGNATURA_DESCRIPCION) "
+                    + "VALUES (?,?)";
+            PreparedStatement consultaEst = c.conectado().prepareStatement(sqlEst);
+            consultaEst.setInt(1, nivelAsignatura.getCodigoNivelAsignatura());
+            consultaEst.setString(2, nivelAsignatura.getDescripcionNivelAsignatura());
+           
+            consultaEst.executeUpdate();
+            res = "NIVEL ASIGNATURA CREADA";
+
+        } catch (Exception e) {
+            res = "ERROR";
+            c.desconectar();
     }
-       public String listarNivelAsignatura (int codigoNivelAsignatura){
-        String resultadolistarNivel = "";
-        if(codigoNivelAsignatura==10)
-        {
-            resultadolistarNivel = "mostrar datos del nivel de las asignatura";
-            
-        }else {
-            resultadolistarNivel = "Solo numeros";
-        }
         
-        return resultadolistarNivel;
+        return "";
+    }
+     public String editarNivelAsignatura (NivelAsignatura nivelAsignature,int codigo){
+        String res = "";
+        String sql = "UPDATE NIVELASIGNATURA"
+                + " SET NIVELASIGNATURA_ID = " + " ' " + nivelAsignature.getCodigoNivelAsignatura()+ " ' " + ","
+                + "  NIVELASIGNATURA_DESCRIPCION =" + " ' " + nivelAsignature.getDescripcionNivelAsignatura()+ " ' " + ","
+                + "WHERE NIVELASIGNATURA_ID =" + " ' " + codigo + " ' ";
+        try {
+
+            PreparedStatement ps;
+            ps = c.conectado().prepareStatement(sql);
+            ps.executeUpdate();
+            res = "NIVEL ASIGNATURA EDITADA";
+
+        } catch (Exception ex) {
+            res = "ERROR ";
+            c.desconectar();
+        }
+
+        return res;
+    }
+     
+     
+      public String eliminarAsignatura(int codigo) {
+        String res = "";
+        String sql = "DELETE FROM NIVELASIGNATURA"
+                + " WHERE NIVELASIGNATURA_ID = " + "'" + codigo + "'";
+        try {
+
+            PreparedStatement ps = c.conectado().prepareStatement(sql);
+            ps.executeUpdate();
+            res = "NIVEL ASIGNATURA ELIMINADA";
+        } catch (Exception ex) {
+            res = " ERROR ";
+            c.desconectar();
+        }
+
+        return res;
+    }
+
+    public List<NivelAsignatura> listarAsignatura() {
+        List<NivelAsignatura> asignaturaList = new ArrayList<>();
+        String sql = "SELECT NIVELASIGNATURA_ID,"
+                + "NIVELASIGNATURA_DESCRIPCION,"
+                + " FROM NIVELASIGNATURA";
+        try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            ResultSet resultado = consulta.executeQuery();
+            while (resultado.next()) {
+
+                NivelAsignatura asignature = new NivelAsignatura();
+                asignature.setCodigoNivelAsignatura(resultado.getInt("NIVELASIGNATURA_ID".trim()));
+                asignature.setDescripcionNivelAsignatura(resultado.getString("NIVELASIGNATURA_DESCRIPCION".trim()));
+                asignaturaList.add(asignature);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            c.desconectar();
+        }
+
+        return asignaturaList;
+
+    }
+    
+    public String buscarAsignatura (int codigo){
+        
+        String sql = "SELECT NIVELASIGNATURA_ID,"
+                + " NIVELASIGNATURA_DESCRIPCION,"
+                + "FROM NIVELASIGNATURA"
+                + "WHERE NIVELASIGNATURA_ID = " + "'" + codigo + "'";
+         try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            ResultSet resultado = consulta.executeQuery();
+            while (resultado.next()) {
+
+                NivelAsignatura asignature = new NivelAsignatura();
+                asignature.setCodigoNivelAsignatura(resultado.getInt("NIVELASIGNATURA_ID".trim()));
+                asignature.setDescripcionNivelAsignatura(resultado.getString("NIVELASIGNATURA_DESCRIPCION".trim()));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            c.desconectar();
+
+        }
+        return "";
     }
 }

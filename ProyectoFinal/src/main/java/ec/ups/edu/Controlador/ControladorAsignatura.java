@@ -97,11 +97,9 @@ public class ControladorAsignatura {
                 + "COSTO_CREDITOS, "
                 + "ASIGNATURA_NIVELASIGNATURA,"
                 + " FROM ASIGNATURA";
-
         try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             ResultSet resultado = consulta.executeQuery();
-
             while (resultado.next()) {
 
                 Asignatura asignature = new Asignatura();
@@ -110,15 +108,12 @@ public class ControladorAsignatura {
                 asignature.setCostoCreditos(resultado.getInt("COSTO_CREDITOS".trim()));
                 asignaturaList.add(asignature);
             }
-
         } catch (Exception ex) {
             ex.printStackTrace();
             c.desconectar();
 
         }
-
         return asignaturaList;
-
     }
     public String buscarAsignatura (int codigo){
         

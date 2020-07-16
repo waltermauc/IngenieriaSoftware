@@ -29,7 +29,7 @@ public class ControladorAsignatura {
     String[] letras = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
 
     public String crearAsignatura(Asignatura asignatura, NivelAsignatura nivel) {
-
+        String res = "";
         String sql = "INSERT INTO NIVEL_ASIGNATURA(NIVELASIGNATURA_ID, NIVELASIGNATURA_DESCRIPCION) VALUES (?,?)";
         try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
@@ -42,16 +42,18 @@ public class ControladorAsignatura {
                 consultaEst.setInt(3, asignatura.getCostoCreditos());
                 consultaEst.setObject(4, asignatura.getCodigoNivelAsignatura());
                 consultaEst.executeUpdate();
+                res = " ASIGNATURA CREADA";
             }
         } catch (Exception e) {
+            res = "ERROR";
             c.desconectar();
         }
-        return "Asignatura creada";
+        return res;
 
     }
 
     public String editarAsignatura(Asignatura asignatura, int codigo) {
-
+        String res = "";
         String sql = "UPDATE ASIGNATURA"
                 + " SET ASIGNATURA_ID = " + " ' " + asignatura.getCodigoAsignatura() + " ' " + ","
                 + "  ASIGNATURA_DESCRIPCION =" + " ' " + asignatura.getDescripcion() + " ' " + ","
@@ -63,38 +65,32 @@ public class ControladorAsignatura {
             PreparedStatement ps;
             ps = c.conectado().prepareStatement(sql);
             ps.executeUpdate();
+            res = "ASIGNATURA EDITADA";
 
         } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        try {
+            res = "ERROR ";
             c.desconectar();
-        } catch (Exception ex) {
-            System.out.println("Error al momento de cerrar la coneccion :" + ex.getMessage());
-
         }
-        return "Asignatura actualizada";
+
+        return res;
 
     }
 
     public String eliminarAsignatura(int codigo) {
+        String res = "";
         String sql = "DELETE FROM ASIGNATURA"
                 + " WHERE ASIGNATURA_ID = " + "'" + codigo + "'";
         try {
 
             PreparedStatement ps = c.conectado().prepareStatement(sql);
             ps.executeUpdate();
+            res = "ASGINATURA ELIMINADA";
         } catch (Exception ex) {
-            ex.printStackTrace();
+            res = " ERROR ";
             c.desconectar();
-        }
-        try {
-            c.desconectar();
-        } catch (Exception ex) {
-            System.out.println("Error al cerrar la coneccion :" + ex.getMessage());
         }
 
-        return "Asignatura eliminada";
+        return res;
     }
 
     public List<Asignatura> listarAsignatura() {
@@ -120,12 +116,10 @@ public class ControladorAsignatura {
 
         } catch (Exception ex) {
             ex.printStackTrace();
-        }
-        try {
             c.desconectar();
-        } catch (Exception ex) {
-            System.out.println(" Error mientras se cerraba el puerto :" + ex.getMessage());
+
         }
+
         return asignaturaList;
 
     }

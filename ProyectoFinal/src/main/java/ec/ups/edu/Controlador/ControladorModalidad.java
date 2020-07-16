@@ -7,6 +7,8 @@ package ec.ups.edu.Controlador;
 
 import ec.ups.edu.Modelo.Modalidad;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,9 +29,9 @@ public class ControladorModalidad {
         try {
             String sql = "INSERT INTO ASIGNATURA(MODALIDAD_ID, MODALIDAD_DESCRIPCION)VALUES (?,?)";
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
-            consultaEst.setInt(1, modalidad.getCodigoModalidad());
-            consultaEst.setString(2, modalidad.getDescripcionModalidad());
-            consultaEst.executeUpdate();
+            consulta.setInt(1, modalidad.getCodigoModalidad());
+            consulta.setString(2, modalidad.getDescripcionModalidad());
+            consulta.executeUpdate();
             res = " MODALIDAD CREADA";
 
         } catch (Exception e) {
@@ -41,19 +43,80 @@ public class ControladorModalidad {
     }
 
     public String editarModalidadCarrera(int codigo, Modalidad modalidad) {
-        Strin sql 
+        String res = "";
+        String sql = "UPDATE ASIGNATURA"
+                + " SET MODALIDAD_ID = " + " ' " + modalidad.getCodigoModalidad() + " ' " + ","
+                + "  MODALIDAD_DESCRIPCION =" + " ' " + modalidad.getDescripcionModalidad() + " ' "
+                + "WHERE MODALIDAD_ID =" + " ' " + codigo + " ' ";
+        try {
+
+            PreparedStatement ps;
+            ps = c.conectado().prepareStatement(sql);
+            ps.executeUpdate();
+            res = "MODALIDAD EDITADA";
+
+        } catch (Exception ex) {
+            res = "ERROR ";
+            c.desconectar();
+        }
+
+        return res;
 
     }
 
-    public Modalidad buscar() {
+    public Modalidad buscarModalidad() {
+        Modalidad modalidad = new Modalidad();
+        String sql = "SELECT * FROM proyecto_final.modalidad;";
+        try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            ResultSet resultado = consulta.executeQuery();
+            while (resultado.next()) {
+                modalidad.setCodigoModalidad(resultado.getInt("MODALIDAD_ID".trim()));
+                modalidad.setDescripcionModalidad(resultado.getString("MODALIDAD_DESCRIPCION".trim()));
+            }
 
+        } catch (Exception e) {
+            c.desconectar();
+            return null;
+        }
+        return modalidad;
     }
 
     public String eliminarModalidadCarrera(int codigo) {
+        String res = "";
+        String sql = "DELETE FROM MODALIDAD "
+                + " WHERE MODALIDAD_ID = " + "'" + codigo + "'";
+        try {
+
+            PreparedStatement ps = c.conectado().prepareStatement(sql);
+            ps.executeUpdate();
+            res = "ASGINATURA ELIMINADA";
+        } catch (Exception ex) {
+            res = " ERROR ";
+            c.desconectar();
+        }
+
+        return res;
 
     }
 
     public List<Modalidad> listarModalidadCarrera() {
+        List<Modalidad> listModalidad = new ArrayList<>();
+        String sql = "SELECT * FROM proyecto_final.modalidad;";
+        try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            ResultSet resultado = consulta.executeQuery();
+            while (resultado.next()) {
+                Modalidad modalidad = new Modalidad();
+                modalidad.setCodigoModalidad(resultado.getInt("MODALIDAD_ID".trim()));
+                modalidad.setDescripcionModalidad(resultado.getString("MODALIDAD_DESCRIPCION".trim()));
+                listModalidad.add(modalidad);
+            }
 
+        } catch (Exception e) {
+            c.desconectar();
+            return null;
+        }
+        return listModalidad;
     }
 }

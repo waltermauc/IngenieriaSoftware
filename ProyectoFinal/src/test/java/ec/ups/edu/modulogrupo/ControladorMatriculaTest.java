@@ -5,8 +5,14 @@
  */
 package ec.ups.edu.modulogrupo;
 
+import ec.ups.edu.Controlador.ControladorEspecialidad;
+import ec.ups.edu.Controlador.ControladorEstudiante;
+import ec.ups.edu.Controlador.ControladorGrupo;
 import ec.ups.edu.Controlador.ControladorMatricula;
+import ec.ups.edu.Controlador.ControladorModalidad;
+import ec.ups.edu.Controlador.ControladorPeriodoLectivo;
 import ec.ups.edu.Modelo.Matricula;
+import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,22 +25,22 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author 59396
  */
 public class ControladorMatriculaTest {
-    
+
     public ControladorMatriculaTest() {
     }
-    
+
     @BeforeAll
     public static void setUpClass() {
     }
-    
+
     @AfterAll
     public static void tearDownClass() {
     }
-    
+
     @BeforeEach
     public void setUp() {
     }
-    
+
     @AfterEach
     public void tearDown() {
     }
@@ -61,9 +67,10 @@ public class ControladorMatriculaTest {
     public void testModificarMatricula() {
         System.out.println("modificarMatricula");
         int codigo = 0;
+        Matricula matricula = null;
         ControladorMatricula instance = new ControladorMatricula();
         String expResult = "modificar Matr";
-        String result = instance.modificarMatricula(codigo);
+        String result = instance.modificarMatricula(codigo, matricula);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
@@ -76,8 +83,13 @@ public class ControladorMatriculaTest {
     public void testListarMatricula() {
         System.out.println("listarMatricula");
         ControladorMatricula instance = new ControladorMatricula();
+        ControladorPeriodoLectivo cpl = null;
+        ControladorModalidad cm = null;
+        ControladorEspecialidad ce = null;
+        ControladorGrupo cg = null;
+        ControladorEstudiante ces = null;
         String expResult = "listar Mat";
-        String result = instance.listarMatricula();
+        List<Matricula> result = instance.listarMatricula(cpl, cm, ce, cg, ces);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
@@ -97,5 +109,5 @@ public class ControladorMatriculaTest {
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
-    
+
 }

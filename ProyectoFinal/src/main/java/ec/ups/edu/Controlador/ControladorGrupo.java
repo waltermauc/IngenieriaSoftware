@@ -24,7 +24,7 @@ public class ControladorGrupo {
      public ControladorGrupo (Conexion c) {
          this.c =c;
      }
-     
+
     public  String crearGrupo(Grupo grupo,ControladorAsignatura controlAsig){
         String resultado = "";
          String res = "";

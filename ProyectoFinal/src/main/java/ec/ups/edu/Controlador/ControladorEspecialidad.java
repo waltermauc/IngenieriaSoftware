@@ -12,6 +12,12 @@ import ec.ups.edu.Modelo.Especialidad;
  * @author DELL
  */
 public class ControladorEspecialidad {
+    private Conexion c ;
+
+    public ControladorEspecialidad(Conexion c) {
+        this.c = c;
+    }
+    
 
     public String crearEspecialidad(Especialidad especial) {
         String especialidad = "crear Esp";

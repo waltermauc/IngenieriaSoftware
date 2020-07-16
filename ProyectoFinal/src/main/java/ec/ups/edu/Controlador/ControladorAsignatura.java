@@ -25,7 +25,7 @@ public class ControladorAsignatura {
 
     }
 
-    public String crearAsignatura(Asignatura asignatura) {
+    public String crearAsignatura(Asignatura asignatura, NivelAsignatura nivelAsignatura) {
         String res = "";
         try {
             String sqlEst = "INSERT INTO ASIGNATURA"
@@ -35,7 +35,7 @@ public class ControladorAsignatura {
             consultaEst.setInt(1, asignatura.getCodigoAsignatura());
             consultaEst.setString(2, asignatura.getDescripcion());
             consultaEst.setInt(3, asignatura.getCostoCreditos());
-            consultaEst.setObject(4, asignatura.getCodigoNivelAsignatura());
+            consultaEst.setInt(4, asignatura.getCodigoNivelAsignatura().getCodigoNivelAsignatura());
             consultaEst.executeUpdate();
             res = " ASIGNATURA CREADA";
 

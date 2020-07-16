@@ -81,8 +81,7 @@ public class ControladorMatricula {
 
     public Matricula buscarMatricula(int codigo, ControladorPeriodoLectivo cpl, ControladorModalidad cm,
             ControladorEspecialidad ce, ControladorGrupo cg, ControladorEstudiante ces, ControladorAsignatura ca,
-            ControladorDocente cd, ControladorEspacioFisico cef, ControladorNivelAsignatura cn
-    ) {
+            ControladorDocente cd, ControladorEspacioFisico cef, ControladorNivelAsignatura cn) {
         Matricula matricula = new Matricula();
         String sql = " SELECT * FROM proyecto_final.matricula"
                 + "WHERE MATRICULA_ID  =" + " ' " + codigo + " ' ";
@@ -120,7 +119,7 @@ public class ControladorMatricula {
         List<Matricula> listMatricula = new ArrayList<>();
         Matricula matricula = new Matricula();
         String sql = " SELECT * FROM proyecto_final.matricula";
-               
+
         try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             ResultSet resultado = consulta.executeQuery();
@@ -152,7 +151,7 @@ public class ControladorMatricula {
     }
 
     public String eliminarMatricula(int codigo) {
-         String res = "";
+        String res = "";
         String sql = "DELETE FROM MATRICULA"
                 + " WHERE MATRICULA_ID = " + "'" + codigo + "'";
         try {

@@ -62,9 +62,10 @@ public class ControladorPeriodoLectivoTest {
     public void testEditarPeriLect() {
         System.out.println("editarPeriLect");
         int codigo = 0;
+        PeriodoLectivo periodo = null;
         ControladorPeriodoLectivo instance = new ControladorPeriodoLectivo();
         String expResult = "editar Peri";
-        String result = instance.editarPeriLect(codigo);
+        String result = instance.editarPeriLect(codigo,periodo);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
@@ -79,40 +80,11 @@ public class ControladorPeriodoLectivoTest {
         int codigo = 0;
         ControladorPeriodoLectivo instance = new ControladorPeriodoLectivo();
         String expResult = "buscar Peri";
-        String result = instance.buscarPeriLect(codigo);
+        PeriodoLectivo result = instance.buscarPeriLect(codigo);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
        // fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of eliminarPeriLect method, of class ControladorPeriodoLectivo.
-     */
-    @Test
-    public void testEliminarPeriLect() {
-        System.out.println("eliminarPeriLect");
-        int codigo = 0;
-        ControladorPeriodoLectivo instance = new ControladorPeriodoLectivo();
-        boolean expResult = true;
-        boolean result = instance.eliminarPeriLect(codigo);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of validarCed method, of class ControladorPeriodoLectivo.
-     */
-    @Test
-    public void testValidarCed() {
-        System.out.println("validarCed");
-        Persona cedula = null;
-        ControladorPeriodoLectivo instance = new ControladorPeriodoLectivo();
-        String expResult = "validar cedula";
-        String result = instance.validarCed(cedula);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
-    
+ 
 }

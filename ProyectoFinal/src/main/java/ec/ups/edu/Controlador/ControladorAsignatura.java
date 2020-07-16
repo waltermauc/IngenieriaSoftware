@@ -25,6 +25,9 @@ public class ControladorAsignatura {
 
     }
 
+    public ControladorAsignatura() {
+    }
+
     public String crearAsignatura(Asignatura asignatura) {
         String res = "";
         try {

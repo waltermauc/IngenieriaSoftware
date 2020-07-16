@@ -22,6 +22,9 @@ public class ControladorPeriodoLectivo {
         this.c = conexion;
     }
 
+    public ControladorPeriodoLectivo() {
+    }
+
    
     public String crearPeriLect(PeriodoLectivo pLectivo) {
          String res = "";

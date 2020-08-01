@@ -10,6 +10,7 @@ package ec.ups.edu.Modelo;
  * @author rayner
  */
 public class NivelAsignatura {
+
     private int codigoNivelAsignatura;
     private String descripcionNivelAsignatura;
 
@@ -28,5 +29,10 @@ public class NivelAsignatura {
     public void setDescripcionNivelAsignatura(String descripcionNivelAsignatura) {
         this.descripcionNivelAsignatura = descripcionNivelAsignatura;
     }
-            
+
+    @Override
+    public String toString() {
+        return descripcionNivelAsignatura;
+    }
+
 }

@@ -31,9 +31,10 @@ public class ControladorNivelAsignatura {
 
         String res = "";
         try {
-            String sqlEst = "INSERT INTO NIVELASIGNATURA"
-                    + "(NIVELASIGNATURA_ID, NIVELASIGNATURA_DESCRIPCION) "
-                    + "VALUES (?,?)";
+            String sqlEst = "INSERT INTO `proyecto_final`.`nivelasignatura`\n"
+                    + "(`NIVELASIGNATURA_ID`,"
+                    + "`NIVELASIGNATURA_DESCRIPCION`)"
+                    + "VALUES(?,?)";
             PreparedStatement consultaEst = c.conectado().prepareStatement(sqlEst);
             consultaEst.setInt(1, nivelAsignatura.getCodigoNivelAsignatura());
             consultaEst.setString(2, nivelAsignatura.getDescripcionNivelAsignatura());
@@ -89,14 +90,11 @@ public class ControladorNivelAsignatura {
 
     public List<NivelAsignatura> listarAsignatura() {
         List<NivelAsignatura> asignaturaList = new ArrayList<>();
-        String sql = "SELECT NIVELASIGNATURA_ID,"
-                + "NIVELASIGNATURA_DESCRIPCION,"
-                + " FROM NIVELASIGNATURA";
+        String sql = "SELECT * FROM proyecto_final.nivelasignatura;";
         try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             ResultSet resultado = consulta.executeQuery();
             while (resultado.next()) {
-
                 NivelAsignatura asignature = new NivelAsignatura();
                 asignature.setCodigoNivelAsignatura(resultado.getInt("NIVELASIGNATURA_ID".trim()));
                 asignature.setDescripcionNivelAsignatura(resultado.getString("NIVELASIGNATURA_DESCRIPCION".trim()));
@@ -133,4 +131,19 @@ public class ControladorNivelAsignatura {
         return asignature;
     }
 
+    public int obtenerCodigo() {
+        int n = 0;
+        String sql = "select max(nivelasignatura_id) as Codigo from NIVELASIGNATURA;";
+        try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            ResultSet resultado = consulta.executeQuery();
+            while (resultado.next()) {
+                n = resultado.getInt("Codigo".trim());
+            }
+
+        } catch (Exception e) {
+
+        }
+        return n;
+    }
 }

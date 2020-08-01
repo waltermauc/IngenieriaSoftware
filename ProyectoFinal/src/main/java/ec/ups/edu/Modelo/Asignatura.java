@@ -12,7 +12,7 @@ package ec.ups.edu.Modelo;
 public class Asignatura {
     private int codigoAsignatura;
     private String descripcion;
-    private int costoCreditos;
+    private double costoCreditos;
     private NivelAsignatura codigoNivelAsignatura;
 
     public int getCodigoAsignatura() {
@@ -31,7 +31,7 @@ public class Asignatura {
         this.descripcion = descripcion;
     }
 
-    public int getCostoCreditos() {
+    public double getCostoCreditos() {
         return costoCreditos;
     }
 

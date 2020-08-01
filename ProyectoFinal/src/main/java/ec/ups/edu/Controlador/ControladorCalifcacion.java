@@ -7,6 +7,7 @@ package ec.ups.edu.Controlador;
 
 
 import ec.ups.edu.Modelo.Calificacion;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,9 @@ import java.util.List;
  */
 public class ControladorCalifcacion {
     public String crearCalificacion(Calificacion c){
-        return("Calificacion creada");
+        String res = "";
+       
+        return res;
     }
     public String buscarCalificacion(int codigo){
         return("Calificacion");

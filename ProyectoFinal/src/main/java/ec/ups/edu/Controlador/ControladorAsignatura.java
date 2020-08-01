@@ -31,14 +31,17 @@ public class ControladorAsignatura {
     public String crearAsignatura(Asignatura asignatura) {
         String res = "";
         try {
-            String sql = "INSERT INTO ASIGNATURA"
-                    + "(ASIGNATURA_ID, ASIGNATURA_DESCRIPCION, COSTO_CREDITOS, ASIGNATURA_NIVELASIGNATURA) "
+            String sql = "INSERT INTO `proyecto_final`.`asignatura`"
+                    + "(`ASIGNATURA_ID`,"
+                    + "`ASIGNATURA_DESCRIPCION`,"
+                    + "`ASIGNATURA_NIVELASIGNATURA`,"
+                    + "`ASIGNATURA_COSTO`)"
                     + "VALUES (?,?,?,?)";
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             consulta.setInt(1, asignatura.getCodigoAsignatura());
             consulta.setString(2, asignatura.getDescripcion());
-            consulta.setInt(3, asignatura.getCostoCreditos());
-            consulta.setInt(4, asignatura.getCodigoNivelAsignatura().getCodigoNivelAsignatura());
+            consulta.setInt(3, asignatura.getCodigoNivelAsignatura().getCodigoNivelAsignatura());
+            consulta.setDouble(4, asignatura.getCostoCreditos());
             consulta.executeUpdate();
             res = " ASIGNATURA CREADA";
 
@@ -145,5 +148,21 @@ public class ControladorAsignatura {
             return null;
         }
         return asignature;
+    }
+
+    public int obtenerCodigo() {
+        int n = 0;
+        String sql = "select max(asignatura_id) as Codigo from ASIGNATURA;";
+        try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            ResultSet resultado = consulta.executeQuery();
+            while (resultado.next()) {
+                n = resultado.getInt("Codigo".trim());
+            }
+
+        } catch (Exception e) {
+
+        }
+        return n;
     }
 }

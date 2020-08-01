@@ -109,8 +109,9 @@ public class ControladorDocente {
                 + "    `persona`.`PERSONA_CORREO`,"
                 + "    `persona`.`PERSONA_CELULAR`,"
                 + "    `persona`.`PERSONA_SEXO`,"
-                + "    `persona`.`PERSONA_FECHANACIMIENTO`"
-                + "FROM `proyecto_final`.`persona`,`proyecto_final`.`dccente`"
+                + "    `persona`.`PERSONA_FECHANACIMIENTO`,"
+                + "    `docente`.`DOCENTE_TITULO` "
+                + "FROM `proyecto_final`.`persona`,`proyecto_final`.`docente`"
                 + " WHERE `persona`.`PERSONA_ID`=`docente`.`DOCENTE_PERSONA` AND `persona`.`PERSONA_ID`=" + "'" + codigo + "';";
         try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
@@ -145,8 +146,8 @@ public class ControladorDocente {
                 + "    `persona`.`PERSONA_CELULAR`,"
                 + "    `persona`.`PERSONA_SEXO`,"
                 + "    `persona`.`PERSONA_FECHANACIMIENTO`,"
-                + "    `dccente`.`DOCENTE_TITULO` "
-                + "FROM `proyecto_final`.`persona`,`proyecto_final`.`dccente`"
+                + "    `docente`.`DOCENTE_TITULO` "
+                + "FROM `proyecto_final`.`persona`,`proyecto_final`.`docente`"
                 + " WHERE `persona`.`PERSONA_ID`=`docente`.`DOCENTE_PERSONA` ;";
         Docente docente = new Docente();
         try {
@@ -185,7 +186,7 @@ public class ControladorDocente {
                 + " `persona`.`PERSONA_CELULAR`" + docente.getTelefono() + " ' " + ","
                 + " `persona`.`PERSONA_SEXO`" + docente.getSexo() + " ' " + ","
                 + " `persona`.`PERSONA_FECHANACIMIENTO`" + docente.getFechaNacimiento() + " ' " + ","
-                + " `dccente`.`DOCENTE_TITULO``" + docente.getTitulo() + " ' " + ","
+                + " `docente`.`DOCENTE_TITULO``" + docente.getTitulo() + " ' " + ","
                 + "WHERE codigo =" + " ' " + codigo + " ' ";
         try {
 
@@ -204,7 +205,7 @@ public class ControladorDocente {
     
     public int obtenerCodigo() {
         int n = 0;
-        String sql = "select max(ESTUDIANTE_ID) as Codigo from ESTUDIANTE";
+        String sql = "select max(DOCENTE_ID) as Codigo from DOCENTE";
         try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             ResultSet resultado = consulta.executeQuery();

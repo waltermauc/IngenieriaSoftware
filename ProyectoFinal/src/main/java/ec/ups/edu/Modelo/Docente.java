@@ -9,7 +9,8 @@ package ec.ups.edu.Modelo;
  *
  * @author 59396
  */
-public class Docente extends Persona{
+public class Docente extends Persona {
+
     private int codigo;
     private Persona persona;
     private String titulo;
@@ -37,7 +38,12 @@ public class Docente extends Persona{
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
+
+    @Override
+    public String toString() {
+        return "Docente{" + "codigo=" + codigo + ", persona=" + persona + ", titulo=" + titulo + '}';
+    }
+
     
-    
-    
+
 }

@@ -11,6 +11,7 @@ import ec.ups.edu.Controlador.ControladorDocente;
 import ec.ups.edu.Controlador.ControladorEspacioFisico;
 import ec.ups.edu.Controlador.ControladorEspecialidad;
 import ec.ups.edu.Controlador.ControladorEstudiante;
+import ec.ups.edu.Controlador.ControladorGrupo;
 import ec.ups.edu.Controlador.ControladorNivelAsignatura;
 import ec.ups.edu.Controlador.ControladorPeriodoLectivo;
 import ec.ups.edu.Controlador.ControladorUsuario;
@@ -33,6 +34,7 @@ public class Principal extends javax.swing.JFrame {
     private ControladorEspacioFisico controladorEspacioFisico;
     private ControladorEspecialidad controladorEspecialidad;
     private ControladorPeriodoLectivo controladorPeriodoLectivo;
+    private ControladorGrupo controladorGrupo;
 
     public Principal() {
         initComponents();
@@ -45,6 +47,7 @@ public class Principal extends javax.swing.JFrame {
         controladorEspacioFisico = new ControladorEspacioFisico(conexion);
         controladorEspecialidad = new ControladorEspecialidad(conexion);
         controladorPeriodoLectivo = new ControladorPeriodoLectivo(conexion);
+        controladorGrupo = new ControladorGrupo(conexion);
 
     }
 
@@ -70,6 +73,7 @@ public class Principal extends javax.swing.JFrame {
         espafMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem1 = new javax.swing.JMenuItem();
+        aboutMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -169,6 +173,15 @@ public class Principal extends javax.swing.JFrame {
         });
         helpMenu.add(aboutMenuItem1);
 
+        aboutMenuItem2.setMnemonic('a');
+        aboutMenuItem2.setText("CREAR GRUPO");
+        aboutMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutMenuItem2ActionPerformed(evt);
+            }
+        });
+        helpMenu.add(aboutMenuItem2);
+
         menuBar.add(helpMenu);
 
         setJMenuBar(menuBar);
@@ -253,6 +266,13 @@ public class Principal extends javax.swing.JFrame {
         vista.setVisible(true);
     }//GEN-LAST:event_aboutMenuItem1ActionPerformed
 
+    private void aboutMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        VistaCrearGrupo vista = new VistaCrearGrupo(controladorGrupo, controladorAsignatura, controladorDocente, controladorEspacioFisico);
+        jDesktopPane1.add(vista);
+        vista.setVisible(true);
+    }//GEN-LAST:event_aboutMenuItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -291,6 +311,7 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenuItem aboutMenuItem1;
+    private javax.swing.JMenuItem aboutMenuItem2;
     private javax.swing.JMenuItem asMenuItem;
     private javax.swing.JMenuItem docMenuItem;
     private javax.swing.JMenu editMenu;

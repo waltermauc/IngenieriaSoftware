@@ -29,10 +29,8 @@ public class VistaAsginatura extends javax.swing.JInternalFrame {
         this.controladorNivelAsignatura = controladorNivelAsignatura;
         codigo = controladorAsignatura.obtenerCodigo() + 1;
         initComponents();
-        DefaultComboBoxModel modelo = (DefaultComboBoxModel) jComboBox1.getModel();
-        for (NivelAsignatura na : controladorNivelAsignatura.listarAsignatura()) {
-            modelo.addElement(na);
-        }
+        cargar();
+
     }
 
     /**
@@ -153,7 +151,12 @@ public class VistaAsginatura extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 
-
+    public void cargar() {
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) jComboBox1.getModel();
+        for (NivelAsignatura na : controladorNivelAsignatura.listarAsignatura()) {
+            modelo.addElement(na);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

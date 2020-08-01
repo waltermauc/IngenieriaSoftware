@@ -35,7 +35,7 @@ public class Asignatura {
         return costoCreditos;
     }
 
-    public void setCostoCreditos(int costoCreditos) {
+    public void setCostoCreditos(double costoCreditos) {
         this.costoCreditos = costoCreditos;
     }
 

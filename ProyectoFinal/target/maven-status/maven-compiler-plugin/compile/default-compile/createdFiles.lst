@@ -1,3 +1,4 @@
+ec\ups\edu\Vista\VistaCrearGrupo$1.class
 ec\ups\edu\Vista\Principal$4.class
 ec\ups\edu\Vista\Principal.class
 ec\ups\edu\Vista\VistaEspacioFisico$2.class
@@ -19,8 +20,10 @@ ec\ups\edu\Vista\Principal$6.class
 ec\ups\edu\Vista\VistaAsginatura$1.class
 ec\ups\edu\Vista\VistaControladorEstudiante$3.class
 ec\ups\edu\Vista\VistaControladorDocente$2.class
+ec\ups\edu\Vista\VistaCrearGrupo.class
 ec\ups\edu\Vista\VistaPeriiodoLectivo$2.class
 ec\ups\edu\Vista\VistaNivelAsignatura$1.class
+ec\ups\edu\Vista\Principal$10.class
 ec\ups\edu\Vista\Principal$9.class
 ec\ups\edu\Vista\VistaControladorEstudiante$1.class
 ec\ups\edu\Vista\VistaUsuario$1.class

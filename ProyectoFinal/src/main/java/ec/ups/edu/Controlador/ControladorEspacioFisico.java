@@ -78,10 +78,7 @@ public class ControladorEspacioFisico {
 
     public List<EspacioFisico> listarEspacioFisico() {
         List<EspacioFisico> espacioList = new ArrayList<>();
-        String sql = "SELECT ESPACIOFISICO_ID,"
-                + "ESPACIOFISICO_NUMEROAULA, "
-                + "ESPACIOFISICO_EDIFICIO,"
-                + " FROM ESPACIOFISICO";
+        String sql = "SELECT * FROM proyecto_final.espaciofisico;";
         try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             ResultSet resultado = consulta.executeQuery();

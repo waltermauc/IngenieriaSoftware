@@ -5,24 +5,23 @@
  */
 package ec.ups.edu.Vista;
 
-import ec.ups.edu.Controlador.ControladorNivelAsignatura;
-import ec.ups.edu.Modelo.NivelAsignatura;
+import ec.ups.edu.Controlador.ControladorPeriodoLectivo;
+import ec.ups.edu.Modelo.PeriodoLectivo;
 
 /**
  *
  * @author 59396
  */
-public class VistaNivelAsignatura extends javax.swing.JInternalFrame {
+public class VistaPeriiodoLectivo extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form controladoNivelAsignatura
+     * Creates new form VistaPeriiodoLectivo
      */
-    private ControladorNivelAsignatura controladorNivelAsignatura;
+    private ControladorPeriodoLectivo controladorPeriodoLectivo;
     private int codigo;
-
-    public VistaNivelAsignatura(ControladorNivelAsignatura controladorNivelAsignatura) {
-        this.controladorNivelAsignatura = controladorNivelAsignatura;
-        codigo = controladorNivelAsignatura.obtenerCodigo() + 1;
+            
+    public VistaPeriiodoLectivo(ControladorPeriodoLectivo controladorPeriodoLectivo) {
+        this.controladorPeriodoLectivo = controladorPeriodoLectivo;       
         initComponents();
     }
 
@@ -42,7 +41,7 @@ public class VistaNivelAsignatura extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel2.setText("GESTION NIVEL ASIGNATURA");
+        jLabel2.setText("GESTION PERIODO LECTIVO");
 
         jLabel1.setText("DESCRIPCION");
 
@@ -94,7 +93,7 @@ public class VistaNivelAsignatura extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
 
         pack();
@@ -102,13 +101,13 @@ public class VistaNivelAsignatura extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        NivelAsignatura nivelAsignatura = new NivelAsignatura();
-        nivelAsignatura.setCodigoNivelAsignatura(codigo);
-        nivelAsignatura.setDescripcionNivelAsignatura(jTextField1.getText());
-        if (nivelAsignatura != null) {
-            controladorNivelAsignatura.crearNivelAsignatura(nivelAsignatura);
+        PeriodoLectivo periodoLectivo = new PeriodoLectivo();
+        periodoLectivo.setCodigo(codigo);
+        periodoLectivo.setDescripcion(jTextField1.getText());
+        if(periodoLectivo != null){
+          controladorPeriodoLectivo.crearPeriLect(periodoLectivo);  
         }
-
+        
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

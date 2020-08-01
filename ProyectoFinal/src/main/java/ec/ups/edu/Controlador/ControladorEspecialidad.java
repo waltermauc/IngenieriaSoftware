@@ -30,7 +30,7 @@ public class ControladorEspecialidad {
         String res = "";
         try {
             String sql = "INSERT INTO proyecto_final.especialidad"
-                    + "(MODALIDAD_ID, MODALIDAD_DESCRIPCION)VALUES (?,?)";
+                    + "(ESPECIALIDAD_ID, ESPECIALIDAD_DESCRIPCION)VALUES (?,?)";
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             consulta.setInt(1, especialidad.getCodigo());
             consulta.setString(2, especialidad.getDescripcion());
@@ -68,14 +68,14 @@ public class ControladorEspecialidad {
 
     public List<Especialidad> listarEspecialidad() {
         List<Especialidad> listPeriodoLectivo = new ArrayList<>();
-        String sql = "SELECT * FROM proyecto_final.modalidad;";
+        String sql = "SELECT * FROM proyecto_final.especialidad;";
         try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             ResultSet resultado = consulta.executeQuery();
             while (resultado.next()) {
                 Especialidad especialidad = new Especialidad();
-                especialidad.setCodigo(resultado.getInt("MODALIDAD_ID".trim()));
-                especialidad.setDescripcion(resultado.getString("MODALIDAD_DESCRIPCION".trim()));
+                especialidad.setCodigo(resultado.getInt("ESPECIALIDAD_ID".trim()));
+                especialidad.setDescripcion(resultado.getString("ESPECIALIDAD_DESCRIPCION".trim()));
                 listPeriodoLectivo.add(especialidad);
             }
 
@@ -106,4 +106,19 @@ public class ControladorEspecialidad {
         return especialidad;
     }
 
+    public int obtenerCodigo() {
+        int n = 0;
+        String sql = "select max(ESPECIALIDAD_ID) as Codigo from especialidad;";
+        try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            ResultSet resultado = consulta.executeQuery();
+            while (resultado.next()) {
+                n = resultado.getInt("Codigo".trim());
+            }
+
+        } catch (Exception e) {
+
+        }
+        return n;
+    }
 }

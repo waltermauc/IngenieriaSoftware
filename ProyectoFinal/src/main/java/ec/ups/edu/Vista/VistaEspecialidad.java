@@ -5,24 +5,24 @@
  */
 package ec.ups.edu.Vista;
 
-import ec.ups.edu.Controlador.ControladorNivelAsignatura;
-import ec.ups.edu.Modelo.NivelAsignatura;
+import ec.ups.edu.Controlador.ControladorEspecialidad;
+import ec.ups.edu.Modelo.Especialidad;
 
 /**
  *
  * @author 59396
  */
-public class VistaNivelAsignatura extends javax.swing.JInternalFrame {
+public class VistaEspecialidad extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form controladoNivelAsignatura
+     * Creates new form VistaEspecialidad
      */
-    private ControladorNivelAsignatura controladorNivelAsignatura;
+    private ControladorEspecialidad controladorEspecialidad;
     private int codigo;
 
-    public VistaNivelAsignatura(ControladorNivelAsignatura controladorNivelAsignatura) {
-        this.controladorNivelAsignatura = controladorNivelAsignatura;
-        codigo = controladorNivelAsignatura.obtenerCodigo() + 1;
+    public VistaEspecialidad(ControladorEspecialidad controladorEspecialidad) {
+        this.controladorEspecialidad = controladorEspecialidad;
+        codigo = controladorEspecialidad.obtenerCodigo() + 1;
         initComponents();
     }
 
@@ -35,14 +35,21 @@ public class VistaNivelAsignatura extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+
+        jButton2.setText("CANCEL");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel2.setText("GESTION NIVEL ASIGNATURA");
+        jLabel2.setText("GESTION ESPECIALIDAD");
 
         jLabel1.setText("DESCRIPCION");
 
@@ -50,13 +57,6 @@ public class VistaNivelAsignatura extends javax.swing.JInternalFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("CANCEL");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
             }
         });
 
@@ -94,28 +94,27 @@ public class VistaNivelAsignatura extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        NivelAsignatura nivelAsignatura = new NivelAsignatura();
-        nivelAsignatura.setCodigoNivelAsignatura(codigo);
-        nivelAsignatura.setDescripcionNivelAsignatura(jTextField1.getText());
-        if (nivelAsignatura != null) {
-            controladorNivelAsignatura.crearNivelAsignatura(nivelAsignatura);
-        }
-
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Especialidad especialidad = new Especialidad();
+        especialidad.setCodigo(codigo);
+        especialidad.setDescripcion(jTextField1.getText());
+        if (especialidad != null) {
+            controladorEspecialidad.crearEspecialidad(especialidad);
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -9,8 +9,10 @@ import ec.ups.edu.Controlador.Conexion;
 import ec.ups.edu.Controlador.ControladorAsignatura;
 import ec.ups.edu.Controlador.ControladorDocente;
 import ec.ups.edu.Controlador.ControladorEspacioFisico;
+import ec.ups.edu.Controlador.ControladorEspecialidad;
 import ec.ups.edu.Controlador.ControladorEstudiante;
 import ec.ups.edu.Controlador.ControladorNivelAsignatura;
+import ec.ups.edu.Controlador.ControladorPeriodoLectivo;
 import ec.ups.edu.Controlador.ControladorUsuario;
 
 /**
@@ -29,6 +31,8 @@ public class Principal extends javax.swing.JFrame {
     private ControladorNivelAsignatura controladorNivelAsignatura;
     private ControladorAsignatura controladorAsignatura;
     private ControladorEspacioFisico controladorEspacioFisico;
+    private ControladorEspecialidad controladorEspecialidad;
+    private ControladorPeriodoLectivo controladorPeriodoLectivo;
 
     public Principal() {
         initComponents();
@@ -39,6 +43,8 @@ public class Principal extends javax.swing.JFrame {
         controladorDocente = new ControladorDocente(conexion);
         controladorEstudiante = new ControladorEstudiante(conexion);
         controladorEspacioFisico = new ControladorEspacioFisico(conexion);
+        controladorEspecialidad = new ControladorEspecialidad(conexion);
+        controladorPeriodoLectivo = new ControladorPeriodoLectivo(conexion);
 
     }
 
@@ -63,6 +69,7 @@ public class Principal extends javax.swing.JFrame {
         helpMenu = new javax.swing.JMenu();
         espafMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
+        aboutMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -145,8 +152,22 @@ public class Principal extends javax.swing.JFrame {
         helpMenu.add(espafMenuItem);
 
         aboutMenuItem.setMnemonic('a');
-        aboutMenuItem.setText("About");
+        aboutMenuItem.setText("ESPECIALIDAD");
+        aboutMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutMenuItemActionPerformed(evt);
+            }
+        });
         helpMenu.add(aboutMenuItem);
+
+        aboutMenuItem1.setMnemonic('a');
+        aboutMenuItem1.setText("PERIODO LECTIVO");
+        aboutMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutMenuItem1ActionPerformed(evt);
+            }
+        });
+        helpMenu.add(aboutMenuItem1);
 
         menuBar.add(helpMenu);
 
@@ -217,6 +238,21 @@ public class Principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_espafMenuItemActionPerformed
 
+    private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
+        // TODO add your handling code here:
+        VistaEspecialidad vista = new VistaEspecialidad(controladorEspecialidad);
+        jDesktopPane1.add(vista);
+        vista.setVisible(true);
+
+    }//GEN-LAST:event_aboutMenuItemActionPerformed
+
+    private void aboutMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        VistaPeriiodoLectivo vista = new VistaPeriiodoLectivo(controladorPeriodoLectivo);
+        jDesktopPane1.add(vista);
+        vista.setVisible(true);
+    }//GEN-LAST:event_aboutMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -254,6 +290,7 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
+    private javax.swing.JMenuItem aboutMenuItem1;
     private javax.swing.JMenuItem asMenuItem;
     private javax.swing.JMenuItem docMenuItem;
     private javax.swing.JMenu editMenu;

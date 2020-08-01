@@ -30,7 +30,7 @@ public class ControladorPeriodoLectivo {
         String res = "";
         try {
             String sql = "INSERT INTO proyecto_final.periodolectivo"
-                    + "(MODALIDAD_ID, MODALIDAD_DESCRIPCION)VALUES (?,?)";
+                    + "(PERIODOLECTIVO_ID, PERIODOLECTIVO_DESCRIPCION)VALUES (?,?)";
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             consulta.setInt(1, pLectivo.getCodigo());
             consulta.setString(2, pLectivo.getDescripcion());
@@ -88,14 +88,14 @@ public class ControladorPeriodoLectivo {
 
     public List<PeriodoLectivo> listar() {
         List<PeriodoLectivo> listPeriodoLectivo = new ArrayList<>();
-        String sql = "SELECT * FROM proyecto_final.modalidad;";
+        String sql = "SELECT * FROM proyecto_final.periodolectivo;";
         try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             ResultSet resultado = consulta.executeQuery();
             while (resultado.next()) {
                 PeriodoLectivo pLectivo = new PeriodoLectivo();
-                pLectivo.setCodigo(resultado.getInt("MODALIDAD_ID".trim()));
-                pLectivo.setDescripcion(resultado.getString("MODALIDAD_DESCRIPCION".trim()));
+                pLectivo.setCodigo(resultado.getInt("PERIODOLECTIVO_ID".trim()));
+                pLectivo.setDescripcion(resultado.getString("PERIODOLECTIVO_DESCRIPCION".trim()));
                 listPeriodoLectivo.add(pLectivo);
             }
 
@@ -105,5 +105,20 @@ public class ControladorPeriodoLectivo {
         }
         return listPeriodoLectivo;
 
+    }
+      public int obtenerCodigo() {
+        int n = 0;
+        String sql = "select max(PERIODOLECTIVO_ID) as Codigo from periodolectivo;";
+        try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            ResultSet resultado = consulta.executeQuery();
+            while (resultado.next()) {
+                n = resultado.getInt("Codigo".trim());
+            }
+
+        } catch (Exception e) {
+
+        }
+        return n;
     }
 }

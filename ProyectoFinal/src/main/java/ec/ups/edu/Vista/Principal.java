@@ -8,6 +8,7 @@ package ec.ups.edu.Vista;
 import ec.ups.edu.Controlador.Conexion;
 import ec.ups.edu.Controlador.ControladorAsignatura;
 import ec.ups.edu.Controlador.ControladorDocente;
+import ec.ups.edu.Controlador.ControladorEspacioFisico;
 import ec.ups.edu.Controlador.ControladorEstudiante;
 import ec.ups.edu.Controlador.ControladorNivelAsignatura;
 import ec.ups.edu.Controlador.ControladorUsuario;
@@ -27,6 +28,7 @@ public class Principal extends javax.swing.JFrame {
     private Conexion conexion;
     private ControladorNivelAsignatura controladorNivelAsignatura;
     private ControladorAsignatura controladorAsignatura;
+    private ControladorEspacioFisico controladorEspacioFisico;
 
     public Principal() {
         initComponents();
@@ -34,6 +36,9 @@ public class Principal extends javax.swing.JFrame {
         controladorUsuario = new ControladorUsuario();
         controladorNivelAsignatura = new ControladorNivelAsignatura(conexion);
         controladorAsignatura = new ControladorAsignatura(conexion);
+        controladorDocente = new ControladorDocente(conexion);
+        controladorEstudiante = new ControladorEstudiante(conexion);
+        controladorEspacioFisico = new ControladorEspacioFisico(conexion);
 
     }
 
@@ -51,15 +56,12 @@ public class Principal extends javax.swing.JFrame {
         fileMenu = new javax.swing.JMenu();
         estMenuItem = new javax.swing.JMenuItem();
         docMenuItem = new javax.swing.JMenuItem();
-        saveAsMenuItem = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
         nivelaMenuItem = new javax.swing.JMenuItem();
         asMenuItem = new javax.swing.JMenuItem();
-        pasteMenuItem = new javax.swing.JMenuItem();
-        deleteMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
-        contentsMenuItem = new javax.swing.JMenuItem();
+        espafMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -96,11 +98,6 @@ public class Principal extends javax.swing.JFrame {
         });
         fileMenu.add(docMenuItem);
 
-        saveAsMenuItem.setMnemonic('a');
-        saveAsMenuItem.setText("Save As ...");
-        saveAsMenuItem.setDisplayedMnemonicIndex(5);
-        fileMenu.add(saveAsMenuItem);
-
         exitMenuItem.setMnemonic('x');
         exitMenuItem.setText("Exit");
         exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -133,22 +130,19 @@ public class Principal extends javax.swing.JFrame {
         });
         editMenu.add(asMenuItem);
 
-        pasteMenuItem.setMnemonic('p');
-        pasteMenuItem.setText("Paste");
-        editMenu.add(pasteMenuItem);
-
-        deleteMenuItem.setMnemonic('d');
-        deleteMenuItem.setText("Delete");
-        editMenu.add(deleteMenuItem);
-
         menuBar.add(editMenu);
 
         helpMenu.setMnemonic('h');
-        helpMenu.setText("Help");
+        helpMenu.setText("GRUPO");
 
-        contentsMenuItem.setMnemonic('c');
-        contentsMenuItem.setText("Contents");
-        helpMenu.add(contentsMenuItem);
+        espafMenuItem.setMnemonic('c');
+        espafMenuItem.setText("ESPACIO FISICO");
+        espafMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                espafMenuItemActionPerformed(evt);
+            }
+        });
+        helpMenu.add(espafMenuItem);
 
         aboutMenuItem.setMnemonic('a');
         aboutMenuItem.setText("About");
@@ -180,7 +174,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void estMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estMenuItemActionPerformed
         // TODO add your handling code here:
-        controladorEstudiante = new ControladorEstudiante(conexion);
+
         VistaControladorEstudiante vista = new VistaControladorEstudiante(controladorEstudiante, controladorUsuario);
         jDesktopPane1.add(vista);
         vista.setVisible(true);
@@ -190,7 +184,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void docMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docMenuItemActionPerformed
         // TODO add your handling code here:
-        controladorDocente = new ControladorDocente(conexion);
+
         VistaControladorDocente vista = new VistaControladorDocente(controladorDocente, controladorUsuario);
         jDesktopPane1.add(vista);
         vista.setVisible(true);
@@ -200,7 +194,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void nivelaMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nivelaMenuItemActionPerformed
         // TODO add your handling code here:
-        
+
         VistaNivelAsignatura vista = new VistaNivelAsignatura(controladorNivelAsignatura);
         jDesktopPane1.add(vista);
         vista.setVisible(true);
@@ -209,11 +203,19 @@ public class Principal extends javax.swing.JFrame {
 
     private void asMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asMenuItemActionPerformed
         // TODO add your handling code here:
-        
+
         VistaAsginatura vista = new VistaAsginatura(controladorAsignatura, controladorNivelAsignatura);
         jDesktopPane1.add(vista);
         vista.setVisible(true);
     }//GEN-LAST:event_asMenuItemActionPerformed
+
+    private void espafMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_espafMenuItemActionPerformed
+        // TODO add your handling code here:
+        VistaEspacioFisico vista = new VistaEspacioFisico(controladorEspacioFisico);
+        jDesktopPane1.add(vista);
+        vista.setVisible(true);
+
+    }//GEN-LAST:event_espafMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,10 +255,9 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenuItem asMenuItem;
-    private javax.swing.JMenuItem contentsMenuItem;
-    private javax.swing.JMenuItem deleteMenuItem;
     private javax.swing.JMenuItem docMenuItem;
     private javax.swing.JMenu editMenu;
+    private javax.swing.JMenuItem espafMenuItem;
     private javax.swing.JMenuItem estMenuItem;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
@@ -264,8 +265,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem nivelaMenuItem;
-    private javax.swing.JMenuItem pasteMenuItem;
-    private javax.swing.JMenuItem saveAsMenuItem;
     // End of variables declaration//GEN-END:variables
 
 }

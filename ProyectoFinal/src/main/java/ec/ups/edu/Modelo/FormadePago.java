@@ -15,8 +15,35 @@ public abstract class FormadePago {
     private int valor;
     private int comision;
     
+    public FormadePago(){
+        
+    }
     public abstract int calcularComision();
     public abstract int calcularTotal();
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public int getValor() {
+        return valor;
+    }
+
+    public void setValor(int valor) {
+        this.valor = valor;
+    }
+
+    public int getComision() {
+        return comision;
+    }
+
+    public void setComision(int comision) {
+        this.comision = comision;
+    }
     
     
     

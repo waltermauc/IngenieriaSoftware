@@ -29,9 +29,9 @@ public class ControladorQuimestre {
     }
     public String crearQuimestre(Quimestre quimestere){
        String res = "";
-        String sql = "INSERT INTO MATRICULA (QUIMESTRE_CODIGO,MATRICULA_PERIODO,MATRICULA_MODALIDAD,MATRICULA_ESPECIALIDAD,"
-                + "MATRICULA_GRUPO,MATRICULA_ESTUDIANTE)"
-                + "VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO QUIMESTRE(QUIMESTRE_CODIGO,QUIMESTRE_MATRICULA,QUIMESTRE_PRIMERPARCIAL,QUIMESTRE_SEGUNDOARCIAL,"
+                + "QUIMESTRE_TERCERPARCIAL,QUIMESTRE_APROVECHAMIENTO,QUIMESTRE_EXAMEN,QUIMESTRE_NOTAFINAL,QUIMESTRE_ESTADO)"
+                + "VALUES (?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             consulta.setInt(1, quimestere.getCodigo());
@@ -53,8 +53,8 @@ public class ControladorQuimestre {
        String res = "";
         Quimestre quimestre = new Quimestre();
         try {
-            String sql = "SELECT * FROM GRUPO "
-                    + "WHERE GRUPO_ID = " + "'" + codigo + "'";
+            String sql = "SELECT * FROM QUIMESTRE "
+                    + "WHERE QUIMESTRE_CODIGO = " + "'" + codigo + "'";
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             
             ResultSet resultado = consulta.executeQuery();
@@ -64,17 +64,17 @@ public class ControladorQuimestre {
 
             while (resultado.next()) {
 
-                quimestre.setCodigo(resultado.getInt("MATRICULA_ID".trim()));
-                int codigoAsignatura = resultado.getInt("MATRICULA_PERIODO".trim());
+                quimestre.setCodigo(resultado.getInt("QUIMESTRE_CODIGO".trim()));
+                int codigoAsignatura = resultado.getInt("QUIMESTRE_MATRICULA".trim());
                 Matricula matricul = controlMatricul.buscarMatricula(codigoAsignatura, cpl, cm, ce);
                 quimestre.setMatricula(matricul);
-                quimestre.setPrimerParcial(resultado.getDouble("GRUPO_ID".trim()));
-               quimestre.setSegundoParcial(resultado.getDouble("GRUPO_ID".trim()));
-                quimestre.setTercerParcial(resultado.getDouble("GRUPO_ID".trim()));
-                quimestre.setAprovechamiento(resultado.getDouble("GRUPO_ID".trim()));
-                quimestre.setExamen(resultado.getDouble("GRUPO_ID".trim()));
-                quimestre.setNotaFinal(resultado.getDouble("GRUPO_ID".trim()));
-                quimestre.setEstado(resultado.getString("".trim()));
+                quimestre.setPrimerParcial(resultado.getDouble("QUIMESTRE_PRIMERPARCIAL".trim()));
+               quimestre.setSegundoParcial(resultado.getDouble("QUIMESTRE_SEGUNDOARCIAL".trim()));
+                quimestre.setTercerParcial(resultado.getDouble("QUIMESTRE_TERCERPARCIAL".trim()));
+                quimestre.setAprovechamiento(resultado.getDouble("QUIMESTRE_APROVECHAMIENTO".trim()));
+                quimestre.setExamen(resultado.getDouble("QUIMESTRE_EXAMEN".trim()));
+                quimestre.setNotaFinal(resultado.getDouble("QUIMESTRE_NOTAFINAL".trim()));
+                quimestre.setEstado(resultado.getString("QUIMESTRE_ESTADO".trim()));
           }
         } catch (Exception e) {
             c.desconectar();
@@ -82,11 +82,63 @@ public class ControladorQuimestre {
         }
         return quimestre;
     }
-    public String eliminarQuimestre(Quimestre q){
-        return("Quimestre eliminado");
+    public String eliminarQuimestre(Quimestre quimestre){
+        String res = "";
+        String sql = "DELETE FROM QUIMESTRE"
+                + " WHERE QUIMESTRE_CODIGO = " + "'" + quimestre + "'";
+        try {
+
+            PreparedStatement ps = c.conectado().prepareStatement(sql);
+            ps.executeUpdate();
+            res = "QUIMESTRE ELIMINADO";
+        } catch (Exception ex) {
+            res = " ERROR ";
+            c.desconectar();
+        }
+
+        return res;
     }
-    public List<Quimestre> listarQuimestre(){
-       return (new ArrayList<>());
+    public List<Quimestre> listarQuimestre(ControladorMatricula controlMatri){
+           List<Quimestre> grupoList = new ArrayList<>();
+        String sql = "SELECT QUIMESTRE_CODIGO,"
+                + "QUIMESTRE_MATRICULA,"
+                + "QUIMESTRE_PRIMERPARCIAL,"
+                + "QUIMESTRE_SEGUNDOARCIAL,"
+                 + "QUIMESTRE_TERCERPARCIAL, "
+                 + "QUIMESTRE_APROVECHAMIENTO, "
+                 + "QUIMESTRE_EXAMEN, "
+                 + "QUIMESTRE_NOTAFINAL ,"
+                 + "QUIMESTRE_ESTADO ,"
+                + " FROM QUIMESTRE";
+        try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            ResultSet resultado = consulta.executeQuery();
+            while (resultado.next()) {
+                 ControladorPeriodoLectivo cpl = new ControladorPeriodoLectivo();
+                 ControladorModalidad cm = new ControladorModalidad();
+                  ControladorEspecialidad ce = new ControladorEspecialidad(); 
+                Quimestre quimestre = new Quimestre();
+                quimestre.setCodigo(resultado.getInt("QUIMESTRE_CODIGO".trim()));
+                int codigoMatricula = resultado.getInt("QUIMESTRE_MATRICULA".trim());
+                Matricula matri = controlMatri.buscarMatricula(codigoMatricula, cpl, cm, ce);
+                quimestre.setMatricula(matri);
+                quimestre.setPrimerParcial(resultado.getDouble(("QUIMESTRE_PRIMERPARCIAL".trim())));
+                quimestre.setSegundoParcial(resultado.getDouble("QUIMESTRE_SEGUNDOARCIAL".trim()));
+                quimestre.setTercerParcial(resultado.getDouble("QUIMESTRE_TERCERPARCIAL".trim()));
+                quimestre.setAprovechamiento(resultado.getDouble("QUIMESTRE_APROVECHAMIENTO".trim()));
+                quimestre.setExamen(resultado.getDouble("QUIMESTRE_EXAMEN".trim()));
+                quimestre.setNotaFinal(resultado.getDouble("QUIMESTRE_NOTAFINAL".trim()));
+                quimestre.setEstado(resultado.getString("QUIMESTRE_ESTADO".trim()));
+                grupoList.add(quimestre);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            c.desconectar();
+
+        }
+        return grupoList;
+    
+
     }
     public String calcularNotaFinal(){
         return("Nota");

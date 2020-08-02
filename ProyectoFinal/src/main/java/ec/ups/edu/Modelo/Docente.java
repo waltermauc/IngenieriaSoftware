@@ -41,7 +41,7 @@ public class Docente extends Persona {
 
     @Override
     public String toString() {
-        return "Docente{" + "codigo=" + codigo + ", persona=" + persona + ", titulo=" + titulo + '}';
+        return "Docente{" + "codigo=" + codigo + ", persona=" + persona.getCedula() + ", titulo=" + titulo + '}';
     }
 
     

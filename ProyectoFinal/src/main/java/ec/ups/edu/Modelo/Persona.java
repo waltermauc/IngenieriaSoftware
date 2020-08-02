@@ -89,6 +89,11 @@ public abstract class Persona {
         this.fechaNacimiento = fechaNacimiento;
     }
 
+    @Override
+    public String toString() {
+        return "Persona{" + "cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion + ", correo=" + correo + ", telefono=" + telefono + ", sexo=" + sexo + ", fechaNacimiento=" + fechaNacimiento + '}';
+    }
+
    
     
     

@@ -7,6 +7,13 @@ package ec.ups.edu.Controlador;
 
 import ec.ups.edu.Modelo.FacturaDet;
 import ec.ups.edu.Modelo.Matricula;
+import java.io.BufferedInputStream;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -19,7 +26,7 @@ import java.util.List;
 public class ControladorFacturaDet {
 
     private Conexion c;
-
+   
     public ControladorFacturaDet(Conexion c) {
         this.c = c;
     }
@@ -59,7 +66,12 @@ public class ControladorFacturaDet {
       
         String res = "";
         FacturaDet facturaD = new FacturaDet();
-        try {
+      try  
+           
+
+        {
+
+            
             String sql = "SELECT * FROM FACTURADETALLE "
                     + "WHERE FACTURADETALLE_ID = " + "'" + codigo + "'";
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
@@ -78,7 +90,7 @@ public class ControladorFacturaDet {
                 facturaD.setTotal(resultado.getDouble("FACTURADETALLE_TOTAL".trim()));
                 facturaD.setIva(resultado.getDouble("FACTURADETALLE_IVA"));
                 int codigoMatricula = resultado.getInt("FACTURADETALLE_MATRICUAL".trim());
-                Matricula matric = controlMatricu.buscarMatricula(codigo, cpl, cm, ce);
+                Matricula matric = controlMatricu.buscarMatricula(codigoMatricula, cpl, cm, ce);
                 facturaD.setMatricula(matric);
             }
         } catch (Exception e) {
@@ -132,7 +144,7 @@ public class ControladorFacturaDet {
                 facturaDet.setTotal(resultado.getDouble("FACTURADETALLE_TOTAL".trim()));
                 facturaDet.setIva(resultado.getDouble("FACTURADETALLE_IVA".trim()));
                 int codigoMatricula = resultado.getInt("FACTURADETALLE_MATRICULA".trim());
-                facturaDet.setMatricula(controladorMatricula.buscarMatricula(codigoMatricula, cpl, cm, ce, cg, ces, ca, cd, cef, cn));
+                facturaDet.setMatricula(controladorMatricula.buscarMatricula(codigoMatricula, cpl, cm, ce));
                 listFacturaDet.add(facturaDet);
 
             }
@@ -162,4 +174,6 @@ public class ControladorFacturaDet {
         return res;
 
     }
+
+    
 }

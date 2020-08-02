@@ -8,7 +8,6 @@ package ec.ups.edu.Modelo;
 
 import java.util.Date;
 
-
 /**
  *
  * @author 59396

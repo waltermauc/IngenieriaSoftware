@@ -46,5 +46,11 @@ public class Asignatura {
     public void setCodigoNivelAsignatura(NivelAsignatura codigoNivelAsignatura) {
         this.codigoNivelAsignatura = codigoNivelAsignatura;
     }
+
+    @Override
+    public String toString() {
+        return "Asignatura{" + "descripcion=" + descripcion + ", costoCreditos=" + costoCreditos + ", codigoNivelAsignatura=" + codigoNivelAsignatura + '}';
+    }
+    
     
 }

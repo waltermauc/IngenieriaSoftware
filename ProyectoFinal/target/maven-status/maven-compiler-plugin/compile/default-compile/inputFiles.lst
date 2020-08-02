@@ -10,6 +10,7 @@ C:\Users\59396\Documents\GitHub\IngenieriaSoftware\ProyectoFinal\src\main\java\e
 C:\Users\59396\Documents\GitHub\IngenieriaSoftware\ProyectoFinal\src\main\java\ec\ups\edu\Controlador\ControladorNivelAsignatura.java
 C:\Users\59396\Documents\GitHub\IngenieriaSoftware\ProyectoFinal\src\main\java\ec\ups\edu\Vista\VistaEspacioFisico.java
 C:\Users\59396\Documents\GitHub\IngenieriaSoftware\ProyectoFinal\src\main\java\ec\ups\edu\Controlador\Conexion.java
+C:\Users\59396\Documents\GitHub\IngenieriaSoftware\ProyectoFinal\src\main\java\ec\ups\edu\Controlador\ControladorFacturaCabecera.java
 C:\Users\59396\Documents\GitHub\IngenieriaSoftware\ProyectoFinal\src\main\java\ec\ups\edu\Controlador\ControladorLibroDetalle.java
 C:\Users\59396\Documents\GitHub\IngenieriaSoftware\ProyectoFinal\src\main\java\ec\ups\edu\Vista\VistaNivelAsignatura.java
 C:\Users\59396\Documents\GitHub\IngenieriaSoftware\ProyectoFinal\src\main\java\ec\ups\edu\Vista\VistaEspecialidad.java
@@ -26,9 +27,7 @@ C:\Users\59396\Documents\GitHub\IngenieriaSoftware\ProyectoFinal\src\main\java\e
 C:\Users\59396\Documents\GitHub\IngenieriaSoftware\ProyectoFinal\src\main\java\ec\ups\edu\Modelo\NivelAsignatura.java
 C:\Users\59396\Documents\GitHub\IngenieriaSoftware\ProyectoFinal\src\main\java\ec\ups\edu\Modelo\LibroDetalle.java
 C:\Users\59396\Documents\GitHub\IngenieriaSoftware\ProyectoFinal\src\main\java\ec\ups\edu\Controlador\ControladorCalifcacion.java
-C:\Users\59396\Documents\GitHub\IngenieriaSoftware\ProyectoFinal\src\main\java\ec\ups\edu\Modelo\FacturaCabecera.java
 C:\Users\59396\Documents\GitHub\IngenieriaSoftware\ProyectoFinal\src\main\java\ec\ups\edu\Modelo\LibroDiario.java
-C:\Users\59396\Documents\GitHub\IngenieriaSoftware\ProyectoFinal\src\main\java\ec\ups\edu\Controlador\ControladorFacturaCab.java
 C:\Users\59396\Documents\GitHub\IngenieriaSoftware\ProyectoFinal\src\main\java\ec\ups\edu\Modelo\Quimestre.java
 C:\Users\59396\Documents\GitHub\IngenieriaSoftware\ProyectoFinal\src\main\java\ec\ups\edu\Controlador\ControladorDocente.java
 C:\Users\59396\Documents\GitHub\IngenieriaSoftware\ProyectoFinal\src\main\java\ec\ups\edu\Vista\Principal.java
@@ -42,6 +41,7 @@ C:\Users\59396\Documents\GitHub\IngenieriaSoftware\ProyectoFinal\src\main\java\e
 C:\Users\59396\Documents\GitHub\IngenieriaSoftware\ProyectoFinal\src\main\java\ec\ups\edu\Modelo\Matricula.java
 C:\Users\59396\Documents\GitHub\IngenieriaSoftware\ProyectoFinal\src\main\java\ec\ups\edu\Controlador\ControladorLibroDiario.java
 C:\Users\59396\Documents\GitHub\IngenieriaSoftware\ProyectoFinal\src\main\java\ec\ups\edu\Modelo\Modalidad.java
+C:\Users\59396\Documents\GitHub\IngenieriaSoftware\ProyectoFinal\src\main\java\ec\ups\edu\Controlador\ControladorFormaPago.java
 C:\Users\59396\Documents\GitHub\IngenieriaSoftware\ProyectoFinal\src\main\java\ec\ups\edu\Modelo\FormadePago.java
 C:\Users\59396\Documents\GitHub\IngenieriaSoftware\ProyectoFinal\src\main\java\ec\ups\edu\Vista\VistaAsginatura.java
 C:\Users\59396\Documents\GitHub\IngenieriaSoftware\ProyectoFinal\src\main\java\ec\ups\edu\Controlador\ControladorMatricula.java

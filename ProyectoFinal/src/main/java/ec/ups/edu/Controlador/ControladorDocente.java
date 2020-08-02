@@ -54,7 +54,7 @@ public class ControladorDocente {
                 + "`PERSONA_CELULAR`,"
                 + "`PERSONA_SEXO`,"
                 + "`PERSONA_FECHANACIMIENTO`)"
-                + "VALUES (?,?,?,?,?,?,?,?,?)";
+                + " VALUES (?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             consulta.setString(1, docente.getCedula());
@@ -113,7 +113,7 @@ public class ControladorDocente {
                 + "    `persona`.`PERSONA_SEXO`,"
                 + "    `persona`.`PERSONA_FECHANACIMIENTO`,"
                 + "    `docente`.`DOCENTE_TITULO` "
-                + "FROM `proyecto_final`.`persona`,`proyecto_final`.`docente`"
+                + " FROM `proyecto_final`.`persona`,`proyecto_final`.`docente`"
                 + " WHERE `persona`.`PERSONA_ID`=`docente`.`DOCENTE_PERSONA` AND `persona`.`PERSONA_ID`=" + "'" + codigo + "';";
         try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
@@ -150,7 +150,7 @@ public class ControladorDocente {
                 + "    `persona`.`PERSONA_SEXO`,"
                 + "    `persona`.`PERSONA_FECHANACIMIENTO`,"
                 + "    `docente`.`DOCENTE_TITULO` "
-                + "FROM `proyecto_final`.`persona`,`proyecto_final`.`docente`"
+                + " FROM `proyecto_final`.`persona`,`proyecto_final`.`docente`"
                 + " WHERE `persona`.`PERSONA_ID`=`docente`.`DOCENTE_PERSONA` ;";
         Docente docente = new Docente();
         try {
@@ -190,7 +190,7 @@ public class ControladorDocente {
                 + " `persona`.`PERSONA_SEXO`" + docente.getSexo() + " ' " + ","
                 + " `persona`.`PERSONA_FECHANACIMIENTO`" + docente.getFechaNacimiento() + " ' " + ","
                 + " `docente`.`DOCENTE_TITULO``" + docente.getTitulo() + " ' " + ","
-                + "WHERE codigo =" + " ' " + codigo + " ' ";
+                + " WHERE codigo =" + " ' " + codigo + " ' ";
         try {
 
             PreparedStatement ps;

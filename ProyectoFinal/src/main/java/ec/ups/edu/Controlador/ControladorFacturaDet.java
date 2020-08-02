@@ -13,6 +13,16 @@ package ec.ups.edu.Controlador;
 import ec.ups.edu.Modelo.FacturaDet;
 import ec.ups.edu.Modelo.Matricula;
 import java.io.IOException;
+
+import ec.ups.edu.Modelo.FacturaDet;
+import ec.ups.edu.Modelo.Matricula;
+import java.io.BufferedInputStream;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -23,6 +33,7 @@ import java.util.List;
  * @author DELL
  */
 public class ControladorFacturaDet  implements AutoCloseable{
+public class ControladorFacturaDet {
 
     private Conexion c;
    
@@ -66,6 +77,10 @@ public class ControladorFacturaDet  implements AutoCloseable{
         String res = "";
         FacturaDet facturaD = new FacturaDet();
      
+    public FacturaDet buscarFacturaDetalle(int codigo, ControladorMatricula controlMatricu) {
+      
+        String res = "";
+        FacturaDet facturaD = new FacturaDet();
       try  
            
 
@@ -128,20 +143,8 @@ public class ControladorFacturaDet  implements AutoCloseable{
 
     }
 
-    public List<FacturaDet> listarFactDet (ControladorMatricula controladorMatricula, ControladorPeriodoLectivo cpl, ControladorModalidad cm,
-            ControladorEspecialidad ce) {
         List<FacturaDet> listFacturaDet = new ArrayList<>();
-        String sql = " SELECT * FROM proyecto_final.facturadetalle";
-        FacturaDet facturaDet = new FacturaDet();
-        try {
-            PreparedStatement consulta = c.conectado().prepareStatement(sql);
-            ResultSet resultado = consulta.executeQuery();
             while (resultado.next()) {
-                facturaDet.setCodigo(resultado.getInt("FACTURADETALLE_ID".trim()));
-                facturaDet.setDescripcion(resultado.getString("FACTURADETALLE_DESCRIPCION".trim()));
-                facturaDet.setSubtotal(resultado.getDouble("FACTURADETALLE_SUBTOTAL".trim()));
-                facturaDet.setTotal(resultado.getDouble("FACTURADETALLE_TOTAL".trim()));
-                facturaDet.setIva(resultado.getDouble("FACTURADETALLE_IVA".trim()));
                 int codigoMatricula = resultado.getInt("FACTURADETALLE_MATRICULA".trim());
                 facturaDet.setMatricula(controladorMatricula.buscarMatricula(codigoMatricula, cpl, cm, ce));
                 listFacturaDet.add(facturaDet);

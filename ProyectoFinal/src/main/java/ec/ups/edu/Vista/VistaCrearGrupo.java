@@ -35,9 +35,7 @@ public class VistaCrearGrupo extends javax.swing.JInternalFrame {
         this.controladorEspacioFisico = controladorEspacioFisico;
         this.controladorGrupo = controladorGrupo;
         initComponents();
-        cargarAsignatura();
-        cargarDocente();
-        cargarEspacioFisico();
+        
     }
 
     /**
@@ -69,6 +67,11 @@ public class VistaCrearGrupo extends javax.swing.JInternalFrame {
         jLabel4.setText("DOCENTE");
 
         jComboBoxas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONE UNA OPCION" }));
+        jComboBoxas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBoxasMouseClicked(evt);
+            }
+        });
 
         jComboBoxesp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONE UNA OPCION" }));
 
@@ -141,6 +144,13 @@ public class VistaCrearGrupo extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jComboBoxasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxasMouseClicked
+        // TODO add your handling code here:
+        cargarAsignatura();
+        cargarDocente();
+        cargarEspacioFisico();
+    }//GEN-LAST:event_jComboBoxasMouseClicked
+
     public void cargarAsignatura() {
         DefaultComboBoxModel modelo = (DefaultComboBoxModel) jComboBoxas.getModel();
         for (Asignatura na : controladorAsignatura.listarAsignatura()) {
@@ -151,7 +161,7 @@ public class VistaCrearGrupo extends javax.swing.JInternalFrame {
     public void cargarDocente(){
         DefaultComboBoxModel modelo = (DefaultComboBoxModel) jComboBoxdco.getModel();
         for (Docente docente : controladorDocente.listarDocente()) {
-            modelo.addElement(docente);
+             modelo.addElement(docente);
         }
     }
     public void cargarEspacioFisico(){

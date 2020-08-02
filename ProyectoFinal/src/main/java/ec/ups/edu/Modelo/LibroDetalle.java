@@ -17,7 +17,7 @@ public class LibroDetalle {
     private int codigo;
     private Date fecha;
     private String descripcion;
-    private FacturaCabecera factCabecera;
+    private FacturaCab factCabecera;
     private FormadePago formaPago;
 
     public int getCodigo() {
@@ -44,11 +44,11 @@ public class LibroDetalle {
         this.descripcion = descripcion;
     }
 
-    public FacturaCabecera getFactCabecera() {
+    public FacturaCab getFactCabecera() {
         return factCabecera;
     }
 
-    public void setFactCabecera(FacturaCabecera factCabecera) {
+    public void setFactCabecera(FacturaCab factCabecera) {
         this.factCabecera = factCabecera;
     }
 

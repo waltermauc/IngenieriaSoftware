@@ -46,6 +46,7 @@ public class ControladorDocente {
         String retur = "";
         String sql = "INSERT INTO `proyecto_final`.`persona`"
                 + "(`PERSONA_ID`,"
+                + "`PERSONA_CEDULA`,"
                 + "`PERSONA_NOMBRE`,"
                 + "`PERSONA_APELLIDO`,"
                 + "`PERSONA_DIRECCION`,"
@@ -53,7 +54,7 @@ public class ControladorDocente {
                 + "`PERSONA_CELULAR`,"
                 + "`PERSONA_SEXO`,"
                 + "`PERSONA_FECHANACIMIENTO`)"
-                + "VALUES (?,?,?,?,?,?,?,?)";
+                + "VALUES (?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             consulta.setString(1, docente.getCedula());
@@ -103,6 +104,7 @@ public class ControladorDocente {
     public Docente buscarDocente(String codigo) {
         Docente docente = new Docente();
         String sql = "SELECT `persona`.`PERSONA_ID`,"
+                + " `persona`.`PERSONA_NOMBRE`,"
                 + "    `persona`.`PERSONA_NOMBRE`,"
                 + "    `persona`.`PERSONA_APELLIDO`,"
                 + "    `persona`.`PERSONA_DIRECCION`,"

@@ -6,6 +6,7 @@
 package ec.ups.edu.Controlador;
 
 import ec.ups.edu.Modelo.FacturaDet;
+import ec.ups.edu.Modelo.Matricula;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -53,7 +54,46 @@ public class ControladorFacturaDet {
 
         return res;
     }
+      
+    public FacturaDet buscarFacturaDetalle(int codigo, ControladorMatricula controlMatricu) {
+      
+        String res = "";
+        FacturaDet facturaD = new FacturaDet();
+        try {
+            String sql = "SELECT * FROM FACTURADETALLE "
+                    + "WHERE FACTURADETALLE_ID = " + "'" + codigo + "'";
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+          
+            ResultSet resultado = consulta.executeQuery();
+           
+            ControladorPeriodoLectivo cpl = new ControladorPeriodoLectivo ();
+            ControladorModalidad cm = new ControladorModalidad();
+            ControladorEspecialidad ce = new ControladorEspecialidad();
+            ControladorGrupo cg = new ControladorGrupo();
+            ControladorEstudiante ces =new ControladorEstudiante();
+            ControladorAsignatura ca =  new ControladorAsignatura();
+            ControladorDocente cd = new ControladorDocente();
+            ControladorEspacioFisico cef = new ControladorEspacioFisico(); 
+            ControladorNivelAsignatura cn = new ControladorNivelAsignatura() ;
+            while (resultado.next()) {
 
+                facturaD.setCodigo(resultado.getInt("FACTURADETALLE_ID".trim()));
+                facturaD.setDescripcion(resultado.getString("FACTURADETALLE_DESCRIPCION".trim()));
+                facturaD.setSubtotal(resultado.getDouble("FACTURADETALLE_SUBTOTAL".trim()));
+                facturaD.setTotal(resultado.getDouble("FACTURADETALLE_TOTAL".trim()));
+                facturaD.setIva(resultado.getDouble("FACTURADETALLE_IVA"));
+                int codigoMatricula = resultado.getInt("FACTURADETALLE_MATRICUAL".trim());
+                Matricula matric = controlMatricu.buscarMatricula(codigo, cpl, cm, ce, cg, ces, ca, cd, cef, cn);
+                facturaD.setMatricula(matric);
+            }
+        } catch (Exception e) {
+            c.desconectar();
+            return null;
+        }
+        return facturaD;
+    }
+    
+    
     public String modificarFactDet(int codigo, FacturaDet detalle) {
         String res = "";
         String sql = "UPDATE `proyecto_final`.`facturadetalle`"

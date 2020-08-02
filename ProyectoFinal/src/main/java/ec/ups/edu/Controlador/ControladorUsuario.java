@@ -6,6 +6,7 @@
 package ec.ups.edu.Controlador;
 
 import ec.ups.edu.Modelo.Usuario;
+import java.io.Console;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -89,8 +90,8 @@ public class ControladorUsuario {
                 n = resultado.getInt("Codigo".trim());
             }
 
-        } catch (Exception e) {
-
+        } catch (SQLException e) {
+               System.out.println("ee");
         }
         return n;
     }

@@ -16,16 +16,18 @@ import java.util.List;
  * @author rayner
  */
 public class ControladorFormaPago {
+
     private Conexion c;
-    
+
     public ControladorFormaPago(Conexion c) {
         this.c = c;
     }
-    public ControladorFormaPago(){
-        
+
+    public ControladorFormaPago() {
+
     }
-    
-     public String crearFormadePago(FormadePago formaPago) {
+
+    public String crearFormadePago(FormadePago formaPago) {
         String res = "";
         String sql = "INSERT INTO FORMADEPAGO"
                 + "(FORMAPAGO_CODIGO, FORMAPAGO_VALOR, FORMAPAGO_COMISION) "
@@ -35,9 +37,9 @@ public class ControladorFormaPago {
             consulta.setInt(1, formaPago.getCodigo());
             consulta.setInt(2, formaPago.getValor());
             consulta.setInt(3, formaPago.getComision());
-            
+
         } catch (Exception e) {
-               return "error en la creacion de la forma de pago";
+            return "error en la creacion de la forma de pago";
         }
         return res;
      }
@@ -131,6 +133,24 @@ public class ControladorFormaPago {
         }
     return listaForma;   
    }
-           
-            
+    
+    }
+
+    public FormadePago buscarFormaPago(int codigo) {
+        String resultad0 = "";
+        FormadePago forma = new FormadePago() {
+            @Override
+            public int calcularComision() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public int calcularTotal() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+          
+
+        };
+        return null;
+    }
 }

@@ -14,6 +14,7 @@ import ec.ups.edu.Modelo.FormadePago;
  * @author 59396
  */
 public class ControladorTarjeta extends FormadePago{
+    
 
    @Override
     public int calcularComision() {

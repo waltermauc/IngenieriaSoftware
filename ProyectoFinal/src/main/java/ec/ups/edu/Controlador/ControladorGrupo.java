@@ -48,7 +48,7 @@ public class ControladorGrupo {
     }
 
     public Grupo buscarGrupo(int codigo, ControladorAsignatura controlAsig, ControladorDocente controlDocen, ControladorEspacioFisico controlEspacio, ControladorNivelAsignatura nivel) {
-        String res = "";
+   
         Grupo grupo = new Grupo();
         try {
             String sql = "SELECT * FROM GRUPO "

@@ -14,6 +14,17 @@ import ec.ups.edu.Modelo.FormadePago;
  * @author 59396
  */
 public class ControladorChueques extends FormadePago{
+    private Conexion c;
+    
+    public ControladorChueques  (Conexion c){
+        this.c=c;
+    }
+    public ControladorChueques(){
+        
+    }
+    
+    
+    
     @Override
     public int calcularComision() {
         return(0);

@@ -4,16 +4,17 @@
  * and open the template in the editor.
  */
 package ec.ups.edu.Controlador;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
 
 import ec.ups.edu.Modelo.FacturaDet;
 import ec.ups.edu.Modelo.Matricula;
-import java.io.BufferedInputStream;
-import java.io.BufferedWriter;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.OutputStream;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -23,7 +24,8 @@ import java.util.List;
  *
  * @author DELL
  */
-public class ControladorFacturaDet {
+public class ControladorFacturaDet  implements AutoCloseable{
+
 
     private Conexion c;
    
@@ -99,7 +101,7 @@ public class ControladorFacturaDet {
         }
         return facturaD;
     }
-    
+
     
     public String modificarFactDet(int codigo, FacturaDet detalle) {
         String res = "";
@@ -127,8 +129,7 @@ public class ControladorFacturaDet {
         return res;
 
     }
-
-    public List<FacturaDet> listarFactDet(ControladorMatricula controladorMatricula, ControladorPeriodoLectivo cpl, ControladorModalidad cm,
+  public List<FacturaDet> listarFactDet(ControladorMatricula controladorMatricula, ControladorPeriodoLectivo cpl, ControladorModalidad cm,
             ControladorEspecialidad ce, ControladorGrupo cg, ControladorEstudiante ces, ControladorAsignatura ca,
             ControladorDocente cd, ControladorEspacioFisico cef, ControladorNivelAsignatura cn) {
         List<FacturaDet> listFacturaDet = new ArrayList<>();
@@ -157,6 +158,7 @@ public class ControladorFacturaDet {
         return listFacturaDet;
     }
 
+
     public String eliminarFactDet(int codigo) {
         String res = "";
         String sql = "DELETE FROM `proyecto_final`.`facturadetalle`"
@@ -175,5 +177,8 @@ public class ControladorFacturaDet {
 
     }
 
-    
+    public void close() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
+

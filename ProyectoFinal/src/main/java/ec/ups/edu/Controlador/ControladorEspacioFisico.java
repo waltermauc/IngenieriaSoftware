@@ -48,7 +48,7 @@ public class ControladorEspacioFisico {
                 + " SET ESPACIOFISICO_ID = " + " ' " + espacioFisico.getCodigoEspacioFisico()+ " ' " + ","
                 + "  ESPACIOFISICO_NUMEROAULA =" + " ' " + espacioFisico.getNumeroDesignadoAula()+ " ' " + ","
                 + "  ESPACIOFISICO_EDIFICIO =  " + " ' " + espacioFisico.getNombreEdificio()+ " ' " + ","
-                + "WHERE ESPACIOFISICO_ID =" + " ' " + codigo + " ' ";
+                + " WHERE ESPACIOFISICO_ID =" + " ' " + codigo + " ' ";
         try {
             PreparedStatement ps;
             ps = c.conectado().prepareStatement(sql);
@@ -100,7 +100,7 @@ public class ControladorEspacioFisico {
          EspacioFisico espacioFisico = new EspacioFisico();
 
         String sql = "SELECT * from ESPACIOFISICO"
-                + "WHERE ESPACIOFISICO_ID = " + "'" + codigo + "'";
+                + " WHERE ESPACIOFISICO_ID = " + "'" + codigo + "'";
          try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             ResultSet resultado = consulta.executeQuery();

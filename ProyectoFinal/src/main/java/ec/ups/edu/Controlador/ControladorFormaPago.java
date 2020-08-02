@@ -136,21 +136,5 @@ public class ControladorFormaPago {
     
     }
 
-    public FormadePago buscarFormaPago(int codigo) {
-        String resultad0 = "";
-        FormadePago forma = new FormadePago() {
-            @Override
-            public int calcularComision() {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
+     
 
-            @Override
-            public int calcularTotal() {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-          
-
-        };
-        return null;
-    }
-}

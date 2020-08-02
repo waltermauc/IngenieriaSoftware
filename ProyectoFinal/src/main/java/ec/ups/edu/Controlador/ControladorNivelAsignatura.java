@@ -54,8 +54,8 @@ public class ControladorNivelAsignatura {
         String res = "";
         String sql = "UPDATE NIVELASIGNATURA"
                 + " SET NIVELASIGNATURA_ID = " + " ' " + nivelAsignature.getCodigoNivelAsignatura() + " ' " + ","
-                + "  NIVELASIGNATURA_DESCRIPCION =" + " ' " + nivelAsignature.getDescripcionNivelAsignatura() + " ' " + ","
-                + "WHERE NIVELASIGNATURA_ID =" + " ' " + codigo + " ' ";
+                + "  NIVELASIGNATURA_DESCRIPCION =" + " ' " + nivelAsignature.getDescripcionNivelAsignatura() + " ' " 
+                + " WHERE NIVELASIGNATURA_ID =" + " ' " + codigo + " ' ";
         try {
 
             PreparedStatement ps;
@@ -112,9 +112,9 @@ public class ControladorNivelAsignatura {
     public NivelAsignatura buscarAsignatura(int codigo) {
         NivelAsignatura asignature = new NivelAsignatura();
         String sql = "SELECT NIVELASIGNATURA_ID,"
-                + " NIVELASIGNATURA_DESCRIPCION,"
-                + "FROM NIVELASIGNATURA"
-                + "WHERE NIVELASIGNATURA_ID = " + "'" + codigo + "'";
+                + " NIVELASIGNATURA_DESCRIPCION"
+                + " FROM nivelasignatura"
+                + " WHERE NIVELASIGNATURA_ID = " + "'" + codigo + "'";
         try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             ResultSet resultado = consulta.executeQuery();

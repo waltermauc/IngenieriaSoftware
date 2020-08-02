@@ -7,6 +7,7 @@ ec\ups\edu\Vista\VistaControladorEstudiante$2.class
 ec\ups\edu\Vista\VistaPeriiodoLectivo.class
 ec\ups\edu\Vista\Principal$7.class
 ec\ups\edu\Vista\VistaControladorDocente$3.class
+ec\ups\edu\controlador\ControladorFacturaCabecera.class
 ec\ups\edu\Vista\VistaUsuario.class
 ec\ups\edu\Vista\VistaCrearGrupo$2.class
 ec\ups\edu\Vista\VistaControladorEstudiante.class

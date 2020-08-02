@@ -37,5 +37,10 @@ public class EspacioFisico {
     public void setNombreEdificio(String nombreEdificio) {
         this.nombreEdificio = nombreEdificio;
     }
+
+    @Override
+    public String toString() {
+        return "Edificio =" + nombreEdificio + ", Numero Aula =" + numeroDesignadoAula + '}';
+    }
     
 }

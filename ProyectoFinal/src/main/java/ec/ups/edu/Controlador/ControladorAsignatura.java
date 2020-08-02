@@ -36,7 +36,7 @@ public class ControladorAsignatura {
                     + "`ASIGNATURA_DESCRIPCION`,"
                     + "`ASIGNATURA_NIVELASIGNATURA`,"
                     + "`ASIGNATURA_COSTO`)"
-                    + "VALUES (?,?,?,?)";
+                    + " VALUES (?,?,?,?)";
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             consulta.setInt(1, asignatura.getCodigoAsignatura());
             consulta.setString(2, asignatura.getDescripcion());
@@ -58,9 +58,9 @@ public class ControladorAsignatura {
         String sql = "UPDATE ASIGNATURA"
                 + " SET ASIGNATURA_ID = " + " ' " + asignatura.getCodigoAsignatura() + " ' " + ","
                 + "  ASIGNATURA_DESCRIPCION =" + " ' " + asignatura.getDescripcion() + " ' " + ","
-                + "  ASIGNATURA_NIVELASIGNATURA =  " + " ' " +  asignatura.getCodigoNivelAsignatura() + " ' " + ","
+                + "  ASIGNATURA_NIVELASIGNATURA =  " + " ' " + asignatura.getCodigoNivelAsignatura() + " ' " + ","
                 + "  ASIGNATURA_COSTO = " + " ' " + asignatura.getCostoCreditos() + " ' "
-                + "WHERE ASIGNATURA_ID =" + " ' " + codigo + " ' ";
+                + " WHERE ASIGNATURA_ID =" + " ' " + codigo + " ' ";
         try {
 
             PreparedStatement ps;
@@ -119,13 +119,12 @@ public class ControladorAsignatura {
     public Asignatura buscarAsignatura(int codigo, ControladorNivelAsignatura controladorNivelAsignatura) {
         Asignatura asignature = new Asignatura();
         String sql = "SELECT * FROM proyecto_final.asignatura"
-                + "WHERE ASIGNATURA_ID = " + "'" + codigo + "'";
+                + " WHERE ASIGNATURA_ID = " + "'" + codigo + "'";
         try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             ResultSet resultado = consulta.executeQuery();
 
             while (resultado.next()) {
-
                 asignature.setCodigoAsignatura(resultado.getInt("ASIGNATURA_ID".trim()));
                 asignature.setDescripcion(resultado.getString("ASIGNATURA_DESCRIPCION".trim()));
                 int codigoNivelAsignatura = resultado.getInt("ASIGNATURA_NIVELASIGNATURA".trim());
@@ -140,6 +139,35 @@ public class ControladorAsignatura {
             return null;
         }
         return asignature;
+    }
+
+    public List<Asignatura> buscarNombreAsignatura(String nombre, ControladorNivelAsignatura controladorNivelAsignatura) {
+        Asignatura asignature = new Asignatura();
+        String sql = "SELECT * FROM proyecto_final.asignatura"
+                + " WHERE ASIGNATURA_DESCRIPCION LIKE " + "'" + nombre + "%'";
+        List<Asignatura> array = new ArrayList();
+
+        try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            ResultSet resultado = consulta.executeQuery();
+
+            while (resultado.next()) {
+
+                asignature.setCodigoAsignatura(resultado.getInt("ASIGNATURA_ID".trim()));
+                asignature.setDescripcion(resultado.getString("ASIGNATURA_DESCRIPCION".trim()));
+                int codigoNivelAsignatura = resultado.getInt("ASIGNATURA_NIVELASIGNATURA".trim());
+                NivelAsignatura nivelAsig = controladorNivelAsignatura.buscarAsignatura(codigoNivelAsignatura);
+                asignature.setCodigoNivelAsignatura(nivelAsig);
+                asignature.setCostoCreditos(resultado.getDouble("ASIGNATURA_COSTO".trim()));
+                array.add(asignature);
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            c.desconectar();
+            return null;
+        }
+        return array;
     }
 
     public int obtenerCodigo() {

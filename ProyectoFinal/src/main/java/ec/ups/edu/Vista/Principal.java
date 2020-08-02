@@ -268,7 +268,8 @@ public class Principal extends javax.swing.JFrame {
 
     private void aboutMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItem2ActionPerformed
         // TODO add your handling code here:
-        VistaCrearGrupo vista = new VistaCrearGrupo(controladorGrupo, controladorAsignatura, controladorDocente, controladorEspacioFisico);
+        VistaCrearGrupo vista = new VistaCrearGrupo(controladorGrupo, controladorAsignatura, controladorDocente, 
+                controladorEspacioFisico,controladorNivelAsignatura);
         jDesktopPane1.add(vista);
         vista.setVisible(true);
     }//GEN-LAST:event_aboutMenuItem2ActionPerformed

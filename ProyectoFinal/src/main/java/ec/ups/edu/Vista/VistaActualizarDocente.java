@@ -10,28 +10,30 @@ import ec.ups.edu.Controlador.ControladorUsuario;
 import ec.ups.edu.Modelo.Docente;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.GregorianCalendar;
-import javax.swing.*;
+import java.util.List;
+import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author 59396
+ * @author rayner
  */
-public class VistaControladorDocente extends javax.swing.JInternalFrame {
- 
-    /**
-     * Creates new form VistaControladorEstudiante
-     */
-    private ControladorDocente controladorDocente;
-    private ControladorUsuario controladorUsuario;
-    private int codigo;
+public class VistaActualizarDocente extends javax.swing.JPanel {
 
-    public VistaControladorDocente(ControladorDocente controladorDocente, ControladorUsuario controladorUsuario) {
-        this.controladorDocente = controladorDocente;
-        this.controladorUsuario = controladorUsuario;
-        codigo = controladorDocente.obtenerCodigo() + 1;
+    private ControladorDocente controladorDocente ;
+    private ControladorUsuario controladorUsuario;
+    
+    /**
+     * Creates new form VistaActualizarDocente
+     */
+    
+    
+    
+    
+    public VistaActualizarDocente(ControladorDocente controladorDo) {
+        controladorDocente = controladorDo;
         initComponents();
     }
 
@@ -67,6 +69,10 @@ public class VistaControladorDocente extends javax.swing.JInternalFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jTextTitulo = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel2.setForeground(new java.awt.Color(204, 255, 255));
 
         jLabel2.setText("NOMBRE:");
 
@@ -88,7 +94,7 @@ public class VistaControladorDocente extends javax.swing.JInternalFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("GESTION DOCENTE");
+        jLabel1.setText("DOCENTE");
 
         jButton2.setText("CANCEL");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -123,48 +129,61 @@ public class VistaControladorDocente extends javax.swing.JInternalFrame {
 
         jLabel10.setText("TITULO:");
 
+        btnBuscar.setText("BUSCAR");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(125, 125, 125)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(161, 161, 161)
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2)))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addGap(161, 161, 161)
+                .addComponent(jButton1)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10))
-                .addGap(60, 60, 60)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextApellido, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextDireccion, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextCorreo, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextCelular, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFecha, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextCedula, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jRadioMale)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioFemale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jTextTitulo))
-                .addGap(38, 38, 38))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel10))
+                        .addGap(60, 60, 60)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextApellido, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextDireccion, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextCorreo, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextCelular, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFecha, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jRadioMale)
+                                .addGap(18, 18, 18)
+                                .addComponent(jRadioFemale, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))
+                            .addComponent(jTextTitulo))
+                        .addGap(38, 38, 38))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(35, 35, 35)
+                        .addComponent(jTextCedula)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnBuscar)
+                        .addGap(56, 56, 56))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(177, 177, 177))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,7 +193,8 @@ public class VistaControladorDocente extends javax.swing.JInternalFrame {
                 .addGap(31, 31, 31)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jTextCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -208,28 +228,23 @@ public class VistaControladorDocente extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(jTextTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextApellidoActionPerformed
@@ -247,8 +262,10 @@ public class VistaControladorDocente extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Docente docente = new Docente();
+        
+        Docente docente = new Docente ();
         docente.setCedula(jTextCedula.getText());
+        String ced = jTextCedula.getText();
         docente.setNombre(jTextNombre.getText());
         docente.setApellido(jTextApellido.getText());
         docente.setDireccion(jTextDireccion.getText());
@@ -271,24 +288,60 @@ public class VistaControladorDocente extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Error : " + e);
         }
         docente.setFechaNacimiento(date);
-        docente.setCodigo(codigo);
         docente.setTitulo(jTextTitulo.getText());
         docente.setPersona(docente);
-        if (controladorDocente.crearDocente(docente) == "DOCENTE CREADO") {
+        
+        controladorDocente.modificarDocente(ced, docente);
+        
+        
             VistaUsuario v = new VistaUsuario(controladorUsuario, docente);
             jPanel2.add(v);
             v.setVisible(true);
             ocultar(false);
-        }
-
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jRadioMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioMaleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioMaleActionPerformed
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        if (jTextCedula.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese el numero de cedula del Docente a buscar");
+        } else {
+            String cedula = jTextCedula.getText();
+            List<Docente> listaPersona = new ArrayList<Docente>();
+            listaPersona = controladorDocente.listarDocente();
+            
+            for (Docente p : listaPersona) {
+                if (p.getCedula().equalsIgnoreCase(cedula)) {
+                    jTextCedula.setText(p.getCedula());
+                    jTextNombre.setText(p.getNombre());
+                    jTextApellido.setText(p.getApellido());
+                    jTextDireccion.setText(p.getDireccion());
+                    jTextCorreo.setText(p.getCorreo());
+                    jTextCelular.setText(Integer.toString(p.getTelefono()));
+                    if (jRadioMale.isSelected() == true) {
+                       jRadioMale.setActionCommand(p.getSexo());
+                    } else if (jRadioFemale.isSelected() == true) {
+                        jRadioFemale.setActionCommand(p.getSexo());
+                    }
+                    
+                    SimpleDateFormat formato = new SimpleDateFormat("yyyyy-MM-dd");
+                    String fecha = formato.format(p.getFechaNacimiento());
+                    jTextFecha.setText(fecha);
+                    jTextTitulo.setText(p.getTitulo());
+                }
+
+            }
+
+        }
+        
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -313,6 +366,7 @@ public class VistaControladorDocente extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextNombre;
     private javax.swing.JTextField jTextTitulo;
     // End of variables declaration//GEN-END:variables
+
 public void ocultar(boolean t) {
         jButton1.setVisible(t);
 
@@ -335,6 +389,7 @@ public void ocultar(boolean t) {
         jTextDireccion.setVisible(t);
         jTextFecha.setVisible(t);
         jTextNombre.setVisible(t);
-    }
+    
 
+}
 }

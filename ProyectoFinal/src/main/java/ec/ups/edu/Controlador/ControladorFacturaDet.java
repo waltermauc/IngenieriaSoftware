@@ -65,16 +65,11 @@ public class ControladorFacturaDet {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
           
             ResultSet resultado = consulta.executeQuery();
-           
+       
             ControladorPeriodoLectivo cpl = new ControladorPeriodoLectivo ();
             ControladorModalidad cm = new ControladorModalidad();
             ControladorEspecialidad ce = new ControladorEspecialidad();
-            ControladorGrupo cg = new ControladorGrupo();
-            ControladorEstudiante ces =new ControladorEstudiante();
-            ControladorAsignatura ca =  new ControladorAsignatura();
-            ControladorDocente cd = new ControladorDocente();
-            ControladorEspacioFisico cef = new ControladorEspacioFisico(); 
-            ControladorNivelAsignatura cn = new ControladorNivelAsignatura() ;
+         
             while (resultado.next()) {
 
                 facturaD.setCodigo(resultado.getInt("FACTURADETALLE_ID".trim()));
@@ -83,7 +78,7 @@ public class ControladorFacturaDet {
                 facturaD.setTotal(resultado.getDouble("FACTURADETALLE_TOTAL".trim()));
                 facturaD.setIva(resultado.getDouble("FACTURADETALLE_IVA"));
                 int codigoMatricula = resultado.getInt("FACTURADETALLE_MATRICUAL".trim());
-                Matricula matric = controlMatricu.buscarMatricula(codigo, cpl, cm, ce, cg, ces, ca, cd, cef, cn);
+                Matricula matric = controlMatricu.buscarMatricula(codigo, cpl, cm, ce);
                 facturaD.setMatricula(matric);
             }
         } catch (Exception e) {

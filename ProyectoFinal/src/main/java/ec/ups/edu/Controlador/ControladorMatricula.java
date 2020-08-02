@@ -80,8 +80,14 @@ public class ControladorMatricula {
     }
 
     public Matricula buscarMatricula(int codigo, ControladorPeriodoLectivo cpl, ControladorModalidad cm,
-            ControladorEspecialidad ce, ControladorGrupo cg, ControladorEstudiante ces, ControladorAsignatura ca,
-            ControladorDocente cd, ControladorEspacioFisico cef, ControladorNivelAsignatura cn) {
+            ControladorEspecialidad ce) {
+           
+            ControladorGrupo cg = new ControladorGrupo();
+            ControladorEstudiante ces =new ControladorEstudiante();
+            ControladorAsignatura ca =  new ControladorAsignatura();
+            ControladorDocente cd = new ControladorDocente();
+            ControladorEspacioFisico cef = new ControladorEspacioFisico(); 
+            ControladorNivelAsignatura cn = new ControladorNivelAsignatura() ;
         Matricula matricula = new Matricula();
         String sql = " SELECT * FROM proyecto_final.matricula"
                 + "WHERE MATRICULA_ID  =" + " ' " + codigo + " ' ";

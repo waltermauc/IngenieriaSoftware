@@ -33,7 +33,7 @@ public class ControladorGrupo {
         String res = "";
         String sql = "INSERT INTO GRUPO"
                 + "(GRUPO_ID, GRUPO_ASIGNTURA, GRUPO_ESPACIOFISICO, GRUPO_DOCENTE, GRUPO_HORARIO) "
-                + "VALUES (?,?,?,?)";
+                + "VALUES (?,?,?,?,?)";
         try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             consulta.setInt(1, grupo.getCodigoGrupo());

@@ -122,7 +122,7 @@ public class ControladorModalidad {
 
         } catch (Exception e) {
             c.desconectar();
-            return null;
+            
         }
         return listModalidad;
     }

@@ -136,8 +136,3 @@ public class ControladorFormaPago {
     
     }
 
-<<<<<<< HEAD
-     
-
-=======
->>>>>>> 14d151990c9bfa755825f7a143145188bf500960

@@ -16,17 +16,16 @@ public class Grupo {
     private int codigoGrupo;
     private Asignatura asignaturaCodigo;
     private EspacioFisico codigoEspacioFisico;
-    private Docente docenteCodigo;
+    private Docente docente;
     private Horario horario;
 
-    public Horario getHorario() {
-        return horario;
+    public int getCodigoGrupo() {
+        return codigoGrupo;
     }
 
-    public void setHorario(Horario horario) {
-        this.horario = horario;
+    public void setCodigoGrupo(int codigoGrupo) {
+        this.codigoGrupo = codigoGrupo;
     }
-    
 
     public Asignatura getAsignaturaCodigo() {
         return asignaturaCodigo;
@@ -44,28 +43,23 @@ public class Grupo {
         this.codigoEspacioFisico = codigoEspacioFisico;
     }
 
-    public int getCodigoGrupo() {
-        return codigoGrupo;
+    public Docente getDocente() {
+        return docente;
     }
 
-    public void setCodigoGrupo(int codigoGrupo) {
-        this.codigoGrupo = codigoGrupo;
+    public void setDocente(Docente docente) {
+        this.docente = docente;
     }
 
-    public Asignatura getC() {
-        return asignaturaCodigo;
+    public Horario getHorario() {
+        return horario;
     }
 
-    public void setC(Asignatura c) {
-        this.asignaturaCodigo = c;
+    public void setHorario(Horario horario) {
+        this.horario = horario;
     }
+ 
 
-    public Docente getDocenteCodigo() {
-        return docenteCodigo;
-    }
-
-    public void setDocenteCodigo(Docente docenteCodigo) {
-        this.docenteCodigo = docenteCodigo;
-    }
+ 
 
 }

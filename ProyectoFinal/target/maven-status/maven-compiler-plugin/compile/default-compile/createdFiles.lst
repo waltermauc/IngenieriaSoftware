@@ -1,16 +1,19 @@
 ec\ups\edu\Modelo\Cheque.class
 ec\ups\edu\Vista\VistaBuscarDocente$4.class
 ec\ups\edu\Vista\VistaCrearGrupo$1.class
+ec\ups\edu\Vista\VistaBuscarDocentes.class
 ec\ups\edu\Vista\VistaEliminarDocente$5.class
 ec\ups\edu\Vista\VistaControladorEstudiante$2.class
 ec\ups\edu\Vista\VistaUsuario.class
 ec\ups\edu\Vista\VistaActualizarDocente$5.class
+ec\ups\edu\Vista\VistaBuscarDocentes$3.class
 ec\ups\edu\Vista\VistaControladorDocente$1.class
 ec\ups\edu\Vista\Principal$3.class
 ec\ups\edu\Modelo\Estudiante.class
 ec\ups\edu\Vista\VistaBuscarDocente$1.class
 ec\ups\edu\Vista\VistaPeriiodoLectivo$1.class
 ec\ups\edu\Vista\VistaActualizarDocente$2.class
+ec\ups\edu\Vista\Principal$12.class
 ec\ups\edu\Vista\VistaEspecialidad$2.class
 ec\ups\edu\Vista\VistaControladorDocente$4.class
 ec\ups\edu\Vista\VistaBuscarDocente.class
@@ -27,6 +30,7 @@ ec\ups\edu\Vista\Principal$5.class
 ec\ups\edu\controlador\ControladorFormaPago.class
 ec\ups\edu\Modelo\Docente.class
 ec\ups\edu\Vista\VistaActualizarDocente.class
+ec\ups\edu\Vista\VistaBuscarDocentes$1.class
 ec\ups\edu\controlador\ControladorFormaPago$1.class
 ec\ups\edu\Vista\VistaAsginatura$2.class
 ec\ups\edu\Modelo\TarjetaCredito.class
@@ -34,6 +38,7 @@ ec\ups\edu\Vista\VistaBuscarDocente$5.class
 ec\ups\edu\Vista\VistaNivelAsignatura$2.class
 ec\ups\edu\Vista\VistaControladorDocente.class
 ec\ups\edu\Vista\VistaEliminarDocente.class
+ec\ups\edu\Vista\VistaBuscarDocentes$2.class
 ec\ups\edu\Vista\VistaEliminarDocente$2.class
 ec\ups\edu\Vista\demo.class
 ec\ups\edu\Vista\VistaActualizarDocente$4.class
@@ -58,6 +63,7 @@ ec\ups\edu\Vista\VistaEliminarDocente$7.class
 ec\ups\edu\Vista\VistaUsuario$2.class
 ec\ups\edu\Vista\VistaAsginatura$1.class
 ec\ups\edu\Vista\VistaControladorEstudiante$3.class
+ec\ups\edu\Vista\VistaBuscarDocentes$4.class
 ec\ups\edu\Vista\VistaCrearGrupo.class
 ec\ups\edu\Vista\VistaPeriiodoLectivo$2.class
 ec\ups\edu\Vista\VistaCrearGrupo$3.class
@@ -74,6 +80,7 @@ ec\ups\edu\Vista\Principal$2.class
 ec\ups\edu\Vista\VistaActualizarDocente$3.class
 ec\ups\edu\Vista\Principal$8.class
 ec\ups\edu\Vista\Principal$1.class
+ec\ups\edu\Vista\VistaBuscarDocentes$5.class
 ec\ups\edu\Vista\VistaControladorEstudiante$5.class
 ec\ups\edu\controlador\ControladorHorario.class
 ec\ups\edu\Vista\VistaControladorDocente$5.class

@@ -14,17 +14,18 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author rayner
+ * @author 59396
  */
-public class VistaBuscarDocente extends javax.swing.JPanel {
+public class VistaBuscarDocentes extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form VistaBuscarDocente
+     * Creates new form VistaBuscarDocentes
      */
-    private ControladorDocente controladorDocente ;
-   
-    public VistaBuscarDocente(ControladorDocente controladorDocente) {
+    private ControladorDocente controladorDocente;
+
+    public VistaBuscarDocentes(ControladorDocente controladorDocente) {
         this.controladorDocente = controladorDocente;
+
         initComponents();
     }
 
@@ -226,8 +227,8 @@ public class VistaBuscarDocente extends javax.swing.JPanel {
                 .addComponent(jButton2))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -236,6 +237,8 @@ public class VistaBuscarDocente extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextApellidoActionPerformed
@@ -262,34 +265,24 @@ public class VistaBuscarDocente extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Ingrese el numero de cedula del Docente a buscar");
         } else {
             String cedula = jTextCedula.getText();
-            List<Docente> listaPersona = new ArrayList<Docente>();
-            listaPersona = controladorDocente.listarDocente();
-
-            for (Docente p : listaPersona) {
-                if (p.getCedula().equalsIgnoreCase(cedula)) {
-                    jTextCedula.setText(p.getCedula());
-                    jTextNombre.setText(p.getNombre());
-                    jTextApellido.setText(p.getApellido());
-                    jTextDireccion.setText(p.getDireccion());
-                    jTextCorreo.setText(p.getCorreo());
-                    jTextCelular.setText(Integer.toString(p.getTelefono()));
-                    if (jRadioMale.isSelected() == true) {
-                        jRadioMale.setActionCommand(p.getSexo());
-                    } else if (jRadioFemale.isSelected() == true) {
-                        jRadioFemale.setActionCommand(p.getSexo());
-                      
-                    }
-
-                    SimpleDateFormat formato = new SimpleDateFormat("yyyyy-MM-dd");
-                    String fecha = formato.format(p.getFechaNacimiento());
-                    jTextFecha.setText(fecha);
-                    jTextTitulo.setText(p.getTitulo());
-                }
-
+            Docente p = controladorDocente.buscarDocente(cedula);
+            jTextCedula.setText(p.getPersona().getCedula());
+            jTextNombre.setText(p.getPersona().getNombre());
+            jTextApellido.setText(p.getPersona().getApellido());
+            jTextDireccion.setText(p.getPersona().getDireccion());
+            jTextCorreo.setText(p.getPersona().getCorreo());
+            jTextCelular.setText(Integer.toString(p.getPersona().getTelefono()));
+            if (p.getPersona().getSexo().equals("F")) {
+                jRadioFemale.setSelected(true);
+            } else {
+                jRadioMale.setSelected(true);
             }
+            SimpleDateFormat formato = new SimpleDateFormat("yyyyy-MM-dd");
+            String fecha = formato.format(p.getPersona().getFechaNacimiento());
+            jTextFecha.setText(fecha);
+            jTextTitulo.setText(p.getTitulo());
 
         }
-
     }//GEN-LAST:event_btnBuscarActionPerformed
 
 

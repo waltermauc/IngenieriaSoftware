@@ -9,6 +9,7 @@ import ec.ups.edu.Modelo.Asignatura;
 import ec.ups.edu.Modelo.Docente;
 import ec.ups.edu.Modelo.EspacioFisico;
 import ec.ups.edu.Modelo.Grupo;
+import java.rmi.server.LogStream;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
@@ -161,7 +162,7 @@ public class ControladorGrupo {
             }
 
         } catch (Exception e) {
-
+               LogStream.log("error");
         }
         return n;
     }

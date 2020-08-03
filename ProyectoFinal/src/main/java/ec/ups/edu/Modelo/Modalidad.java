@@ -28,5 +28,10 @@ public class Modalidad {
     public void setDescripcionModalidad(String descripcionModalidad) {
         this.descripcionModalidad = descripcionModalidad;
     }
+
+    @Override
+    public String toString() {
+        return descripcionModalidad ;
+    }
     
 }

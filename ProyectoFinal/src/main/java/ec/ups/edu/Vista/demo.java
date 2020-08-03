@@ -10,9 +10,11 @@ import ec.ups.edu.Controlador.ControladorAsignatura;
 import ec.ups.edu.Controlador.ControladorDocente;
 import ec.ups.edu.Controlador.ControladorHorario;
 import ec.ups.edu.Controlador.ControladorNivelAsignatura;
+import ec.ups.edu.Controlador.ControladorPeriodoLectivo;
 import ec.ups.edu.Modelo.Asignatura;
 import ec.ups.edu.Modelo.Docente;
 import ec.ups.edu.Modelo.Horario;
+import ec.ups.edu.Modelo.PeriodoLectivo;
 
 /**
  *
@@ -25,12 +27,9 @@ public class demo {
      */
     public static void main(String[] args) {
         Conexion c = new Conexion();
-        ControladorNivelAsignatura controladorNivelAsignatura = new ControladorNivelAsignatura(c);
-        ControladorAsignatura controladorAsignatura = new ControladorAsignatura(c);
-        ControladorDocente controladorDocente = new ControladorDocente(c);
-        ControladorHorario controladorHorario = new ControladorHorario(c);
-        for (Horario h : controladorHorario.listar()){
-            System.out.println(h);
+        ControladorPeriodoLectivo controladorPeriodoLectivo = new ControladorPeriodoLectivo(c);
+        for (PeriodoLectivo pl : controladorPeriodoLectivo.listar()){
+            System.out.println(pl);
         }
     }
 

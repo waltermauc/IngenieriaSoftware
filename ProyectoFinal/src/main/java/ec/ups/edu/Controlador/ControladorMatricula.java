@@ -173,5 +173,20 @@ public class ControladorMatricula {
         return res;
 
     }
+        public int obtenerCodigo() {
+        int n = 0;
+        String sql = "select max(MATRICULA_ID) as Codigo from MATRICULA;";
+        try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            ResultSet resultado = consulta.executeQuery();
+            while (resultado.next()) {
+                n = resultado.getInt("Codigo".trim());
+            }
+
+        } catch (Exception e) {
+
+        }
+        return n;
+    }
 
 }

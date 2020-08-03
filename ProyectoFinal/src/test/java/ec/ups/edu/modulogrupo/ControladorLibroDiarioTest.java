@@ -58,7 +58,7 @@ public class ControladorLibroDiarioTest {
 
     /**
      * Test of buscarLibro method, of class ControladorLibroDiario.
-     */
+   
     @Test
     public void testBuscarLibro() {
         System.out.println("buscarLibro");
@@ -73,7 +73,7 @@ public class ControladorLibroDiarioTest {
 
     /**
      * Test of eliminarLibro method, of class ControladorLibroDiario.
-     */
+ 
     @Test
     public void testEliminarLibro() {
         System.out.println("eliminarLibro");
@@ -88,7 +88,7 @@ public class ControladorLibroDiarioTest {
 
     /**
      * Test of modificarLibro method, of class ControladorLibroDiario.
-     */
+   
     @Test
     public void testModificarLibro() {
         System.out.println("modificarLibro");
@@ -103,7 +103,7 @@ public class ControladorLibroDiarioTest {
 
     /**
      * Test of listarCalificacion method, of class ControladorLibroDiario.
-     */
+     
     @Test
     public void testListarCalificacion() {
         System.out.println("listarCalificacion");
@@ -114,5 +114,5 @@ public class ControladorLibroDiarioTest {
         // TODO review the generated test code and remove the default call to fail.
        // fail("The test case is a prototype.");
     }
-    
+      */
 }

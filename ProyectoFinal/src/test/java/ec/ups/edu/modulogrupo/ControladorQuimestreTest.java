@@ -58,7 +58,7 @@ public class ControladorQuimestreTest {
 
     /**
      * Test of buscarQuimestre method, of class ControladorQuimestre.
-     */
+    
     @Test
     public void testBuscarQuimestre() {
         System.out.println("buscarQuimestre");
@@ -73,7 +73,7 @@ public class ControladorQuimestreTest {
 
     /**
      * Test of eliminarQuimestre method, of class ControladorQuimestre.
-     */
+    
     @Test
     public void testEliminarQuimestre() {
         System.out.println("eliminarQuimestre");
@@ -88,7 +88,7 @@ public class ControladorQuimestreTest {
 
     /**
      * Test of listarQuimestre method, of class ControladorQuimestre.
-     */
+    
     @Test
     public void testListarQuimestre() {
         System.out.println("listarQuimestre");
@@ -102,7 +102,7 @@ public class ControladorQuimestreTest {
 
     /**
      * Test of calcularNotaFinal method, of class ControladorQuimestre.
-     */
+    
     @Test
     public void testCalcularNotaFinal() {
         System.out.println("calcularNotaFinal");
@@ -116,7 +116,7 @@ public class ControladorQuimestreTest {
 
     /**
      * Test of cambiarEstado method, of class ControladorQuimestre.
-     */
+    
     @Test
     public void testCambiarEstado() {
         System.out.println("cambiarEstado");
@@ -127,5 +127,5 @@ public class ControladorQuimestreTest {
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
-    
+     */
 }

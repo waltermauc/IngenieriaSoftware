@@ -17,7 +17,6 @@ import ec.ups.edu.Controlador.ControladorNivelAsignatura;
 import ec.ups.edu.Controlador.ControladorPeriodoLectivo;
 import ec.ups.edu.Controlador.ControladorUsuario;
 
-
 /**
  *
  * @author 59396
@@ -52,7 +51,6 @@ public class Principal extends javax.swing.JFrame {
         controladorPeriodoLectivo = new ControladorPeriodoLectivo(conexion);
         controladorGrupo = new ControladorGrupo(conexion);
         controladorHorario = new ControladorHorario(conexion);
-        
 
     }
 
@@ -65,11 +63,16 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
         estMenuItem = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
         docMenuItem = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
         nivelaMenuItem = new javax.swing.JMenuItem();
@@ -80,6 +83,8 @@ public class Principal extends javax.swing.JFrame {
         aboutMenuItem1 = new javax.swing.JMenuItem();
         aboutMenuItem3 = new javax.swing.JMenuItem();
         aboutMenuItem2 = new javax.swing.JMenuItem();
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,23 +102,42 @@ public class Principal extends javax.swing.JFrame {
         fileMenu.setMnemonic('f');
         fileMenu.setText("USUARIO");
 
+        jMenu1.setText("ESTUDIANTE");
+
         estMenuItem.setMnemonic('o');
-        estMenuItem.setText("ESTUDIANTE");
+        estMenuItem.setText("CREAR");
         estMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 estMenuItemActionPerformed(evt);
             }
         });
-        fileMenu.add(estMenuItem);
+        jMenu1.add(estMenuItem);
+
+        fileMenu.add(jMenu1);
+
+        jMenu2.setText("DOCENTE");
 
         docMenuItem.setMnemonic('s');
-        docMenuItem.setText("DOCENTE");
+        docMenuItem.setText("CREAR");
         docMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 docMenuItemActionPerformed(evt);
             }
         });
-        fileMenu.add(docMenuItem);
+        jMenu2.add(docMenuItem);
+
+        jMenuItem2.setText("BUSCAR");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem2);
+
+        jMenuItem3.setText("EDITAR");
+        jMenu2.add(jMenuItem3);
+
+        fileMenu.add(jMenu2);
 
         exitMenuItem.setMnemonic('x');
         exitMenuItem.setText("Exit");
@@ -283,8 +307,8 @@ public class Principal extends javax.swing.JFrame {
 
     private void aboutMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItem2ActionPerformed
         // TODO add your handling code here:
-        VistaCrearGrupo vista = new VistaCrearGrupo(controladorGrupo, controladorAsignatura, controladorDocente, 
-                controladorEspacioFisico,controladorNivelAsignatura,controladorHorario);
+        VistaCrearGrupo vista = new VistaCrearGrupo(controladorGrupo, controladorAsignatura, controladorDocente,
+                controladorEspacioFisico, controladorNivelAsignatura, controladorHorario);
         jDesktopPane1.add(vista);
         vista.setVisible(true);
     }//GEN-LAST:event_aboutMenuItem2ActionPerformed
@@ -295,6 +319,13 @@ public class Principal extends javax.swing.JFrame {
         jDesktopPane1.add(vista);
         vista.setVisible(true);
     }//GEN-LAST:event_aboutMenuItem3ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        VistaBuscarDocente vista = new VistaBuscarDocente(controladorDocente);
+        jDesktopPane1.add(vista);
+        vista.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -345,6 +376,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem nivelaMenuItem;
     // End of variables declaration//GEN-END:variables

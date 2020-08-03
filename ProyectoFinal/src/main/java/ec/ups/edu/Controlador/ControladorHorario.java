@@ -74,6 +74,7 @@ public class ControladorHorario {
         return listHorario;
 
     }
+    
 
     public int obtenerCodigo() {
         int n = 0;

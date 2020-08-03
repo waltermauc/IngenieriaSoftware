@@ -40,7 +40,8 @@ public class VistaCrearGrupo extends javax.swing.JInternalFrame {
     private ControladorHorario controladorHorario;
     private int codigo;
 
-    public VistaCrearGrupo(ControladorGrupo controladorGrupo, ControladorAsignatura controladorAsignatura, ControladorDocente controladorDocente,
+    public VistaCrearGrupo(ControladorGrupo controladorGrupo, ControladorAsignatura controladorAsignatura, 
+            ControladorDocente controladorDocente,
             ControladorEspacioFisico controladorEspacioFisico, ControladorNivelAsignatura controladorNivelAsignatura,
             ControladorHorario controladorHorario) {
         this.controladorAsignatura = controladorAsignatura;
@@ -49,7 +50,7 @@ public class VistaCrearGrupo extends javax.swing.JInternalFrame {
         this.controladorGrupo = controladorGrupo;
         this.controladorNivelAsignatura = controladorNivelAsignatura;
         this.controladorHorario = controladorHorario;
-        codigo = controladorHorario.obtenerCodigo() + 1;
+        codigo = controladorGrupo.obtenerCodigo() + 1;
         initComponents();
         cargarEspacioFisico();
         cargarHorario();
@@ -78,10 +79,8 @@ public class VistaCrearGrupo extends javax.swing.JInternalFrame {
         jButton3 = new javax.swing.JButton();
         jTextFieldasig = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTableAS = new javax.swing.JTable();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jComboBoxAs = new javax.swing.JComboBox<>();
+        jComboBoxDoc = new javax.swing.JComboBox<>();
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setText("GESTION GRUPO");
@@ -121,31 +120,9 @@ public class VistaCrearGrupo extends javax.swing.JInternalFrame {
             }
         });
 
-        jTableAS.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane3.setViewportView(jTableAS);
+        jComboBoxAs.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONE UNA OPCION" }));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane4.setViewportView(jTable2);
+        jComboBoxDoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONE UNA OPCION" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -157,41 +134,46 @@ public class VistaCrearGrupo extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jComboBoxesp, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel5)
-                                .addComponent(jLabel3)
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel3))
+                                .addGap(389, 389, 389)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(65, 65, 65)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel4)
+                                    .addGap(77, 77, 77)
+                                    .addComponent(jTextFielddoc, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(179, 179, 179))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(125, 125, 125)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jButton1)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jButton2)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jButton3))
+                                        .addComponent(jComboBoxHor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(59, 59, 59)
                                 .addComponent(jTextFieldasig, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(94, 94, 94)
-                                .addComponent(jButton4))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel4)
-                                            .addGap(77, 77, 77)
-                                            .addComponent(jTextFielddoc, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(125, 125, 125)
-                                            .addComponent(jButton1)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jButton2)))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton3))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGap(125, 125, 125)
-                                    .addComponent(jComboBoxHor, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(109, 109, 109)
+                                .addComponent(jButton4)))
                         .addContainerGap(42, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBoxAs, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBoxDoc, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,16 +185,16 @@ public class VistaCrearGrupo extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1)
                     .addComponent(jTextFieldasig, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jComboBoxAs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFielddoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
+                .addComponent(jComboBoxDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(91, 91, 91)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jComboBoxesp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -220,7 +202,7 @@ public class VistaCrearGrupo extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jComboBoxHor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton1))
@@ -234,33 +216,37 @@ public class VistaCrearGrupo extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         Grupo grupo = new Grupo();
         grupo.setCodigoGrupo(codigo);
-        
+        Asignatura asignatura =(Asignatura) jComboBoxAs.getSelectedItem();
+        grupo.setAsignaturaCodigo(asignatura);
+        EspacioFisico espacioFisico = (EspacioFisico) jComboBoxesp.getSelectedItem();
+        grupo.setCodigoEspacioFisico(espacioFisico);
+        Docente doc = (Docente) jComboBoxDoc.getSelectedItem();
+        grupo.setDocente(doc);
+        Horario horario = (Horario) jComboBoxHor.getSelectedItem();
+        grupo.setHorario(horario);
+        controladorGrupo.crearGrupo(grupo);
+
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-
-        DefaultTableModel modelo = new DefaultTableModel(2,0);
-        jTableAS.setModel(modelo);
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) jComboBoxAs.getModel();
         String buscar = jTextFieldasig.getText();
         List<Asignatura> asignaturalist = controladorAsignatura.buscarNombreAsignatura(buscar, controladorNivelAsignatura);
         for (Asignatura as : asignaturalist) {
-            modelo.addRow(new Object[]{as.getDescripcion(),as.getCodigoNivelAsignatura().getDescripcionNivelAsignatura()});
+            modelo.addElement(as);
         }
-
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        DefaultListModel modelo = new DefaultListModel();
-        //jListdoc.setModel(modelo);
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) jComboBoxDoc.getModel();
         String buscar = jTextFielddoc.getText();
-        List<Docente> docenteList = controladorDocente.listarDocente();
-        for (Docente docente : docenteList) {
-            modelo.addElement(docente);
-        }
+        Docente docente = controladorDocente.buscarDocente(buscar);
+        modelo.addElement(docente);
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     public void cargarEspacioFisico() {
@@ -281,6 +267,8 @@ public class VistaCrearGrupo extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JComboBox<String> jComboBoxAs;
+    private javax.swing.JComboBox<String> jComboBoxDoc;
     private javax.swing.JComboBox<String> jComboBoxHor;
     private javax.swing.JComboBox<String> jComboBoxesp;
     private javax.swing.JLabel jLabel1;
@@ -288,10 +276,6 @@ public class VistaCrearGrupo extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTableAS;
     private javax.swing.JTextField jTextFieldasig;
     private javax.swing.JTextField jTextFielddoc;
     // End of variables declaration//GEN-END:variables

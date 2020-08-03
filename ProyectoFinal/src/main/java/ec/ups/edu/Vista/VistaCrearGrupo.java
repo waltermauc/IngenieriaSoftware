@@ -40,7 +40,7 @@ public class VistaCrearGrupo extends javax.swing.JInternalFrame {
     private ControladorHorario controladorHorario;
     private int codigo;
 
-    public VistaCrearGrupo(ControladorGrupo controladorGrupo, ControladorAsignatura controladorAsignatura, 
+    public VistaCrearGrupo(ControladorGrupo controladorGrupo, ControladorAsignatura controladorAsignatura,
             ControladorDocente controladorDocente,
             ControladorEspacioFisico controladorEspacioFisico, ControladorNivelAsignatura controladorNivelAsignatura,
             ControladorHorario controladorHorario) {
@@ -101,6 +101,11 @@ public class VistaCrearGrupo extends javax.swing.JInternalFrame {
         });
 
         jButton2.setText("CANCEL");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("HORARIO");
 
@@ -216,7 +221,7 @@ public class VistaCrearGrupo extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         Grupo grupo = new Grupo();
         grupo.setCodigoGrupo(codigo);
-        Asignatura asignatura =(Asignatura) jComboBoxAs.getSelectedItem();
+        Asignatura asignatura = (Asignatura) jComboBoxAs.getSelectedItem();
         grupo.setAsignaturaCodigo(asignatura);
         EspacioFisico espacioFisico = (EspacioFisico) jComboBoxesp.getSelectedItem();
         grupo.setCodigoEspacioFisico(espacioFisico);
@@ -246,8 +251,12 @@ public class VistaCrearGrupo extends javax.swing.JInternalFrame {
         String buscar = jTextFielddoc.getText();
         Docente docente = controladorDocente.buscarDocente(buscar);
         modelo.addElement(docente);
-        
+
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        setVisible(false);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     public void cargarEspacioFisico() {
         DefaultComboBoxModel modelo = (DefaultComboBoxModel) jComboBoxesp.getModel();

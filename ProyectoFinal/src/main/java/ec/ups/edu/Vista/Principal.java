@@ -13,6 +13,8 @@ import ec.ups.edu.Controlador.ControladorEspecialidad;
 import ec.ups.edu.Controlador.ControladorEstudiante;
 import ec.ups.edu.Controlador.ControladorGrupo;
 import ec.ups.edu.Controlador.ControladorHorario;
+import ec.ups.edu.Controlador.ControladorMatricula;
+import ec.ups.edu.Controlador.ControladorModalidad;
 import ec.ups.edu.Controlador.ControladorNivelAsignatura;
 import ec.ups.edu.Controlador.ControladorPeriodoLectivo;
 import ec.ups.edu.Controlador.ControladorUsuario;
@@ -37,6 +39,8 @@ public class Principal extends javax.swing.JFrame {
     private ControladorPeriodoLectivo controladorPeriodoLectivo;
     private ControladorGrupo controladorGrupo;
     private ControladorHorario controladorHorario;
+    private ControladorModalidad controladorModalidad;
+    private ControladorMatricula controladorMatricula;
 
     public Principal() {
         initComponents();
@@ -51,6 +55,8 @@ public class Principal extends javax.swing.JFrame {
         controladorPeriodoLectivo = new ControladorPeriodoLectivo(conexion);
         controladorGrupo = new ControladorGrupo(conexion);
         controladorHorario = new ControladorHorario(conexion);
+        controladorModalidad = new ControladorModalidad(conexion);
+        controladorMatricula = new ControladorMatricula(conexion);
 
     }
 
@@ -64,6 +70,10 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu4 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
@@ -83,8 +93,19 @@ public class Principal extends javax.swing.JFrame {
         aboutMenuItem1 = new javax.swing.JMenuItem();
         aboutMenuItem3 = new javax.swing.JMenuItem();
         aboutMenuItem2 = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
+
+        jMenu3.setText("jMenu3");
+
+        jMenu4.setText("File");
+        jMenuBar1.add(jMenu4);
+
+        jMenu5.setText("Edit");
+        jMenuBar1.add(jMenu5);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -223,6 +244,26 @@ public class Principal extends javax.swing.JFrame {
 
         menuBar.add(helpMenu);
 
+        jMenu6.setText("MATRICULA");
+
+        jMenuItem4.setText("MODALIDAD ");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem4);
+
+        jMenuItem5.setText("MATRICULA");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem5);
+
+        menuBar.add(jMenu6);
+
         setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -327,6 +368,22 @@ public class Principal extends javax.swing.JFrame {
         vista.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        VistaModalidad vista = new VistaModalidad(controladorModalidad);
+        jDesktopPane1.add(vista);
+        vista.setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        VistaMatricula vista = new VistaMatricula(controladorMatricula, controladorModalidad, 
+                controladorEspecialidad, controladorPeriodoLectivo, controladorGrupo, controladorEstudiante);
+        jDesktopPane1.add(vista);
+        vista.setVisible(true);
+        
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -378,9 +435,16 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem nivelaMenuItem;
     // End of variables declaration//GEN-END:variables

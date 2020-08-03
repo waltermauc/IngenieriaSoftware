@@ -32,5 +32,10 @@ public class PeriodoLectivo {
         this.descripcion = descripcion;
     }
 
+    @Override
+    public String toString() {
+        return  descripcion;
+    }
+
     
 }

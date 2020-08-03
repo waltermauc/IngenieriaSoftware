@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author 59396
  */
 public class ControladorCalifcacionTest {
-    
+
     public ControladorCalifcacionTest() {
     }
 
@@ -40,8 +40,6 @@ public class ControladorCalifcacionTest {
     @org.junit.jupiter.api.AfterEach
     public void tearDown() throws Exception {
     }
-    
-    
 
     /**
      * Test of crearCalificacion method, of class ControladorCalifcacion.
@@ -67,7 +65,7 @@ public class ControladorCalifcacionTest {
         int codigo = 0;
         ControladorCalifcacion instance = new ControladorCalifcacion();
         String expResult = "Calificacion";
-        String result = instance.buscarCalificacion(codigo);
+        Calificacion result = instance.buscarCalificacion(codigo);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
@@ -95,12 +93,13 @@ public class ControladorCalifcacionTest {
     public void testModificarCalificacion() {
         System.out.println("modificarCalificacion");
         int codigo = 0;
+        Calificacion calificacion = null;
         ControladorCalifcacion instance = new ControladorCalifcacion();
         String expResult = "Calificacion modificada";
-        String result = instance.modificarCalificacion(codigo);
+        String result = instance.modificarCalificacion(calificacion, codigo);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-       // fail("The test case is a prototype.");
+        // fail("The test case is a prototype.");
     }
 
     /**
@@ -110,11 +109,11 @@ public class ControladorCalifcacionTest {
     public void testListarCalificacion() {
         System.out.println("listarCalificacion");
         ControladorCalifcacion instance = new ControladorCalifcacion();
-        List expResult = new ArrayList() ;
+        List expResult = new ArrayList();
         List<Calificacion> result = instance.listarCalificacion();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
-    
+
 }

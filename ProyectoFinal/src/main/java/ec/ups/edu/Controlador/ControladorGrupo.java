@@ -54,7 +54,8 @@ public class ControladorGrupo {
         return res;
     }
 
-    public Grupo buscarGrupo(int codigo, ControladorAsignatura controlAsig, ControladorDocente controlDocen, ControladorEspacioFisico controlEspacio, ControladorNivelAsignatura nivel) {
+    public Grupo buscarGrupo(int codigo, ControladorAsignatura controlAsig, ControladorDocente controlDocen, 
+            ControladorEspacioFisico controlEspacio, ControladorNivelAsignatura nivel) {
 
         Grupo grupo = new Grupo();
         try {
@@ -123,7 +124,8 @@ public class ControladorGrupo {
         return res;
     }
 
-    public List<Grupo> listarGrupo(ControladorAsignatura controlAsig, ControladorDocente controlDocen, ControladorEspacioFisico controlEspacio, ControladorNivelAsignatura nivel) {
+    public List<Grupo> listarGrupo(ControladorAsignatura controlAsig, ControladorDocente controlDocen, 
+            ControladorEspacioFisico controlEspacio, ControladorNivelAsignatura nivel) {
         List<Grupo> grupoList = new ArrayList<>();
         String sql = "SELECT GRUPO_ID,"
                 + "GRUPO_ASIGNTURA,"

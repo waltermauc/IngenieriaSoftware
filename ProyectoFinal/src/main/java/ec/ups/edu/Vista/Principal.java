@@ -12,9 +12,11 @@ import ec.ups.edu.Controlador.ControladorEspacioFisico;
 import ec.ups.edu.Controlador.ControladorEspecialidad;
 import ec.ups.edu.Controlador.ControladorEstudiante;
 import ec.ups.edu.Controlador.ControladorGrupo;
+import ec.ups.edu.Controlador.ControladorHorario;
 import ec.ups.edu.Controlador.ControladorNivelAsignatura;
 import ec.ups.edu.Controlador.ControladorPeriodoLectivo;
 import ec.ups.edu.Controlador.ControladorUsuario;
+
 
 /**
  *
@@ -35,6 +37,7 @@ public class Principal extends javax.swing.JFrame {
     private ControladorEspecialidad controladorEspecialidad;
     private ControladorPeriodoLectivo controladorPeriodoLectivo;
     private ControladorGrupo controladorGrupo;
+    private ControladorHorario controladorHorario;
 
     public Principal() {
         initComponents();
@@ -48,6 +51,8 @@ public class Principal extends javax.swing.JFrame {
         controladorEspecialidad = new ControladorEspecialidad(conexion);
         controladorPeriodoLectivo = new ControladorPeriodoLectivo(conexion);
         controladorGrupo = new ControladorGrupo(conexion);
+        controladorHorario = new ControladorHorario(conexion);
+        
 
     }
 
@@ -73,6 +78,7 @@ public class Principal extends javax.swing.JFrame {
         espafMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem1 = new javax.swing.JMenuItem();
+        aboutMenuItem3 = new javax.swing.JMenuItem();
         aboutMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -173,6 +179,15 @@ public class Principal extends javax.swing.JFrame {
         });
         helpMenu.add(aboutMenuItem1);
 
+        aboutMenuItem3.setMnemonic('a');
+        aboutMenuItem3.setText("HORARIO");
+        aboutMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutMenuItem3ActionPerformed(evt);
+            }
+        });
+        helpMenu.add(aboutMenuItem3);
+
         aboutMenuItem2.setMnemonic('a');
         aboutMenuItem2.setText("CREAR GRUPO");
         aboutMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -269,10 +284,17 @@ public class Principal extends javax.swing.JFrame {
     private void aboutMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItem2ActionPerformed
         // TODO add your handling code here:
         VistaCrearGrupo vista = new VistaCrearGrupo(controladorGrupo, controladorAsignatura, controladorDocente, 
-                controladorEspacioFisico,controladorNivelAsignatura);
+                controladorEspacioFisico,controladorNivelAsignatura,controladorHorario);
         jDesktopPane1.add(vista);
         vista.setVisible(true);
     }//GEN-LAST:event_aboutMenuItem2ActionPerformed
+
+    private void aboutMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        VistaHorario vista = new VistaHorario(controladorHorario);
+        jDesktopPane1.add(vista);
+        vista.setVisible(true);
+    }//GEN-LAST:event_aboutMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -313,6 +335,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenuItem aboutMenuItem1;
     private javax.swing.JMenuItem aboutMenuItem2;
+    private javax.swing.JMenuItem aboutMenuItem3;
     private javax.swing.JMenuItem asMenuItem;
     private javax.swing.JMenuItem docMenuItem;
     private javax.swing.JMenu editMenu;

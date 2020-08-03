@@ -10,11 +10,28 @@ package ec.ups.edu.Modelo;
  * @author rayner
  */
 public class Horario {
+
     private int codigo;
     private String diaSemana;
-    private String hora;
+    private String horaInicio;
+    private String horaFin;
 
-    
+    public String getHoraFin() {
+        return horaFin;
+    }
+
+    public void setHoraFin(String horaFin) {
+        this.horaFin = horaFin;
+    }
+
+    public String getHoraInicio() {
+        return horaInicio;
+    }
+
+    public void setHoraInicio(String horaInicio) {
+        this.horaInicio = horaInicio;
+    }
+
     public int getCodigo() {
         return codigo;
     }
@@ -31,13 +48,9 @@ public class Horario {
         this.diaSemana = diaSemana;
     }
 
-    public String getHora() {
-        return hora;
+    @Override
+    public String toString() {
+        return "DIA =" + diaSemana + ", HORA DE INICIO =" + horaInicio + ", HORA DE FIN =" + horaFin;
     }
 
-    public void setHora(String hora) {
-        this.hora = hora;
-    }
-    
-    
 }

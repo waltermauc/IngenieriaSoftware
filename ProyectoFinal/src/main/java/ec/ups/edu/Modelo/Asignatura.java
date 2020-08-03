@@ -10,6 +10,7 @@ package ec.ups.edu.Modelo;
  * @author rayner
  */
 public class Asignatura {
+
     private int codigoAsignatura;
     private String descripcion;
     private double costoCreditos;
@@ -47,10 +48,11 @@ public class Asignatura {
         this.codigoNivelAsignatura = codigoNivelAsignatura;
     }
 
-    @Override
+   @Override
     public String toString() {
-        return "Asignatura{" + "descripcion=" + descripcion + ", costoCreditos=" + costoCreditos + ", codigoNivelAsignatura=" + codigoNivelAsignatura + '}';
+        return descripcion + ", NIVEL = " + codigoNivelAsignatura.getDescripcionNivelAsignatura();
     }
+
     
-    
+
 }

@@ -136,8 +136,9 @@ public class programaMetodosTest {
         System.out.println("listarAsignatura");
         String descripcionAsignatura = "Lengua";
         ControladorAsignatura instance = new ControladorAsignatura();
+        ControladorNivelAsignatura controladorNivelAsignatura = null;
         String expResult = "mostrar datos de la asignatura";
-        List<Asignatura> result = instance.listarAsignatura();
+        List<Asignatura> result = instance.listarAsignatura(controladorNivelAsignatura);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         if (!result.equals(expResult)){

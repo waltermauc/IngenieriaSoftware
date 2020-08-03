@@ -94,9 +94,34 @@ public class ControladorAsignatura {
         return res;
     }
 
-    public List<Asignatura> listarAsignatura() {
+    public List<Asignatura> listarAsignatura(ControladorNivelAsignatura controladorNivelAsignatura) {
         List<Asignatura> asignaturaList = new ArrayList<>();
         String sql = "SELECT * FROM proyecto_final.asignatura;";
+        try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            ResultSet resultado = consulta.executeQuery();
+            while (resultado.next()) {
+                Asignatura asignature = new Asignatura();
+                asignature.setCodigoAsignatura(resultado.getInt("ASIGNATURA_ID".trim()));
+                asignature.setDescripcion(resultado.getString("ASIGNATURA_DESCRIPCION".trim()));
+                int codigoNivelAsignatura = resultado.getInt("ASIGNATURA_NIVELASIGNATURA".trim());
+                NivelAsignatura nivelAsig = controladorNivelAsignatura.buscarAsignatura(codigoNivelAsignatura);
+                asignature.setCodigoNivelAsignatura(nivelAsig);
+                asignature.setCostoCreditos(resultado.getInt("ASIGNATURA_COSTO".trim()));
+                asignaturaList.add(asignature);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            c.desconectar();
+
+        }
+        return asignaturaList;
+    }
+
+    public List<Asignatura> buscarNombreAsignatura(String nombre, ControladorNivelAsignatura controladorNivelAsignatura) {
+        List<Asignatura> asignaturaList = new ArrayList<>();
+        String sql = "SELECT * FROM proyecto_final.asignatura"
+                + " WHERE ASIGNATURA_DESCRIPCION LIKE " + "'" + nombre + "%'";
         try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             ResultSet resultado = consulta.executeQuery();
@@ -105,6 +130,9 @@ public class ControladorAsignatura {
                 Asignatura asignature = new Asignatura();
                 asignature.setCodigoAsignatura(resultado.getInt("ASIGNATURA_ID".trim()));
                 asignature.setDescripcion(resultado.getString("ASIGNATURA_DESCRIPCION".trim()));
+                int codigoNivelAsignatura = resultado.getInt("ASIGNATURA_NIVELASIGNATURA".trim());
+                NivelAsignatura nivelAsig = controladorNivelAsignatura.buscarAsignatura(codigoNivelAsignatura);
+                asignature.setCodigoNivelAsignatura(nivelAsig);
                 asignature.setCostoCreditos(resultado.getInt("ASIGNATURA_COSTO".trim()));
                 asignaturaList.add(asignature);
             }
@@ -139,35 +167,6 @@ public class ControladorAsignatura {
             return null;
         }
         return asignature;
-    }
-
-    public List<Asignatura> buscarNombreAsignatura(String nombre, ControladorNivelAsignatura controladorNivelAsignatura) {
-        Asignatura asignature = new Asignatura();
-        String sql = "SELECT * FROM proyecto_final.asignatura"
-                + " WHERE ASIGNATURA_DESCRIPCION LIKE " + "'" + nombre + "%'";
-        List<Asignatura> array = new ArrayList();
-
-        try {
-            PreparedStatement consulta = c.conectado().prepareStatement(sql);
-            ResultSet resultado = consulta.executeQuery();
-
-            while (resultado.next()) {
-
-                asignature.setCodigoAsignatura(resultado.getInt("ASIGNATURA_ID".trim()));
-                asignature.setDescripcion(resultado.getString("ASIGNATURA_DESCRIPCION".trim()));
-                int codigoNivelAsignatura = resultado.getInt("ASIGNATURA_NIVELASIGNATURA".trim());
-                NivelAsignatura nivelAsig = controladorNivelAsignatura.buscarAsignatura(codigoNivelAsignatura);
-                asignature.setCodigoNivelAsignatura(nivelAsig);
-                asignature.setCostoCreditos(resultado.getDouble("ASIGNATURA_COSTO".trim()));
-                array.add(asignature);
-            }
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            c.desconectar();
-            return null;
-        }
-        return array;
     }
 
     public int obtenerCodigo() {

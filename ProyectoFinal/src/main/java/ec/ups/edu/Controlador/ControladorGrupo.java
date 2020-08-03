@@ -32,7 +32,7 @@ public class ControladorGrupo {
     public String crearGrupo(Grupo grupo) {
         String res = "";
         String sql = "INSERT INTO GRUPO"
-                + "(GRUPO_ID, GRUPO_ASIGNTURA, GRUPO_ESPACIOFISICO, GRUPO_DOCENTE) "
+                + "(GRUPO_ID, GRUPO_ASIGNTURA, GRUPO_ESPACIOFISICO, GRUPO_DOCENTE, GRUPO_HORARIO) "
                 + "VALUES (?,?,?,?)";
         try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
@@ -40,6 +40,7 @@ public class ControladorGrupo {
             consulta.setInt(2, grupo.getAsignaturaCodigo().getCodigoAsignatura());
             consulta.setInt(3, grupo.getCodigoEspacioFisico().getCodigoEspacioFisico());
             consulta.setString(4, grupo.getDocenteCodigo().getCedula());
+            consulta.setInt(5, grupo.getHorario().getCodigo());
             
         } catch (Exception e) {
 
@@ -148,6 +149,21 @@ public class ControladorGrupo {
 
         }
         return grupoList;
+    }
+     public int obtenerCodigo() {
+        int n = 0;
+        String sql = "select max(grupo_id) as Codigo from GRUPO;";
+        try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            ResultSet resultado = consulta.executeQuery();
+            while (resultado.next()) {
+                n = resultado.getInt("Codigo".trim());
+            }
+
+        } catch (Exception e) {
+
+        }
+        return n;
     }
 
 }

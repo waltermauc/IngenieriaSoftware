@@ -17,6 +17,16 @@ public class Grupo {
     private Asignatura asignaturaCodigo;
     private EspacioFisico codigoEspacioFisico;
     private Docente docenteCodigo;
+    private Horario horario;
+
+    public Horario getHorario() {
+        return horario;
+    }
+
+    public void setHorario(Horario horario) {
+        this.horario = horario;
+    }
+    
 
     public Asignatura getAsignaturaCodigo() {
         return asignaturaCodigo;

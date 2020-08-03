@@ -32,17 +32,10 @@ public class ControladorGrupo {
 
     public String crearGrupo(Grupo grupo) {
         String res = "";
-<<<<<<< HEAD
-        String sql = "INSERT INTO `proyecto_final`.`grupo`"
-                + "(`GRUPO_ID`,"
-                + "`GRUPO_ASIGNTURA`,"
-                + "`GRUPO_ESPACIOFISICO`,"
-                + "`GRUPO_DOCENTE`,"
-                + "`GRUPO_HORARIO`)"
-=======
+
+
         String sql = "INSERT INTO GRUPO"
                 + "(GRUPO_ID, GRUPO_ASIGNTURA, GRUPO_ESPACIOFISICO, GRUPO_DOCENTE, GRUPO_HORARIO) "
->>>>>>> c609de3765c1356360cfab34e2d7f3bd7ed21123
                 + "VALUES (?,?,?,?,?)";
         try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);

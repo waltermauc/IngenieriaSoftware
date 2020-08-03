@@ -7,6 +7,7 @@ package ec.ups.edu.Controlador;
 import ec.ups.edu.Modelo.EspacioFisico;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,13 +43,13 @@ public class ControladorEspacioFisico {
         }
         return res;
     }
-    public String editarEspacioFisico(EspacioFisico espacioFisico, int codigo) {
+    public String editarEspacioFisico(EspacioFisico espacioFisico, int nombre) {
         String res = "";
         String sql = "UPDATE ESPACIOFISICO"
                 + " SET ESPACIOFISICO_ID = " + " ' " + espacioFisico.getCodigoEspacioFisico()+ " ' " + ","
                 + "  ESPACIOFISICO_NUMEROAULA =" + " ' " + espacioFisico.getNumeroDesignadoAula()+ " ' " + ","
                 + "  ESPACIOFISICO_EDIFICIO =  " + " ' " + espacioFisico.getNombreEdificio()+ " ' " + ","
-                + " WHERE ESPACIOFISICO_ID =" + " ' " + codigo + " ' ";
+                + " WHERE ESPACIOFISICO_ID =" + " ' " + nombre + " ' ";
         try {
             PreparedStatement ps;
             ps = c.conectado().prepareStatement(sql);
@@ -96,11 +97,11 @@ public class ControladorEspacioFisico {
         }
         return espacioList;
     }
-    public EspacioFisico buscaEspacioFisico (int codigo){
+    public EspacioFisico buscaEspacioFisico (int nombre){
          EspacioFisico espacioFisico = new EspacioFisico();
 
         String sql = "SELECT * from ESPACIOFISICO"
-                + " WHERE ESPACIOFISICO_ID = " + "'" + codigo + "'";
+                + " WHERE ESPACIOFISICO_ID = " + "'" + nombre + "'";
          try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             ResultSet resultado = consulta.executeQuery();
@@ -120,6 +121,37 @@ public class ControladorEspacioFisico {
     public int obtenerCodigo() {
         int n = 0;
         String sql = "select max(ESPACIOFISICO_ID) as Codigo from espaciofisico;";
+        try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            ResultSet resultado = consulta.executeQuery();
+            while (resultado.next()) {
+                n = resultado.getInt("Codigo".trim());
+            }
+
+        } catch (Exception e) {
+
+        }
+        return n;
+    }
+    
+   public String obtenerNombreEdificio(String d){
+       String nombre = "";
+        String sql = "select ESPACIOFISICO_EDIFICIO as nombre from espaciofisico where ESPACIOFISICO_EDIFICIO LIKE  " + "'" + d + "'";
+        try {
+            PreparedStatement consulta = c.conectado().prepareStatement(sql);
+            ResultSet resultado = consulta.executeQuery();
+            while (resultado.next()) {
+                nombre = resultado.getString("Nombre".trim());
+            }
+
+        } catch (SQLException e) {
+              
+        }
+        return nombre;
+   }
+    public int obtenerCodigoEdifico(String d) {
+        int n = 0;
+        String sql = "select ESPACIOFISICO_EDIFICIO as nombre from espaciofisico where ESPACIOFISICO_EDIFICIO LIKE  " + "'" + d + "'";
         try {
             PreparedStatement consulta = c.conectado().prepareStatement(sql);
             ResultSet resultado = consulta.executeQuery();
